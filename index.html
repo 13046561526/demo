@@ -4,11 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>五粮液精美印务 · OA与观星台</title>
-<meta name="description" content="泛微 E10 低代码平台 · 五粮液精美印务 AI+印刷包装智能制造项目 OA系统与观星台演示 demo。包含统一门户、各部门流程中心、合同AI评审、待办审批、业务台账、公司驾驶舱、经营简报、会议分析、指标目录、问题闭环与AI风险监测等交互。纯静态单文件，可直接部署到 GitHub Pages。" />
+<meta name="description" content="泛微 E10 低代码平台 · 五粮液精美印务 AI+印刷包装智能制造 OA系统与观星台演示。按工作台、人力资源部、党政综合办、审计监督部、信息工程部、经营发展部、观星台七大规模组织，含各部门流程清单、可交互表单与审批、业务台账、经营驾驶舱、AI风险监测等。纯静态单文件，可直接部署 GitHub Pages。" />
 <style>
   :root{
     --primary:#1f5fd6; --primary-dark:#174bb0; --primary-light:#e7f0ff;
     --orange:#f59d2f; --green:#18a879; --red:#e5533c; --purple:#8a5bd6; --cyan:#1fa2c4;
+    --indigo:#4f46e5; --teal:#0ea5a9;
     --bg:#f2f4fa; --panel:#fff; --line:#e6e9f0; --text:#26324b; --muted:#8a93a6;
     --shadow:0 2px 6px rgba(30,50,90,.08); --shadow-lg:0 12px 32px rgba(30,50,90,.16);
     --radius:10px;
@@ -19,24 +20,24 @@
   .app{display:flex;height:100vh;overflow:hidden;}
 
   /* ---------- 左侧菜单 ---------- */
-  .sidenav{width:236px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;}
+  .sidenav{width:248px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;}
   .brand{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line);}
-  .brand .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#1f5fd6,#7b3ff2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;box-shadow:0 4px 10px rgba(31,95,214,.4);}
+  .brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1f5fd6,#7b3ff2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;box-shadow:0 4px 10px rgba(31,95,214,.4);}
   .brand .t1{font-weight:700;font-size:14px;line-height:1.2;}
   .brand .t2{font-size:11px;color:var(--muted);}
   .menu{padding:8px 12px;overflow-y:auto;flex:1;}
-  .menu .grp{font-size:11px;color:var(--muted);padding:12px 8px 6px;letter-spacing:.5px;display:flex;align-items:center;gap:6px;}
+  .menu .grp{font-size:11px;color:var(--muted);padding:14px 8px 6px;letter-spacing:.5px;display:flex;align-items:center;gap:6px;}
   .menu .grp .dotapp{width:8px;height:8px;border-radius:3px;display:inline-block;}
   .menu a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:var(--text);text-decoration:none;cursor:pointer;margin-bottom:2px;transition:.15s;}
   .menu a .ico{width:20px;text-align:center;opacity:.85;font-size:16px;}
   .menu a:hover{background:#f4f6fb;}
   .menu a.active{background:var(--primary-light);color:var(--primary);font-weight:600;}
   .menu a.active .ico{opacity:1;}
-  .badge{background:var(--red);color:#fff;font-size:11px;border-radius:10px;padding:1px 6px;margin-left:auto;}
+  .menu a .badge{background:var(--red);color:#fff;font-size:11px;border-radius:10px;padding:1px 6px;margin-left:auto;font-weight:400;}
 
   /* ---------- 主区域 ---------- */
   .main{flex:1;display:flex;flex-direction:column;min-width:0;}
-  .topbar{height:56px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 22px;flex-shrink:0;}
+  .topbar{height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 22px;flex-shrink:0;}
   .topbar .crumb{color:var(--muted);display:flex;align-items:center;gap:6px;font-size:13px;}
   .topbar .crumb b{color:var(--text);font-weight:600;}
   .topbar .spacer{flex:1;}
@@ -49,6 +50,8 @@
   .card + .card{margin-top:18px;}
   .card h3{margin:0 0 14px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;}
   .grid-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .grid-cards.c3{grid-template-columns:repeat(3,1fr);}
+  .grid-cards.c5{grid-template-columns:repeat(5,1fr);}
   .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
   .stat .lbl{color:var(--muted);font-size:13px;}
   .stat .num{font-size:28px;font-weight:700;margin:6px 0 4px;}
@@ -74,9 +77,10 @@
   .tag.purple{background:#efe8fb;color:#6d43c0;}
   .tag.blue{background:var(--primary-light);color:var(--primary);}
   .tag.cyan{background:#e2f5fa;color:#137a95;}
+  .tag.indigo{background:#e8e9fc;color:#4f46e5;}
   .money{font-weight:600;}
 
-  /* ---------- 流程步骤 ---------- */
+  /* ---------- 步骤条 ---------- */
   .steps{display:flex;align-items:flex-start;padding:6px 0;}
   .step{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;text-align:center;min-width:0;}
   .step::before{content:"";position:absolute;top:14px;left:-50%;width:100%;height:2px;background:#e6e9f0;z-index:0;}
@@ -109,11 +113,17 @@
   .kpi{text-align:center;padding:14px;border-top:3px solid var(--line);border-radius:8px;}
   .kpi .n{font-size:22px;font-weight:700;}
 
+  /* ---------- 子模块 Tab ---------- */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;padding:6px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .tabs a{padding:7px 14px;border-radius:7px;color:var(--text);font-size:13px;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .tabs a:hover{background:#f4f6fb;}
+  .tabs a.active{background:var(--primary);color:#fff;font-weight:600;}
+
   /* ---------- 模态 ---------- */
   .mask{position:fixed;inset:0;background:rgba(20,30,55,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;}
   .mask.show{display:flex;}
   .modal{background:#fff;border-radius:12px;width:640px;max-width:100%;max-height:92vh;overflow:auto;box-shadow:var(--shadow-lg);}
-  .modal.wide{width:880px;}
+  .modal.wide{width:900px;}
   .modal .m-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2;}
   .modal .m-head h4{margin:0;font-size:16px;}
   .modal .m-body{padding:20px 22px;}
@@ -151,13 +161,17 @@
   table.mini{width:100%;border-collapse:collapse;font-size:12px;}
   table.mini td{padding:6px 6px;border-bottom:1px solid var(--line);}
   table.mini td:first-child{color:var(--muted);}
-  @media(max-width:960px){.grid-cards{grid-template-columns:repeat(2,1fr);}.gauge-wrap{grid-template-columns:repeat(2,1fr);}.sidenav{width:204px;}}
+  .head-banner{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px;}
+  .head-banner .hb-ic{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;}
+  .head-banner .hb-t1{font-size:20px;font-weight:700;}
+  .head-banner .hb-t2{font-size:13px;color:var(--muted);margin-top:4px;}
+  .flow-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:1000px){.grid-cards,.grid-cards.c5{grid-template-columns:repeat(2,1fr);}.gauge-wrap{grid-template-columns:repeat(2,1fr);}.flow-list{grid-template-columns:1fr;}.sidenav{width:214px;}}
   @media(max-width:720px){.sidenav{display:none;}.split{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="app">
-  <!-- 侧边菜单 -->
   <nav class="sidenav">
     <div class="brand">
       <div class="logo">五</div>
@@ -165,11 +179,9 @@
     </div>
     <div class="menu" id="menu"></div>
   </nav>
-
-  <!-- 主区域 -->
   <div class="main">
     <div class="topbar">
-      <div class="crumb">泛微 E10 · 项目 OA 系统 <span>›</span> <b id="crumb">统一门户</b></div>
+      <div class="crumb">泛微 E10 · 项目 OA 系统 <span>›</span> <b id="crumb">工作台</b></div>
       <div class="spacer"></div>
       <span class="btn sm" id="quickNew">＋ 新建</span>
       <div class="user"><div class="avatar">王</div> 王小明</div>
@@ -178,61 +190,119 @@
   </div>
 </div>
 
-<!-- 通用详情模态 -->
-<div class="mask" id="detailMask">
-  <div class="modal wide">
-    <div class="m-head"><h4 id="detailTitle">详情</h4><button class="x" onclick="closeDetail()">✕</button></div>
-    <div class="m-body" id="detailBody"></div>
-    <div class="m-foot" id="detailFoot"></div>
-  </div>
-</div>
-
-<!-- 新建表单模态 -->
-<div class="mask" id="formMask">
-  <div class="modal wide">
-    <div class="m-head"><h4 id="formTitle">新建</h4><button class="x" onclick="closeForm()">✕</button></div>
-    <div class="m-body" id="formBody"></div>
-    <div class="m-foot"><button class="btn" onclick="closeForm()">取消</button><button class="btn primary" onclick="submitForm()">保存并提交</button></div>
-  </div>
-</div>
-
+<div class="mask" id="detailMask"><div class="modal wide"><div class="m-head"><h4 id="detailTitle">详情</h4><button class="x" onclick="closeDetail()">✕</button></div><div class="m-body" id="detailBody"></div><div class="m-foot" id="detailFoot"></div></div></div>
+<div class="mask" id="formMask"><div class="modal wide"><div class="m-head"><h4 id="formTitle">新建</h4><button class="x" onclick="closeForm()">✕</button></div><div class="m-body" id="formBody"></div><div class="m-foot"><button class="btn" onclick="closeForm()">取消</button><button class="btn primary" onclick="submitForm()">保存并提交</button></div></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
 /* ============================================================
-  五粮液精美印务 AI+印刷包装智能制造项目 · OA与观星台 演示
-  依据 《五粮液精美印务AI+印刷包装智能制造-OA-SOWv1.7》(2026-08-24)
+  五粮液精美印务 · AI+印刷包装智能制造 · OA 与 观星台 演示
+  依据 《-OA-SOWv1.7》(2026-08-24) 七大规模组织
   ============================================================ */
 function now(){const d=new Date();const p=n=>String(n).padStart(2,"0");return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;}
 const money=n=>Number(n||0).toLocaleString("zh-CN",{minimumFractionDigits:0,maximumFractionDigits:0});
-const money2=n=>Number(n||0).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2});
 
-/* ---------- 数据模型 ---------- */
-// OA 流程清单（示例：摘自 SOW 各部门流程清单）
-const OA_FLOWS=[
-  {id:"OA-L3-070104",cat:"人力资源部",name:"试用期考核及转正流程",desc:"到期前下发考核任务，完成员工总结、部门评价、人事复核及转正/延期/不予转正审批；按类别下发工会会员、企业年金、购物卡等协同任务。",owner:"刘静"},
-  {id:"OA-L3-070111",cat:"人力资源部",name:"员工档案填写、变更及归集流程",desc:"员工按授权填报或提交档案修改申请，人事审核后更新档案；调动、奖惩、绩效等结果按规则归集并保留来源、版本和修改轨迹。",owner:"刘静"},
-  {id:"OA-L3-070201",cat:"人力资源部",name:"请假申请流程",desc:"按假别提交起止时间、时长及证明，系统按公司、假别和天数匹配审批并占用假期余额。",owner:"吴欣"},
-  {id:"OA-L3-080101",cat:"人力资源部",name:"工资条发布及员工确认流程",desc:"按公司和月份导入工资条，校验模板、人员、金额和重复，复核后定向发布并记录确认状态。",owner:"胡瑞东"},
-  {id:"OA-L3-090104",cat:"人力资源部",name:"岗位资格考试、准入及复审流程",desc:"组织岗位资格考试，确认准入结论，自动更新员工档案；到期下发复审/再认证任务并更新有效期。",owner:"曾俊秋"},
-  {id:"OA-L3-020101",cat:"党政综合办",name:"收文办理流程",desc:"覆盖集团OA来文及其他来文接收、登记分类、传阅/承办分派、办理反馈、期限催办、办结和归档。",owner:"梁瑶"},
-  {id:"OA-L3-030110",cat:"党政综合办",name:"督办事项立项流程",desc:"多来源发起督办，通过来源/类型/紧急度标签分类，登记责任部门、责任人、目标、期限及关联对象，形成统一督办台账。",owner:"梁瑶"},
-  {id:"OA-L3-040102",cat:"审计监督部",name:"合同评审及审批流程",desc:"模板/非模板分类评审，AI提供风险提示和修改建议，人工审核及审批；审批后关联用印、导出含编号/水印合同文本。",owner:"曹怀月"},
-  {id:"OA-L3-050101",cat:"审计监督部",name:"季度经营风险上报及评估流程",desc:"各部门按季填报风险，AI辅助风险等级推荐，审计监督部人工复核并形成正式风险台账。",owner:"杨宜和"},
-  {id:"OA-L3-060301",cat:"审计监督部",name:"招采监督管理流程",desc:"内部审批协同、采购文件AI风险提示、项目变更、归档监督、关联采购合同交底与履约管控；主流程由ERP/SRM承接。",owner:"曹怀月"},
-  {id:"OA-L3-010105",cat:"信息工程部",name:"系统接口新增、变更及停用申请流程",desc:"办理接口新增/字段/频率/协议变更或停用，记录责任方、数据范围、联调和上线结果。",owner:"尚椿琳"},
-  {id:"OA-L3-030125",cat:"经营发展部",name:"宣传内容发布审批流程",desc:"提交宣传选题或稿件，完成内容审核、发布渠道与时间确认、发布结果登记及资料归档。",owner:"陈欣悦"},
+/* ================== 七大规模：部门配置 ================== */
+// module: 菜单 key；routes: 该部门下的子模块 tab
+const DEPTS=[
+  {id:"hr",name:"人力资源部",color:"#2b6de8",ico:"🧑‍💼",desc:"负责假勤考勤、员工入转调离、员工档案、劳动合同、薪酬工资条、培训证照及岗位资格等业务规则确认。OA承接流程协同与档案沉淀；薪资计算、计件工资、绩效与发放由ERP承接。",
+    kpi:[["在职员工",512,"较上月 +6"],["本月入职",18,"审批中 3"],["本月离职",9,"待办 2"],["假勤在办",126,"请假 58 / 加班 41"]],
+    routes:[["life","员工全生命周期"],["kq","假勤考勤"],["salary","薪酬与福利"],["train","培训证照与资格"],["archive","员工档案与合同"]]},
+  {id:"party",name:"党政综合办",color:"#e5533c",ico:"🏛️",desc:"负责党政公文、用印证照、会议会务、督办事项、任务、费用标准审核及行政资料归集等业务规则确认；集团OA衔接及涉密事项按集团制度执行。",
+    kpi:[["今日收文",14,"待办 5"],["用印申请",8,"本周 32 份"],["会议预定",6,"冲突校验 0"],["督办在办",52,"临期 7"]],
+    routes:[["doc","党政公文"],["seal","用印证照"],["meet","会议会务"],["supervise","督办与任务"],["archive","档案管理"],["party2","党建/工会/董事会"]]},
+  {id:"audit",name:"审计监督部",color:"#8a5bd6",ico:"🛡️",desc:"负责合同合规、AI合同辅助审核、双源风险管理、审计整改管理及招采监督协同。OA承接评审、监督、台账与整改销账；合同付款及招采专业主流程由ERP/SRM闭环。",
+    kpi:[["在审合同",6,"AI提示 18 条"],["风险台账",37,"高 3"],["审计整改",14,"超期 3"],["招采监督",4,"整改 2"]],
+    routes:[["contract","合同管理与AI审核"],["risk","双源风险管理"],["auditfix","审计整改销账"],["procure","招采监督"],["legal","合规与法律"]]},
+  {id:"info",name:"信息工程部",color:"#0ea5a9",ico:"💻",desc:"负责应用系统账号开通/变更/注销、权限申请与回收、流程代理、OA流程及审批矩阵变更、应用接入、接口申请、数据报表授权、系统报修、发布变更及主数据维护等。",
+    kpi:[["账号申请",23,"在办 6"],["接口在办",4,"联调 2"],["故障报修",11,"高优 2"],["发布变更",3,"待验证 1"]],
+    routes:[["account","账号与权限"],["proxy","授权与代理"],["iface","系统接入与接口"],["data","数据权限"],["ops","运维与发布"],["md","主数据管理"]]},
+  {id:"biz",name:"经营发展部",color:"#1fa2c4",ico:"📣",desc:"对外宣传材料发布前进行内部审核；同时作为观星台的业务牵头部门，提出经营指标与简报场景、确认指标口径、图表、目标与异常原因模板。",
+    kpi:[["宣传待审",5,"本月发布 28"],["指标提出",16,"待确认 3"],["简报期次",1,"2026-06期"],["专题分析",4,"经营总览"]],
+    routes:[["publicity","宣传发布审批"],["star_tie","观星台需求对接"]]},
+  {id:"star",name:"观星台",color:"#7b3ff2",ico:"🚀",desc:"面向公司、业务域/车间及产线/精益单元的跨系统数据运营与经营分析平台。以指标体系为主线，建设驾驶舱、指挥看板、会议场景、问题闭环、数据治理和AI风险识别。",
+    kpi:[["接入主题",12,"6 大主题域"],["有效指标",86,"本期落 40"],["驾驶舱指标",8,"公司层"],["风险待审",4,"AI 3 / 人工 1"]],
+    routes:[["cockpit","公司驾驶舱"],["board","指挥看板"],["brief","经营简报"],["meeting","会议分析"],["ind","指标目录"],["issue","问题闭环"],["data","数据治理"],["risk","AI风险监测"],["energy","能源分析"]]},
 ];
 
-// 待办审批（统一待办）
+/* ------------------ 流程清单（SOW 各部门流程节选） ------------------ */
+// 每个流程：id(编号), cat(部门), sub(子模块key), name, desc, steps[], controls, owner
+const FLOWS=[
+  // 人力资源部
+  {id:"OA-L3-070101",cat:"hr",sub:"life",name:"招聘需求及计划审批",desc:"部门提出招聘需求，校验编制、岗位及年度计划，完成招聘必要性、人数、到岗时间和招聘方式审批。",steps:["部门提出","编制/岗位校验","人事审核","分管领导审批"],owner:"人力资源部"},
+  {id:"OA-L3-070103",cat:"hr",sub:"life",name:"员工入职协同",desc:"采集入职资料并人事审核，协同账号、卡证、物资、培训和劳动合同办理；按类别下发宿舍、车辆、指纹/人脸录入、慰问品等协同任务并登记完成结果。",steps:["入职登记","人事审核","协同任务下发","完成结果登记"],owner:"人力资源部"},
+  {id:"OA-L3-070104",cat:"hr",sub:"life",name:"试用期考核及转正",desc:"试用期到期前下发考核任务，完成员工总结、部门评价、人事复核及转正/延期/不予转正审批；按类别下发工会会员、年金、购物卡等协同任务。",steps:["到期自动提醒","员工总结","部门评价","人事复核","转正审批"],owner:"人力资源部"},
+  {id:"OA-L3-070105",cat:"hr",sub:"life",name:"人员调配及岗位异动",desc:"覆盖部门内调动、跨部门调动、转岗、批量调动、机构调整及调配池转入转出；审批后联动组织、岗位、权限及员工档案，并按目标岗位校验资格。",steps:["发起异动","部门内单独呈现","资格校验","审批","组织/岗位联动"],owner:"人力资源部"},
+  {id:"OA-L3-070111",cat:"hr",sub:"archive",name:"员工档案填报/变更/归集",desc:"员工按授权填报或提交档案修改申请，人事审核后更新档案；调动、奖惩、绩效及岗位资格结果按规则归集，保留来源流程、版本和修改轨迹。",steps:["员工填报","人事审核","档案更新","结果归集"],owner:"人力资源部"},
+  {id:"OA-L3-070201",cat:"hr",sub:"kq",name:"请假申请",desc:"按假别提交起止时间、时长及证明材料，系统按公司、假别和天数匹配审批并占用假期余额。",steps:["发起申请","部门经理审批","人事核准","考勤确认"],owner:"人力资源部"},
+  {id:"OA-L3-070202",cat:"hr",sub:"kq",name:"销假及假期变更",desc:"关联已审批请假单办理提前销假、延期或时间变更，保留原记录并调整考勤和假期余额。",steps:["关联原单","发起变更","审批","考勤调整"],owner:"人力资源部"},
+  {id:"OA-L3-070203",cat:"hr",sub:"kq",name:"加班申请",desc:"员工或部门内勤提交加班时段、事由和人员，完成核定时长审批并校验重复申报。",steps:["提交加班","时长核定","审批","考勤记录"],owner:"人力资源部"},
+  {id:"OA-L3-070204",cat:"hr",sub:"kq",name:"调休申请",desc:"基于可用调休余额申请调休，校验余额、时段冲突和有效期，审批后进入考勤。",steps:["发起调休","余额/冲突校验","审批","考勤确认"],owner:"人力资源部"},
+  {id:"OA-L3-070205",cat:"hr",sub:"kq",name:"出差/外出/外勤",desc:"通过事项类型区分出差、临时外出和外勤任务，登记时间、地点和事由；结果进入考勤，差旅财务由ERP承接。",steps:["发起","类型/地点登记","审批","考勤同步"],owner:"人力资源部"},
+  {id:"OA-L3-070208",cat:"hr",sub:"kq",name:"月度考勤确认",desc:"汇总排班、打卡、假勤和异常处理结果，生成月度明细并完成员工/部门确认、异议退回和锁定。",steps:["数据汇总","生成明细","员工确认","异议退回","月度锁定"],owner:"人力资源部"},
+  {id:"OA-L3-070209",cat:"hr",sub:"kq",name:"年度考勤查询/输出",desc:"按员工、年度、公司及组织查询或输出年度考勤汇总与明细；入职、离职时按制度形成考勤起止及离职结算协同结果。",steps:["选择条件","查询汇总","输出","离职结算协同"],owner:"人力资源部"},
+  {id:"OA-L3-080101",cat:"hr",sub:"salary",name:"工资条发布及确认",desc:"按公司和月份导入工资条，校验模板、人员、金额和重复数据，经复核后定向发布并记录员工确认状态。",steps:["模板导入","校验","复核","定向发布","员工确认"],owner:"人力资源部"},
+  {id:"OA-L3-080102",cat:"hr",sub:"salary",name:"薪酬异议及修订确认",desc:"员工提交薪酬异议，人事处理并记录结论；需要修订时重新发布并由员工再次确认。",steps:["提交异议","人事处理","修订","重新发布","再次确认"],owner:"人力资源部"},
+  {id:"OA-L3-080103",cat:"hr",sub:"salary",name:"社保/公积金/年金办理",desc:"通过事项类型办理增减员、缴费审批和缴费基数调整，记录办理期间、金额、结果和佐证材料。",steps:["事项类型","增减员/基数","缴费审批","结果登记"],owner:"人力资源部"},
+  {id:"OA-L3-090101",cat:"hr",sub:"train",name:"培训计划及实施管理",desc:"覆盖培训需求收集、年度计划审批、具体项目实施审批、课程发布、学习任务和培训档案。",steps:["需求收集","年度计划审批","项目实施","课程发布","档案归集"],owner:"人力资源部"},
+  {id:"OA-L3-090102",cat:"hr",sub:"train",name:"培训考试及成绩确认",desc:"组织在线或线下考试，维护题库，录入或导入成绩，完成结果确认并归档考试记录。",steps:["考试组织","成绩录入","结果确认","记录归档"],owner:"人力资源部"},
+  {id:"OA-L3-090103",cat:"hr",sub:"train",name:"员工证照管理",desc:"覆盖证书、职称和技能等级资料新增更新、权限查看、下载及原件借阅审批。",steps:["资料新增/更新","权限查看","下载审批","原件借阅"],owner:"人力资源部"},
+  {id:"OA-L3-090104",cat:"hr",sub:"train",name:"岗位资格考试/准入/复审",desc:"组织岗位资格考试，确认准入结论；审批通过后自动更新员工档案；对到期资格下发复审或再认证任务并更新有效期。",steps:["考试组织","准入确认","档案更新","到期复审"],owner:"人力资源部"},
+  // 党政综合办
+  {id:"OA-L3-020101",cat:"party",sub:"doc",name:"收文办理",desc:"覆盖集团OA来文及其他来文接收、登记分类、传阅/承办分派、办理反馈、期限催办、办结和归档；传阅件与承办件按分支处理。",steps:["来文接收","登记分类","传阅/承办分派","办理反馈","催办","办结归档"],owner:"党政综合办"},
+  {id:"OA-L3-020102",cat:"party",sub:"doc",name:"公司发文",desc:"统一承接上行文、平行文和下行文，覆盖拟稿、审核、会签、签发、套红、编号、发布和归档，并按文种设置分支。",steps:["拟稿","审核","会签","签发","套红编号","发布归档"],owner:"党政综合办"},
+  {id:"OA-L3-020103",cat:"party",sub:"doc",name:"文件评审",desc:"对制度、方案和业务文件进行部门审核、会签、退回修订和最终确认，保留评审意见及版本。",steps:["提交评审","部门审核","会签","退回修订","最终确认"],owner:"党政综合办"},
+  {id:"OA-L3-030101",cat:"party",sub:"seal",name:"用印申请",desc:"办理非合同类文件用印，控制最终版文件、印章类型、份数、骑缝章、密级及审批权限；用印后登记时间和经办人并归档。",steps:["申请","最终版核对","审批","用印登记","归档"],owner:"党政综合办"},
+  {id:"OA-L3-030102",cat:"party",sub:"seal",name:"印章外出使用",desc:"携章外出时登记事由、时间、地点、使用人及陪同人，经专项审批后办理领出、现场使用、按期归还和台账核验。",steps:["外出登记","专项审批","领出","现场使用","归还核验"],owner:"党政综合办"},
+  {id:"OA-L3-030103",cat:"party",sub:"seal",name:"印章刻制/启用/停用/销毁",desc:"办理印章全生命周期事项，记录印章名称、保管人、生效/停用时间、审批和处置结果。",steps:["申请","审批","处置登记","档案记录"],owner:"党政综合办"},
+  {id:"OA-L3-030105",cat:"party",sub:"meet",name:"会议及会议室申请",desc:"申请会议时间、会议室和会务资源，校验时段冲突，维护参会范围并发送会议通知；适用时关联已通过的会前评审或上会请示。",steps:["申请","冲突校验","资源分配","通知发送"],owner:"党政综合办"},
+  {id:"OA-L3-030106",cat:"party",sub:"meet",name:"参会回执",desc:"参会人员反馈参加、请假或委托参会状态，会议发起人汇总回执并跟踪未回复人员。",steps:["发送回执","反馈收集","未回复跟踪"],owner:"党政综合办"},
+  {id:"OA-L3-030109",cat:"party",sub:"meet",name:"会议纪要审核及发布",desc:"编制会议纪要，完成审核发布，并将议定事项按需转为督办任务。",steps:["编制纪要","审核","发布","转督办"],owner:"党政综合办"},
+  {id:"OA-L3-030110",cat:"party",sub:"supervise",name:"督办事项立项",desc:"支持从会议纪要、领导批示、重大决策、外部检查、专项任务及人工新建等多来源发起督办；通过来源/类型/紧急程度标签分类，登记责任部门、责任人、目标、期限及关联业务对象。",steps:["多来源发起","标签分类","责任/期限登记","立项","统一台账"],owner:"党政综合办"},
+  {id:"OA-L3-030112",cat:"party",sub:"supervise",name:"督办验收及销号",desc:"责任部门提交完成结果和佐证，党政综合办或指定角色验收后销号，未通过则退回。",steps:["提交结果","验收","销号/退回"],owner:"党政综合办"},
+  {id:"OA-L3-030119",cat:"party",sub:"archive",name:"档案移交及延期归档",desc:"形成部门提交档案目录和材料；不能按期归档时关联应归档事项申请延期，记录责任人和预计时间。",steps:["目录提交","档案移交","延期申请","归档登记"],owner:"党政综合办"},
+  {id:"OA-L3-030121",cat:"party",sub:"archive",name:"档案鉴定及销毁",desc:"按保管期限形成鉴定清单，完成鉴定意见、销毁审批、处置记录和结果归档。",steps:["鉴定清单","鉴定意见","销毁审批","归档记录"],owner:"党政综合办"},
+  {id:"OA-L3-030127",cat:"party",sub:"party2",name:"党建事项管理",desc:"通过事项类型办理年度计划考核、理论学习、党员发展/关系转接、党费用款、党建活动和廉政责任事项。",steps:["事项发起","审批","执行","归档"],owner:"党政综合办"},
+  {id:"OA-L3-030129",cat:"party",sub:"party2",name:"工会事项管理",desc:"通过事项类型办理会员变更、活动立项、慰问、预算决算和职代会提案，记录审批与办理结果。",steps:["事项发起","审批","办理","记录"],owner:"党政综合办"},
+  {id:"OA-L3-030126",cat:"party",sub:"party2",name:"董事会事项管理",desc:"通过事项类型办理董事会议案、关联交易、子公司董事会及外派董事事项，形成审议、决议和执行归档。",steps:["议案","关联交易细分","审议","决议","归档"],owner:"党政综合办"},
+  // 审计监督部
+  {id:"OA-L3-040102",cat:"audit",sub:"contract",name:"合同评审及审批",desc:"覆盖模板/非模板合同分类评审，AI提供风险提示和修改建议，审核人员完成人工审核及审批；审批后关联用印，支持导出含编号/防伪水印/页码的合同文本；支持合同管理员复核意见落实及修改版上传。",steps:["分类评审","AI风险提示","人工审核","审批","关联用印","导出归档"],owner:"审计监督部"},
+  {id:"OA-L3-040103",cat:"audit",sub:"contract",name:"合同用印/签署/回传",desc:"关联已审批合同办理用印、电子或线下签署、签署状态跟踪、正式文本回传和归档；对签订或回传超时提醒。",steps:["用印","电子/线下签署","状态跟踪","文本回传","归档","超时提醒"],owner:"审计监督部"},
+  {id:"OA-L3-040104",cat:"audit",sub:"contract",name:"合同变更及补充协议",desc:"关联原合同办理变更或补充协议，更新金额、范围、付款计划和版本。",steps:["关联原合同","变更/补充","更新金额/计划","版本保留"],owner:"审计监督部"},
+  {id:"OA-L3-040106",cat:"audit",sub:"contract",name:"合同履约及台账协同",desc:"合同签订后生成台账，登记履约计划、进度、变更和关闭，并接收ERP付款结果。",steps:["台账生成","履约登记","变更","接收ERP付款","关闭"],owner:"审计监督部"},
+  {id:"OA-L3-050101",cat:"audit",sub:"risk",name:"季度经营风险上报及评估",desc:"各部门按季度填报风险，AI辅助风险等级推荐，审计监督部完成人工复核并形成正式风险台账。",steps:["部门季度填报","AI等级推荐","人工复核","风险台账"],owner:"审计监督部"},
+  {id:"OA-L3-050102",cat:"audit",sub:"risk",name:"风险处置整改单下发",desc:"针对已确认风险确定责任部门、处置要求、完成期限和跟踪方式，下发整改单。",steps:["风险确认","责任/期限确定","整改单下发"],owner:"审计监督部"},
+  {id:"OA-L3-050103",cat:"audit",sub:"risk",name:"风险整改反馈/延期/关闭",desc:"责任部门反馈整改措施和佐证资料，办理延期申请，审计复核后关闭或退回并形成超期预警。",steps:["反馈整改","佐证上传","延期申请","审计复核","关闭/退回"],owner:"审计监督部"},
+  {id:"OA-L3-060103",cat:"audit",sub:"auditfix",name:"审计问题整改及销账",desc:"覆盖审计问题分派、整改期限；反馈整改情况并提供佐证、制定整改计划、审计确认、持续跟踪；审计问题销账或超时提醒。",steps:["问题分派","整改期限","反馈/佐证","整改计划","审计确认","销账/逾期提醒"],owner:"审计监督部"},
+  {id:"OA-L3-060301",cat:"audit",sub:"procure",name:"招采监督管理",desc:"覆盖内部审批协同、采购文件AI提供风险提示和修改建议及人工审核及审批、项目变更、结果归档监督和监督意见、关联采购合同交底及履约管控；包装材料采购主流程由ERP/SRM承接。",steps:["内部审批协同","AI风险提示","人工审核","项目变更","归档监督","合同交底/履约"],owner:"审计监督部"},
+  {id:"OA-L3-040108",cat:"audit",sub:"legal",name:"法律案件及纠纷登记结案",desc:"登记案件或纠纷，跟踪协办、开庭、文书、费用和处理结果，完成结案归档。",steps:["案件登记","跟踪协办","开庭/文书","结果登记","结案归档"],owner:"审计监督部"},
+  {id:"OA-L3-040107",cat:"audit",sub:"legal",name:"合规清单维护及版本审批",desc:"覆盖合规清单新增、内容变更、复审、版本审批、生效及历史版本追溯，并维护风险识别、评估和防控要求。",steps:["新增/变更","复审","版本审批","生效","历史追溯"],owner:"审计监督部"},
+  // 信息工程部
+  {id:"OA-L3-010101",cat:"info",sub:"account",name:"应用系统账号及访问权限申请",desc:"通过事项类型办理账号开通、信息变更、停用/注销及访问权限新增、变更、回收；人员异动可触发办理任务。",steps:["账号开通/变更","权限新增/回收","审批","执行"],owner:"信息工程部"},
+  {id:"OA-L3-010102",cat:"info",sub:"proxy",name:"临时授权及流程代理申请",desc:"覆盖授权/代理范围、对象、有效期、审批、生效、变更、提前终止和到期自动收回，并保留使用日志。",steps:["申请","范围/期限设置","审批","生效","到期自动收回"],owner:"信息工程部"},
+  {id:"OA-L3-010104",cat:"info",sub:"iface",name:"应用系统接入及单点登录申请",desc:"申请应用入口和单点登录接入，确认认证协议、账号映射、访问范围和联调结果。",steps:["申请","认证协议确认","账号映射","联调","上线"],owner:"信息工程部"},
+  {id:"OA-L3-010105",cat:"info",sub:"iface",name:"系统接口新增/变更/停用申请",desc:"通过事项类型办理接口新增、字段/频率/协议变更或停用，记录责任方、数据范围、联调和上线结果。",steps:["申请","字段/频率确认","联调","上线/停用","记录"],owner:"信息工程部"},
+  {id:"OA-L3-010106",cat:"info",sub:"data",name:"数据查询及报表授权",desc:"申请数据集、报表、组织范围、字段和导出权限，完成审批、授权、调整和回收。",steps:["申请","审批","授权","调整/回收"],owner:"信息工程部"},
+  {id:"OA-L3-010107",cat:"info",sub:"ops",name:"系统故障报修及服务请求",desc:"提交故障或服务请求、影响范围和紧急程度，完成受理、定位、处理、验证和关闭。",steps:["提交","受理","定位","处理","验证","关闭"],owner:"信息工程部"},
+  {id:"OA-L3-010108",cat:"info",sub:"ops",name:"系统上线发布及变更",desc:"提交发布或配置变更内容，完成测试、审批、备份、上线验证和回退准备。",steps:["提交内容","测试","审批","备份","上线验证","回退准备"],owner:"信息工程部"},
+  {id:"OA-L3-010109",cat:"info",sub:"md",name:"主数据新增/变更/停用",desc:"通过事项类型办理主数据新增、属性变更或停用，经责任部门审核后编码、生效并同步相关系统。",steps:["申请","责任部门审核","编码","生效","同步"],owner:"信息工程部"},
+  {id:"OA-L3-010110",cat:"info",sub:"md",name:"主数据分发异常处理",desc:"处理主数据同步失败、字段不一致或重复等异常，完成重试、修正、对账和关闭。",steps:["异常识别","重试","修正","对账","关闭"],owner:"信息工程部"},
+  // 经营发展部
+  {id:"OA-L3-030125",cat:"biz",sub:"publicity",name:"宣传内容发布审批",desc:"提交宣传选题或稿件，完成内容审核、发布渠道与时间确认、发布结果登记及资料归档。",steps:["选题/稿件","内容审核","渠道/时间确认","发布登记","资料归档"],owner:"经营发展部"},
+  {id:"L3-070502",cat:"biz",sub:"star_tie",name:"经营报表分析流程再造",desc:"观星台首个落地场景为经营发展部月度经营简报；平台逐步承接收入、利润、订单、产值、存货、应收、现金流、制造费用、产品结构、投资执行、质量、成本、人员和问题等跨系统分析。",steps:["指标提出","口径确认","来源确认","评审","发布"],owner:"经营发展部"},
+];
+
+/* ------------------ 运行数据 ------------------ */
 let todos=[
-  {id:"TD-0042",flow:"合同评审及审批",title:"纸张采购合同 · 金额 1,280 万",dept:"审计监督部",submit:"采购部·李强",time:now(),step:1,steps:["发起申请","业务会签","法务与AI审核","管理层审批","用印归档"],status:"审批中",reason:"",note:"审批通过后关联用印并归档合同文本。",ai:["单价较近3期均价偏高约5%，建议复核","含预付款30%，建议约定履约保函","付款计划跨度12期，建议校验资金计划"]},
-  {id:"TD-0043",flow:"季度经营风险上报及评估",title:"Q2 成品存货周转风险 · 建议等级 B",dept:"审计监督部",submit:"经营发展部·陈欣悦",time:now(),step:1,steps:["季度填报","AI风险等级推荐","部门核实","审计复核定级","风险台账"],status:"审批中",reason:"",note:"AI识别存货周转天数较同期+18天，请核实后定级。",ai:["存货周转天数环比+18天","成品库龄超90天占比 22%","逾期应收 1,280 万 (2 笔)"]},
-  {id:"TD-0044",flow:"请假申请流程",title:"王伟 · 年休假 5 天 · 08-12~08-16",dept:"人力资源部",submit:"生产部·王伟",time:now(),step:1,steps:["发起申请","部门经理审批","人事核准","考勤确认"],status:"审批中",reason:"",note:"年休余额充足，假期余额 9.5 天。",ai:[]},
-  {id:"TD-0045",flow:"招聘需求及计划审批流程",title:"研发中心 · 印刷工艺工程师 2 名",dept:"人力资源部",submit:"研发中心·周敏",time:now(),step:1,steps:["部门提出","编制/岗位校验","人事审核","分管领导审批"],status:"审批中",reason:"",note:"校验编制余量 2，符合年度计划。",ai:[]},
+  {id:"TD-0042",flow:"合同评审及审批",title:"纸张采购合同 · 金额 1,280 万",dept:"audit",owner:"曹怀月",submit:"采购部·李强",time:now(),step:1,steps:["分类评审","AI风险提示","人工审核","审批","关联用印","导出归档"],status:"审批中",note:"审批通过后关联用印并归档合同文本。",ai:["单价较近3期均价偏高约5%，建议复核","含预付款30%，建议约定履约保函","付款计划跨度12期，建议校验资金计划"]},
+  {id:"TD-0043",flow:"季度经营风险上报及评估",title:"Q2 成品存货周转风险 · 建议等级 B",dept:"audit",owner:"杨宜和",submit:"经营发展部·陈欣悦",time:now(),step:1,steps:["部门季度填报","AI等级推荐","人工复核","风险台账"],status:"审批中",note:"AI识别存货周转天数较同期+18天，请核实后定级。",ai:["存货周转天数环比+18天","成品库龄超90天占比 22%","逾期应收 1,280 万 (2 笔)"]},
+  {id:"TD-0044",flow:"试用期考核及转正",title:"李伟 · 试用期到期 8 月 30 日",dept:"hr",owner:"刘静",submit:"研发中心·王伟",time:now(),step:1,steps:["到期自动提醒","员工总结","部门评价","人事复核","转正审批"],status:"审批中",note:"请完成员工总结与部门评价后再转入人事复核。",ai:[]},
+  {id:"TD-0045",flow:"请假申请",title:"张华 · 年休假 3 天 · 08-20~08-22",dept:"hr",owner:"吴欣",submit:"生产部·张华",time:now(),step:1,steps:["发起申请","部门经理审批","人事核准","考勤确认"],status:"审批中",note:"年休余额充足。",ai:[]},
+  {id:"TD-0046",flow:"收文办理",title:"经开区管委会关于加强环保检查的通知",dept:"party",owner:"梁瑶",submit:"集团OA来文",time:now(),step:1,steps:["来文接收","登记分类","传阅/承办分派","办理反馈","催办","办结归档"],status:"审批中",note:"承办件，责任部门为生产部，期限 3 天。",ai:[]},
+  {id:"TD-0047",flow:"应用系统账号及访问权限申请",title:"新员工账号开通 · 工艺部 王芳",dept:"info",owner:"尚椿琳",submit:"人力资源部",time:now(),step:1,steps:["账号开通","权限新增","审批","执行"],status:"审批中",note:"联动人事入职协同自动触发；含 ERP/MES/OA 三系统账号。",ai:[]},
 ];
 
-// 观星台：公司驾驶舱指标
+// 观星台 KPI
 const KPI=[
   {name:"营业收入",v:8.42,unit:"亿元",target:9.0,src:"ERP",owner:"经营发展部",trend:[5.2,5.6,6.1,6.8,7.5,8.42]},
   {name:"订单蓄水",v:3.16,unit:"亿元",target:3.5,src:"ERP",owner:"经营发展部",trend:[3.9,3.2,3.0,3.4,2.9,3.16]},
@@ -246,420 +316,260 @@ const KPI=[
 function targetStatus(k){return k.v>=k.target?"good":(k.v/k.target>=0.9?"warn":"bad");}
 const stColor=s=>s==="good"?"var(--green)":s==="warn"?"var(--orange)":"var(--red)";
 
-// AI 风险识别池（双源：人工报送 + AI 抓取）
+// AI 风险识别池（双源）
 let riskPool=[
-  {id:"RS-2026-0112",src:"AI识别",scene:"逾期应收",unit:"精美印务",detail:"客户A 应收 680万 逾期 42 天",lv:"高",occur:"2026-07-28",status:"待审核",ev:"逾期天数>30 且金额>500万",ts:now()},
-  {id:"RS-2026-0111",src:"AI识别",scene:"设备超期维保",unit:"精美印务",detail:"2号线模切机 超期维保 15 天",lv:"中",occur:"2026-07-25",status:"待审核",ev:"维保周期>模型阈值",ts:now()},
-  {id:"RS-2026-0110",src:"AI识别",scene:"长期票据/往来",unit:"丽彩包装",detail:"集团往来挂账 300万 超 180 天",lv:"中",occur:"2026-07-22",status:"待核实",ev:"往来账龄>180天",ts:now()},
-  {id:"RS-2026-0109",src:"人工报送",scene:"审批超时",unit:"五彩印务",detail:"采购合同会签超期 6 天",lv:"低",occur:"2026-07-20",status:"整改中",ev:"部门季度报送",ts:now()},
-  {id:"RS-2026-0108",src:"AI识别",scene:"参数偏差",unit:"嘉美包装",detail:"印刷张力参数偏移 3.2%",lv:"低",occur:"2026-07-18",status:"已销号",ev:"偏离标准值>3%",ts:now()},
+  {id:"RS-2026-0112",src:"AI识别",scene:"逾期应收",unit:"精美印务",detail:"客户A 应收 680万 逾期 42 天",lv:"高",occur:"2026-07-28",status:"待审核",ev:"逾期天数>30 且金额>500万"},
+  {id:"RS-2026-0111",src:"AI识别",scene:"设备超期维保",unit:"精美印务",detail:"2号线模切机 超期维保 15 天",lv:"中",occur:"2026-07-25",status:"待审核",ev:"维保周期>模型阈值"},
+  {id:"RS-2026-0110",src:"AI识别",scene:"长期票据/往来",unit:"丽彩包装",detail:"集团往来挂账 300万 超 180 天",lv:"中",occur:"2026-07-22",status:"待核实",ev:"往来账龄>180天"},
+  {id:"RS-2026-0109",src:"人工报送",scene:"审批超时",unit:"五彩印务",detail:"采购合同会签超期 6 天",lv:"低",occur:"2026-07-20",status:"整改中",ev:"部门季度报送"},
+  {id:"RS-2026-0108",src:"AI识别",scene:"参数偏差",unit:"嘉美包装",detail:"印刷张力参数偏移 3.2%",lv:"低",occur:"2026-07-18",status:"已销号",ev:"偏离标准值>3%"},
 ];
 
-// 问题闭环（观星台问题台账）
+// 问题闭环
 let issues=[
-  {id:"IS-1024",from:"驾驶舱预警",ind:"存货周转",title:"成品库龄超90天占比升至 22%",owner:"经营发展部",resp:"生产部",deadline:"08-20",status:"整改中",measure:"增加促销与出口订单，优化排产降低呆滞",progress:"已完成 60%"},
-  {id:"IS-1023",from:"经营简报",ind:"订单蓄水",title:"订单蓄水低于目标 10%，重点客户流失风险",owner:"经营发展部",resp:"销售部",deadline:"08-25",status:"待核实",measure:"待补充原因与应对措施",progress:"待上报"},
-  {id:"IS-1022",from:"会议决议",ind:"应收",title:"逾期应收 1,280万，需专项清收",owner:"经营发展部",resp:"财务部",deadline:"09-05",status:"已分派",measure:"制定清收台账并每周跟踪",progress:"待反馈"},
+  {id:"IS-1024",from:"驾驶舱预警",ind:"存货周转",title:"成品库龄超90天占比升至 22%",resp:"生产部",deadline:"08-20",status:"整改中",measure:"增加促销与出口订单，优化排产降低呆滞",progress:"已完成 60%"},
+  {id:"IS-1023",from:"经营简报",ind:"订单蓄水",title:"订单蓄水低于目标 10%，重点客户流失风险",resp:"销售部",deadline:"08-25",status:"待核实",measure:"待补充原因与应对措施",progress:"待上报"},
+  {id:"IS-1022",from:"会议决议",ind:"应收",title:"逾期应收 1,280万，需专项清收",resp:"财务部",deadline:"09-05",status:"已分派",measure:"制定清收台账并每周跟踪",progress:"待反馈"},
 ];
 
-/* ---------- 工具 ---------- */
+/* ================== 工具 ================== */
 function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800);}
 const content=document.getElementById("content");
 const crumb=document.getElementById("crumb");
-let currentView="portal";
-let curFlowOffset=0;
+let currentView="work";
+let curDept="hr", curSub="life";
 const statusTag=s=>{
-  const map={"审批中":"orange","已归档":"green","已驳回":"red","草稿":"gray","待审核":"orange","待核实":"purple","整改中":"blue","已分派":"cyan","已销号":"green","已关闭":"gray","已处理":"green"};
+  const map={"审批中":"orange","已归档":"green","已驳回":"red","草稿":"gray","待审核":"orange","待核实":"purple","整改中":"blue","已分派":"cyan","已销号":"green","已关闭":"gray","已处理":"green","正常":"green","超期":"red"};
   const cls=map[s]||"gray";
   return `<span class="tag ${cls}">${s}</span>`;
 };
 const lvTag=s=>`<span class="tag ${s==="高"?"red":s==="中"?"orange":"gray"}">${s}风险</span>`;
 
-/* ---------- 菜单 ---------- */
+/* ================== 菜单 ================== */
 const MENU=[
   {grp:"门户"},
-  {v:"portal",ico:"🏠",t:"统一门户"},
-  {grp:"OA 协同办公",c:"#2b6de8"},
-  {v:"oa_todo",ico:"✅",t:"统一待办",badge:()=>todos.filter(t=>t.status==="审批中").length},
-  {v:"oa_flows",ico:"📋",t:"流程中心"},
-  {v:"oa_contract",ico:"📄",t:"合同AI评审"},
-  {v:"oa_ledger",ico:"🗂️",t:"业务台账"},
-  {v:"oa_settings",ico:"⚙️",t:"系统与接口"},
-  {grp:"观星台",c:"#7b3ff2"},
-  {v:"star_cockpit",ico:"📊",t:"公司驾驶舱"},
-  {v:"star_brief",ico:"📈",t:"经营简报"},
-  {v:"star_meeting",ico:"🎯",t:"会议分析"},
-  {v:"star_ind",ico:"🧭",t:"指标目录"},
-  {v:"star_issue",ico:"🔁",t:"问题闭环"},
-  {v:"star_risk",ico:"🛡️",t:"AI风险监测"},
+  {v:"work",ico:"🏠",t:"工作台"},
+  {grp:"业务部门"},
+  {v:"hr",ico:"🧑‍💼",t:"人力资源部",badge:()=>0},
+  {v:"party",ico:"🏛️",t:"党政综合办",badge:()=>0},
+  {v:"audit",ico:"🛡️",t:"审计监督部",badge:()=>todos.filter(t=>t.dept==="audit"&&t.status==="审批中").length},
+  {v:"info",ico:"💻",t:"信息工程部",badge:()=>0},
+  {v:"biz",ico:"📣",t:"经营发展部",badge:()=>0},
+  {grp:"分析平台"},
+  {v:"star",ico:"🚀",t:"观星台",badge:()=>riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length},
 ];
 function buildMenu(){
   const m=document.getElementById("menu");
   m.innerHTML=MENU.map(item=>{
-    if(item.grp)return `<div class="grp">${item.c?`<span class="dotapp" style="background:${item.c}"></span>`:""}${item.grp}</div>`;
+    if(item.grp)return `<div class="grp">${item.grp}</div>`;
     const b=item.badge?item.badge():0;
     return `<a data-v="${item.v}" class="${item.v===currentView?"active":""}"><span class="ico">${item.ico}</span> ${item.t}${b?`<span class="badge">${b}</span>`:""}</a>`;
   }).join("");
   m.querySelectorAll("a").forEach(a=>a.onclick=()=>setNav(a.dataset.v));
 }
-const nameOf=v=>{const it=MENU.find(x=>x.v===v);return it?it.t:v;};
-function setNav(v){currentView=v;buildMenu();crumb.textContent=nameOf(v);render();}
-
-/* ---------- 渲染入口 ---------- */
-function render(){content.innerHTML=viewHtml[currentView]()||"<div class='empty'>页面建设中</div>";wire(currentView);}
-function wire(v){
+function setNav(v){currentView=v;if(DEPTS.some(d=>d.id===v)){curDept=v;curSub=DEPTS.find(d=>d.id===v).routes[0][0];}buildMenu();crumb.textContent=nameOf(v);render();}
+function nameOf(v){const it=MENU.find(x=>x.v===v);if(it)return it.t;const d=DEPTS.find(x=>x.id===v);return d?d.name:v;}
+function go(v){setNav(v);}
+function render(){content.innerHTML=viewHtml[currentView]()||"<div class='empty'>页面建设中</div>";wire();}
+function wire(){
   document.querySelectorAll("[data-open]").forEach(el=>el.onclick=e=>{e.stopPropagation();openDetail(el.dataset.open);});
-  if(v==="oa_todo"){document.querySelectorAll("[data-approve]").forEach(b=>b.onclick=()=>approve(b.dataset.id,true));document.querySelectorAll("[data-reject]").forEach(b=>b.onclick=()=>approve(b.dataset.id,false));}
-  if(v==="oa_flows"){document.querySelectorAll("[data-filter]").forEach(c=>c.onclick=()=>{curFlowOffset=c.dataset.filter;render();});}
-  if(v==="star_issue"){document.querySelectorAll("[data-issue]").forEach(b=>b.onclick=()=>advanceIssue(b.dataset.issue));}
-  if(v==="star_risk"){document.querySelectorAll("[data-riskaudit]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskaudit,true));document.querySelectorAll("[data-riskreject]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskreject,false));}
+  document.querySelectorAll("[data-approve]").forEach(b=>b.onclick=()=>approve(b.dataset.id,true));
+  document.querySelectorAll("[data-reject]").forEach(b=>b.onclick=()=>approve(b.dataset.id,false));
+  document.querySelectorAll("[data-tab]").forEach(a=>a.onclick=()=>{curSub=a.dataset.tab;render();});
+  document.querySelectorAll("[data-issue]").forEach(b=>b.onclick=()=>advanceIssue(b.dataset.issue));
+  document.querySelectorAll("[data-riskaudit]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskaudit,true));
+  document.querySelectorAll("[data-riskreject]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskreject,false));
 }
 
-/* ---------- 门户 ---------- */
-const viewHtml={
-portal(){
-  const todo=todos.filter(t=>t.status==="审批中");
-  const risk=riskPool.filter(r=>r.status==="待审核"||r.status==="待核实");
-  const issue=issues.filter(i=>i.status!=="已关闭");
-  return `
-  <div class="grid-cards">
-    <div class="stat"><div class="lbl">统一待办</div><div class="num" style="color:var(--orange)">${todo.length}</div><div class="sub">含 OA 审批与外部系统待办</div></div>
-    <div class="stat"><div class="lbl">流程总数</div><div class="num" style="color:var(--primary)">${OA_FLOWS.length}</div><div class="sub">五大部门流程清单</div></div>
-    <div class="stat"><div class="lbl">风险待处理</div><div class="num" style="color:var(--red)">${risk.length}</div><div class="sub">AI 识别 + 人工报送双源</div></div>
-    <div class="stat"><div class="lbl">问题闭环</div><div class="num" style="color:var(--purple)">${issue.length}</div><div class="sub">未关闭问题事项</div></div>
-  </div>
-  <div class="card">
-    <h3>🏢 项目概况</h3>
-    <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:13px">
-      <span class="legend-chip"><span class="dot" style="background:var(--primary)"></span>OA：统一门户 / 身份 / 待办 / 流程协同 / 业务台账</span>
-      <span class="legend-chip"><span class="dot" style="background:var(--purple)"></span>观星台：经营驾驶舱 / 简报 / 会议 / 问题闭环 / AI风险</span>
-    </div>
-    <p style="color:var(--muted);font-size:12px;margin:10px 0 0">依据《五粮液精美印务AI+印刷包装智能制造-OA-SOWv1.7》建设，基座为泛微 E10/e-builder 低代码平台；ERP/MES/PLM 承担业务主流程与权威数据，OA 与观星台不重复建设专业系统闭环。</p>
-  </div>
-  <div class="card">
-    <h3>✅ 待办&nbsp;<a class="btn sm" style="margin-left:auto" href="javascript:go('oa_todo')">进入统一待办</a></h3>
-    ${todo.length?`<table class="grid"><thead><tr><th>单号</th><th>流程</th><th>事项</th><th>提交人</th><th>当前节点</th><th>状态</th></tr></thead><tbody>${todo.map(t=>`<tr data-open="${t.id}"><td>${t.id}</td><td>${t.flow}</td><td>${t.title}</td><td>${t.submit}</td><td>${t.steps[t.step]}</td><td>${statusTag(t.status)}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">暂无待办</div>`}
-  </div>
-  <div class="card">
-    <h3>🔁 问题闭环</h3>
-    ${issues.map(i=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${i.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${i.from} | 指标：${i.ind} | 责任：${i.resp} | 时限：${i.deadline}</div></div><div>${statusTag(i.status)}</div></div>`).join("")}
-  </div>`;
-},
-oa_todo(){
-  const list=todos.filter(t=>t.status==="审批中");
-  return `
-  <div class="card">
-    <h3>✅ 统一待办 <span class="tag orange">${list.length}</span></h3>
-    <p style="color:var(--muted);font-size:12px;margin:0 0 14px">汇集 OA 流程与外部系统待办；点击「审批」查看并推进当前节点，模拟部门会签、法务与AI审核、管理层审批等流转。</p>
-    ${list.map(t=>`
-      <div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">
-          <div style="flex:1;min-width:220px">
-            <div style="font-weight:600">${t.flow} · ${t.dept}</div>
-            <div style="color:var(--muted);font-size:12px;margin-top:4px">${t.id} | ${t.title}</div>
-            <div style="color:var(--muted);font-size:12px;margin-top:2px">提交：${t.submit} | 当前节点：<b style="color:var(--primary)">${t.steps[t.step]}</b></div>
-            ${t.ai&&t.ai.length?`<div style="margin-top:8px"><span class="tag purple">AI 提示 ${t.ai.length} 条</span></div>`:""}
-          </div>
-          <div style="display:flex;gap:8px;align-items:flex-start">
-            <button class="btn sm primary" data-approve="${t.id}">√ 通过</button>
-            <button class="btn sm" data-reject="${t.id}">× 驳回</button>
-            <button class="btn sm" data-open="${t.id}">详情</button>
-          </div>
-        </div>
-      </div>`).join("")}
-    ${list.length?"":`<div class="empty">🎉 没有待办事项</div>`}
-  </div>`;
-},
-oa_flows(){
-  const cats=["","人力资源部","党政综合办","审计监督部","信息工程部","经营发展部"];
-  const list=curFlowOffset?OA_FLOWS.filter(f=>f.cat===curFlowOffset):OA_FLOWS;
-  return `
-  <div class="card">
-    <h3>📋 OA 流程中心</h3>
-    <div style="margin-bottom:14px;flex-wrap:wrap;display:flex">
-      ${cats.map(c=>c?`<span class="dept-chip ${curFlowOffset===c?"active":""}" data-filter="${c}">${c}</span>`:`<span class="dept-chip ${!curFlowOffset?"active":""}" data-filter="">全部</span>`).join("")}
-    </div>
-    <table class="grid"><thead><tr><th>流程编号</th><th>流程类别</th><th>流程名称</th><th>功能描述</th><th>关键角色</th></tr></thead>
-    <tbody>${list.map(f=>`<tr data-open="${f.id}"><td>${f.id}</td><td><span class="tag blue">${f.cat}</span></td><td style="font-weight:600">${f.name}</td><td style="color:var(--muted);font-size:12px;max-width:420px">${f.desc}</td><td>${f.owner}</td></tr>`).join("")}</tbody></table>
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">本页为 SOW 各部门流程清单节选，点击行可查看流程节点。完整流程以蓝图与验收为准。</p>
-  </div>`;
-},
-oa_contract(){
-  return `
-  <div class="card">
-    <h3>📄 合同评审及审批 · AI 辅助审核</h3>
-    <div class="split" style="margin-top:6px">
-      <div>
-        <h4 style="margin:0 0 12px;font-size:14px">合同信息</h4>
-        <table class="mini">
-          <tr><td>合同名称</td><td>纸张采购合同</td></tr>
-          <tr><td>合同类型</td><td>年度框架 / 非模板</td></tr>
-          <tr><td>甲方 / 乙方</td><td>精美印务 / 某某纸业</td></tr>
-          <tr><td>合同金额</td><td><b style="color:var(--primary)">¥1,280 万</b></td></tr>
-          <tr><td>付款计划</td><td>12 期，首期预付 30%</td></tr>
-          <tr><td>评审阶段</td><td>法务与 AI 审核</td></tr>
-        </table>
-        <div style="margin-top:14px;display:flex;gap:8px">
-          <button class="btn primary" onclick="openContractForm()">＋ 发起新合同评审</button>
-          <button class="btn" data-open="TD-0042">查看本单流程</button>
-        </div>
-      </div>
-      <div class="ai-box">
-        <div class="ai-h">🤖 AI 合同审核风险提示（辅助判断，不替代人工审核）</div>
-        <div class="ai-item"><span class="lv high">高</span><span>单价较近 3 期均价偏高约 <b>5%</b>，建议复核市场价与供应商报价依据。</span></div>
-        <div class="ai-item"><span class="lv high">高</span><span>含 <b>30% 预付款</b>，建议约定履约保函或降低预付比例。</span></div>
-        <div class="ai-item"><span class="lv mid">中</span><span>付款计划跨度 <b>12 期</b>，建议校验资金计划与回款周期匹配。</span></div>
-        <div class="ai-item"><span class="lv low">低</span><span>建议明确质保期与违约责任条款，版本以法务最终版为准。</span></div>
-        <p style="font-size:11px;color:var(--muted);margin:10px 0 0">依据 SOW：AI 仅输出风险提示、修改建议和依据，不替代授权人员正式审核；保留规则/模型版本、识别依据、人工复核和最终意见。</p>
-      </div>
-    </div>
-  </div>
-  <div class="card"><h3>━ 用印 / 签署 / 归档边界</h3>
-    <p style="font-size:13px;color:var(--muted);margin:0">合同评审、用印、签署回传和归档保持同一业务主线；OA 沉淀合同及履约台账，ERP 承担付款闭环并回写结果。</p>
-  </div>`;
-},
-oa_ledger(){
-  const rows=[
-    {type:"合同台账",n:128,total:"¥6.4亿",detail:"本月新增 6 份",st:"正常"},
-    {type:"风险台账",n:37,detail:"高 3 / 中 12 / 低 22",st:"20 项整改中"},
-    {type:"审计整改",n:14,detail:"待销号 5 项",st:"3 项超期"},
-    {type:"督办台账",n:52,detail:"会议纪要派生 18 项",st:"7 项临期"},
-  ];
-  return `
-  <div class="grid-cards">
-    ${rows.map(r=>`<div class="stat"><div class="lbl">${r.type}</div><div class="num" style="color:var(--primary)">${r.n}笔</div><div class="sub">${r.detail}</div></div>`).join("")}
-  </div>
-  <div class="card">
-    <h3>🗂️ 合同 / 风险 / 审计 / 督办 台账</h3>
-    <table class="grid"><thead><tr><th>类型</th><th>累计</th><th>金额/等级</th><th>状态</th></tr></thead>
-    <tbody>${rows.map(r=>`<tr><td>${r.type}</td><td>${r.n} 笔</td><td>${r.total||r.detail}</td><td>${statusTag(r.st)}</td></tr>`).join("")}</tbody></table>
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">流程结果形成结构化业务台账，支持授权查询、统计、穿透和导出；正文、附件、版本、密级及访问下载记录按对象归集。</p>
-  </div>`;
-},
-oa_settings(){
-  const names=["组织架构同步","人员信息同步","统一认证/SSO","统一待办","电子签章","考勤数据接入","ERP业务协同","观星台经营数据采集","OA与观星台问题闭环"];
-  return `
-  <div class="card">
-    <h3>⚙️ 系统与接口清单（SOW §2.3）</h3>
-    <table class="grid"><thead><tr><th>#</th><th>接口</th><th>调用方 → 被调用方</th></tr></thead>
-    <tbody>${["组织架构同步|异构系统 → OA","人员信息同步|异构系统 → OA","统一认证集成|异构系统 → OA","统一待办集成|异构系统 → OA","集团公文协同|集团OA → OA","ERP业务协同|OA/ERP ⇄","考勤数据接入|考勤设备/移动端 → OA","观星台经营数据采集|ERP/MES → 观星台","电子签章集成|OA → 电子签章服务","OA与观星台问题闭环|观星台 ⇄ OA"].map((s,i)=>{const a=s.split("|");return `<tr><td>${i+1}</td><td>${a[0]}</td><td>${a[1]}</td></tr>`;}).join("")}</tbody></table>
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">接口实施前须明确提供方、业务键、字段映射、频率、超时、幂等、重试、对账、数据安全与责任人；未取得规范与联调环境不进入生产验收。</p>
-  </div>`;
-},
-star_cockpit(){
-  const max=Math.max(...KPI.map(k=>k.trend[k.trend.length-1]))*1.15;
-  return `
-  <div class="card">
-    <h3>📊 公司层驾驶舱 · 经营指标总览</h3>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px">
-      <span class="legend-chip"><span class="dot" style="background:var(--green)"></span>达成目标</span>
-      <span class="legend-chip"><span class="dot" style="background:var(--orange)"></span>接近目标(≥90%)</span>
-      <span class="legend-chip"><span class="dot" style="background:var(--red)"></span>偏离目标</span>
-    </div>
-    <div class="gauge-wrap">${KPI.map(k=>{const s=targetStatus(k);const pct=Math.round(k.v/k.target*100);return `<div class="kpi" style="border-top-color:${stColor(s)}"><div class="lbl" style="color:var(--muted);font-size:12px">${k.name}</div><div class="n" style="color:${stColor(s)}">${k.v}<small style="font-size:12px;color:var(--muted)"> ${k.unit}</small></div><div style="font-size:12px;color:var(--muted)">目标 ${k.target} ${k.unit}</div><div style="font-size:11px;margin-top:4px">达成率 <b style="color:${stColor(s)}">${pct}%</b></div></div>`;}).join("")}</div>
-  </div>
-  <div class="card">
-    <h3>📈 核心指标趋势（近 6 期）</h3>
-    <div class="bars">${["营业收入|亿元","订单蓄水|亿元","存货|亿元","应收|亿元","综合合格率|%"].map(p=>{const n=p.split("|")[0];const k=KPI.find(x=>x.name===n);const v=k.trend[k.trend.length-1];const h=Math.round(v/max*100);return `<div class="bb"><span class="val">${v}${p.split("|")[1]}</span><i style="height:${Math.max(4,h)}%"></i><span class="bx">${n}</span></div>`;}).join("")}</div>
-    <p style="color:var(--muted);font-size:12px;margin:6px 0 0">支持按组织、业务、产品、客户、期间等公共维度筛选并逐层钻取至来源明细；数据来源与责任以指标血缘为准。</p>
-  </div>`;
-},
-star_brief(){
-  const key=["营业收入","订单蓄水","产值完成","存货","应收","现金流","制造费用","综合合格率"];
-  return `
-  <div class="card">
-    <h3>📈 月度经营简报 · 经营总览</h3>
-    <div class="split">
-      <div>
-        <table class="mini">
-          <tr><td>报告期</td><td>2026 年 6 月</td></tr>
-          <tr><td>核心结论</td><td>产值、合格率稳中有升；存货与应收高于目标，需重点跟踪</td></tr>
-          <tr><td>预警提示</td><td><span class="tag red">2</span> 高风险 &nbsp;<span class="tag orange">3</span> 中风险</td></tr>
-          <tr><td>来源系统</td><td>ERP / MES / 质量 / 人事</td></tr>
-        </table>
-      </div>
-      <div>
-        <h4 style="margin:0 0 10px;font-size:13px">重点指标达成</h4>
-        ${key.map(n=>{const k=KPI.find(x=>x.name===n);const s=targetStatus(k);return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:12px"><span style="width:90px;color:var(--muted)">${n}</span><div style="flex:1;background:#eef1f6;border-radius:4px;height:10px"><div style="width:${Math.min(100,k.v/k.target*100)}%;height:10px;border-radius:4px;background:${stColor(s)}"></div></div><span style="width:54px;text-align:right">${Math.round(k.v/k.target*100)}%</span></div>`;}).join("")}
-      </div>
-    </div>
-    <p style="color:var(--muted);font-size:12px;margin:14px 0 0">首个落地场景为经营发展部月度经营简报，逐步承接收入、利润、订单、产值、存货、应收、现金流、制造费用、质量、成本、人员等跨系统分析，减少人工取数与重复制图。</p>
-  </div>`;
-},
-star_meeting(){
-  const steps=["创建期次","加载数据","责任部门补充","会前检查","会议决策","事项生成","会后跟踪"];
-  return `
-  <div class="card">
-    <h3>🎯 会议分析场景</h3>
-    <div class="steps">${steps.map((s,i)=>`<div class="step ${i<2?"done":i===2?"on":""}"><div class="circ">${i+1}</div><div class="name">${s}</div></div>`).join("")}</div>
-    <table class="mini" style="margin-top:16px">
-      <tr><td>会议类型</td><td>月度经营会</td></tr>
-      <tr><td>期次 / 数据版本</td><td>2026-06 期 · 快照 v3</td></tr>
-      <tr><td>主持部门</td><td>经营发展部</td></tr>
-      <tr><td>待补充原因</td><td>存货周转、订单蓄水 2 项</td></tr>
-      <tr><td>会后决议</td><td>生成 4 项责任事项（进入问题闭环）</td></tr>
-    </table>
-    <p style="color:var(--muted);font-size:12px;margin:14px 0 0">会议快照与实时页面区分；原因和措施具备责任人、时间与版本。会议材料减少人工制作PPT，数据更新、原因补充和问题跟踪一体化。</p>
-  </div>`;
-},
-star_ind(){
-  const inds=[
-    {code:"STAR-I-001",name:"营业收入",def:"确认收入口径汇总",calc:"=Σ各业务收入",unit:"亿元",cyc:"月",dim:"组织/业务/客户",src:"ERP",ver:"v3"},
-    {code:"STAR-I-002",name:"订单蓄水",def:"在手未交付订单",calc:"=Σ在手订单金额",unit:"亿元",cyc:"月",dim:"组织/业务",src:"ERP",ver:"v2"},
-    {code:"STAR-I-003",name:"产值完成",def:"当期完工产值",calc:"=Σ完工产品产值",unit:"亿元",cyc:"月",dim:"组织/车间/产线",src:"MES",ver:"v3"},
-    {code:"STAR-I-004",name:"综合合格率",def:"一次交检合格率",calc:"=合格数/检验数×100",unit:"%",cyc:"月",dim:"组织/产线",src:"MES",ver:"v2"},
-  ];
-  return `
-  <div class="card">
-    <h3>🧭 指标目录与血缘</h3>
-    <table class="grid"><thead><tr><th>编码</th><th>指标名称</th><th>业务含义</th><th>计算公式</th><th>单位</th><th>周期</th><th>维度</th><th>来源</th><th>版本</th></tr></thead>
-    <tbody>${inds.map(i=>`<tr><td>${i.code}</td><td style="font-weight:600">${i.name}</td><td>${i.def}</td><td style="font-size:12px;color:var(--muted)">${i.calc}</td><td>${i.unit}</td><td>${i.cyc}</td><td>${i.dim}</td><td><span class="tag blue">${i.src}</span></td><td>${i.ver}</td></tr>`).join("")}</tbody></table>
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">指标名称、定义、公式、周期、维度、目标、来源和责任统一管理，避免同名不同口径；每项指标可追溯至来源系统、同步批次、数据时间和质量校验结果。指标变更审批后生效，报表引用同一指标定义。</p>
-  </div>`;
-},
-star_issue(){
-  const flow=["预警/上报","分类分派","原因分析","措施执行","提醒升级","复核关闭"];
-  return `
-  <div class="card">
-    <h3>🔁 问题快发闭环</h3>
-    <div class="steps">${flow.map((s,i)=>`<div class="step ${i<1?"done":i===1?"on":""}"><div class="circ">${i+1}</div><div class="name">${s}</div></div>`).join("")}</div>
-    <table class="grid" style="margin-top:16px"><thead><tr><th>编号</th><th>来源</th><th>指标</th><th>问题描述</th><th>责任部门</th><th>时限</th><th>状态</th><th></th></tr></thead>
-    <tbody>${issues.map(i=>`<tr><td>${i.id}</td><td>${i.from}</td><td>${i.ind}</td><td>${i.title}</td><td>${i.resp}</td><td>${i.deadline}</td><td>${statusTag(i.status)}</td><td><button class="btn sm" data-issue="${i.id}">推进</button></td></tr>`).join("")}</tbody></table>
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">自动/手动预警、问题上报、责任分派、措施反馈、超期升级、复核关闭与过程追踪；联动 OA 流程形成责任、措施、升级、复核与关闭闭环。</p>
-  </div>`;
-},
-star_risk(){
-  const stats={AI:riskPool.filter(r=>r.src==="AI识别").length,人工:riskPool.filter(r=>r.src==="人工报送").length,待审:riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length,整改:riskPool.filter(r=>r.status==="整改中").length};
-  return `
-  <div class="grid-cards">
-    <div class="stat"><div class="lbl">AI 识别异常</div><div class="num" style="color:var(--purple)">${stats.AI}</div><div class="sub">自动抓取</div></div>
-    <div class="stat"><div class="lbl">人工报送</div><div class="num" style="color:var(--primary)">${stats.人工}</div><div class="sub">部门季度填报</div></div>
-    <div class="stat"><div class="lbl">待核实/审核</div><div class="num" style="color:var(--orange)">${stats.待审}</div><div class="sub">去重后待复核</div></div>
-    <div class="stat"><div class="lbl">整改中</div><div class="num" style="color:var(--green)">${stats.整改}</div><div class="sub">进入OA风险整改</div></div>
-  </div>
-  <div class="card">
-    <h3>🛡️ AI 风险识别池（双源采集）</h3>
-    <table class="grid"><thead><tr><th>编号</th><th>来源</th><th>场景</th><th>归属单位</th><th>风险描述</th><th>等级</th><th>状态</th><th>识别依据</th><th></th></tr></thead>
-    <tbody>${riskPool.map(r=>`<tr><td>${r.id}</td><td><span class="tag ${r.src==="AI识别"?"purple":"blue"}">${r.src}</span></td><td>${r.scene}</td><td>${r.unit}</td><td>${r.detail}</td><td>${lvTag(r.lv)}</td><td>${statusTag(r.status)}</td><td style="color:var(--muted);font-size:12px">${r.ev}</td><td>${(r.status==="待审核")?`<button class="btn sm primary" data-riskaudit="${r.id}">核实</button> <button class="btn sm" data-riskreject="${r.id}">驳回</button>`:`<button class="btn sm" data-open="${r.id}">查看</button>`}</td></tr>`).join("")}</tbody></table>
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">保留部门季度人工报送，同时接入经确认的系统异常数据；AI 识别结果先去重、核实和复核，再进入正式定级、整改与销号。每条记录保留来源、批次、规则/模型版本、阈值与人工复核。AI 不直接替代正式风险认定。</p>
-  </div>`;
-},
-};
-
-/* ============================================================
-  交互函数
-  ============================================================ */
-function go(v){setNav(v);}
-function stepsHtml(steps,cur,status,extra){
+/* ================== 通用渲染组件 ================== */
+function stepsHtml(steps,cur,status){
   return `<div class="steps">${steps.map((s,i)=>{
     let cls="";
     if(status==="已归档")cls="done";
     else if(status==="已驳回"){if(i<cur)cls="done";else if(i===cur)cls="on";}
     else if(status==="审批中"){if(i<cur)cls="done";else if(i===cur)cls="on";}
     else if(status==="草稿"){if(i===0)cls="on";}
-    return `<div class="step ${cls}"><div class="circ">${i+1}</div><div class="name">${s}</div>${i===cur&&status==="审批中"?`<div class="who">当前节点</div>`:""}</div>`;}).join("")}</div>`;
+    return `<div class="step ${cls}"><div class="circ">${i+1}</div><div class="name">${s}</div>${i===cur&&status==="审批中"?`<div class="who">当前</div>`:""}</div>`;
+  }).join("")}</div>`;
+}
+// 部门门户：头部 KPI + 子模块 Tab + 子模块内容
+function deptPortal(dept){
+  const routes=dept.routes;
+  const flows=FLOWS.filter(f=>f.cat===dept.id && f.sub===curSub);
+  const dtodo=todos.filter(t=>t.dept===dept.id&&t.status==="审批中");
+  return `
+  <div class="head-banner">
+    <div class="hb-ic" style="background:${dept.color}">${dept.ico}</div>
+    <div><div class="hb-t1">${dept.name}</div><div class="hb-t2">${dept.desc}</div></div>
+  </div>
+  <div class="grid-cards c3">
+    ${dept.kpi.map(k=>`<div class="stat"><div class="lbl">${k[0]}</div><div class="num" style="color:${dept.color}">${k[1]}</div><div class="sub">${k[2]}</div></div>`).join("")}
+  </div>
+  <div class="tabs">${routes.map(r=>`<a class="${r[0]===curSub?"active":""}" data-tab="${r[0]}">${r[1]}</a>`).join("")}</div>
+  <div class="card">
+    <h3>📋 ${routes.find(r=>r[0]===curSub)[1]} · 流程清单 <span class="tag blue">${flows.length}</span></h3>
+    ${flows.length?`<table class="grid"><thead><tr><th>流程编号</th><th>流程名称</th><th>功能描述</th><th>处理角色</th></tr></thead><tbody>${flows.map(f=>`<tr data-open="${f.id}"><td>${f.id}</td><td style="font-weight:600">${f.name}</td><td style="color:var(--muted);font-size:12px;max-width:430px">${f.desc}</td><td>${f.owner}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">该子模块暂无流程</div>`}
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">点击任一行查看完整审批节点；SOW 流程清单节选，完整以蓝图与验收为准。</p>
+  </div>
+  ${dtodo.length?`<div class="card"><h3>✅ 本部门待办 <span class="tag orange">${dtodo.length}</span></h3>${dtodo.map(t=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${t.flow}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${t.id} | ${t.title}</div></div><div style="display:flex;gap:8px;align-items:center">${statusTag(t.status)}<button class="btn sm primary" data-approve="${t.id}">通过</button><button class="btn sm" data-reject="${t.id}">驳回</button><button class="btn sm" data-open="${t.id}">详情</button></div></div>`).join("")}</div>`:""}
+  `;
 }
 
-/* ---------- 审批 ---------- */
+/* ================== 视图 ================== */
+const viewHtml={
+work(){
+  return `
+  <div class="head-banner"><div class="hb-ic" style="background:linear-gradient(135deg,#1f5fd6,#7b3ff2)">📌</div><div><div class="hb-t1">统一门户 · 工作台</div><div class="hb-t2">面向员工、业务管理人员和管理层提供统一访问、审批、查询、分析和问题处理入口。汇聚 OA 流程协同与观星台经营分析。</div></div></div>
+  <div class="grid-cards">
+    ${[["统一待办",todos.filter(t=>t.status==="审批中").length,"点右侧进入处理","var(--orange)"],["业务流程",FLOWS.length,"SOW 流程清单","var(--primary)"],["风险待处理",riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length,"AI + 人工双源","var(--red)"],["问题闭环",issues.filter(i=>i.status!=="已关闭").length,"未关闭事项","var(--purple)"]].map(s=>`<div class="stat"><div class="lbl">${s[0]}</div><div class="num" style="color:${s[3]}">${s[1]}</div><div class="sub">${s[2]}</div></div>`).join("")}
+  </div>
+  <div class="card"><h3>🧭 七大模板</h3><div style="display:flex;flex-wrap:wrap;gap:10px">${DEPTS.map(d=>`<span class="dept-chip" data-tab="${d.id}"><span class="dot" style="background:${d.color}"></span>${d.name}</span>`).join("")}</div></div>
+  <div class="card"><h3>✅ 统一待办<span class="tag orange">${todos.filter(t=>t.status==="审批中").length}</span><a class="btn sm" style="margin-left:auto" href="javascript:go('audit')">进入处理</a></h3>${todos.length?`<table class="grid"><thead><tr><th>单号</th><th>流程</th><th>事项</th><th>部门</th><th>提交人</th><th>状态</th></tr></thead><tbody>${todos.map(t=>`<tr data-open="${t.id}"><td>${t.id}</td><td>${t.flow}</td><td>${t.title}</td><td>${DEPTS.find(d=>d.id===t.dept).name}</td><td>${t.submit}</td><td>${statusTag(t.status)}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">暂无待办</div>`}</div>
+  <div class="card"><h3>📊 观星台 · 核心指标速览</h3><table class="mini">${KPI.slice(0,6).map(k=>`<tr><td>${k.name}</td><td style="text-align:right"><b style="color:${stColor(targetStatus(k))}">${k.v} ${k.unit}</b> / 目标 ${k.target}</td></tr>`).join("")}</table><p style="color:var(--muted);font-size:12px;margin:10px 0 0">跨系统经营数据汇聚、指标建模、驾驶舱与会议分析。详见「观星台」。</p></div>
+  <div class="card"><h3>🔁 问题闭环</h3>${issues.map(i=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${i.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${i.from} | 责任：${i.resp} | 时限：${i.deadline}</div></div><div>${statusTag(i.status)}</div></div>`).join("")}</div>`;
+},
+hr(){return deptPortal(DEPTS.find(x=>x.id==="hr"));},
+party(){return deptPortal(DEPTS.find(x=>x.id==="party"));},
+audit(){return deptPortal(DEPTS.find(x=>x.id==="audit"));},
+info(){return deptPortal(DEPTS.find(x=>x.id==="info"));},
+biz(){return deptPortal(DEPTS.find(x=>x.id==="biz"));},
+star(){return starPortal();},
+};
+function starPortal(){
+  const dept=DEPTS.find(x=>x.id==="star");
+  const s=curDeptSub;
+  const fc={};
+  return `<div class="head-banner"><div class="hb-ic" style="background:${dept.color}">${dept.ico}</div><div><div class="hb-t1">观星台 · ${subTitle(s)}</div><div class="hb-t2">${dept.desc}</div></div></div>
+  <div class="grid-cards c3">${dept.kpi.map(k=>`<div class="stat"><div class="lbl">${k[0]}</div><div class="num" style="color:${dept.color}">${k[1]}</div><div class="sub">${k[2]}</div></div>`).join("")}</div>
+  <div class="tabs">${dept.routes.map(r=>`<a class="${r[0]===s?"active":""}" data-tab="${r[0]}">${r[1]}</a>`).join("")}</div>
+  ${subView(s)}`;
+}
+function subTitle(sub){const d=DEPTS.find(x=>x.id==="star");const r=d.routes.find(x=>x[0]===sub);return r?r[1]:sub;}
+function subView(s){return subViews[s]?subViews[s]():subViews.cockpit();}
+let curDeptSub="cockpit";
+
+/* ================== 观星台子页面 ================== */
+const subViews={
+cockpit(){
+  const max=Math.max(...KPI.map(k=>k.trend[k.trend.length-1]))*1.15;
+  return `
+  <div class="card"><h3>📊 公司层驾驶舱 · 经营指标总览</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px"><span class="legend-chip"><span class="dot" style="background:var(--green)"></span>达成</span><span class="legend-chip"><span class="dot" style="background:var(--orange)"></span>≥90%</span><span class="legend-chip"><span class="dot" style="background:var(--red)"></span>偏离</span></div>
+    <div class="gauge-wrap">${KPI.map(k=>{const s=targetStatus(k);const pct=Math.round(k.v/k.target*100);return `<div class="kpi" style="border-top-color:${stColor(s)}"><div class="lbl" style="color:var(--muted);font-size:12px">${k.name}</div><div class="n" style="color:${stColor(s)}">${k.v}<small style="font-size:12px;color:var(--muted)"> ${k.unit}</small></div><div style="font-size:12px;color:var(--muted)">目标 ${k.target} ${k.unit} · ${k.src}</div><div style="font-size:11px;margin-top:4px">达成率 <b style="color:${stColor(s)}">${pct}%</b></div></div>`;}).join("")}</div>
+  </div>
+  <div class="card"><h3>📈 核心指标趋势（近6期）</h3><div class="bars">${["营业收入|亿元","订单蓄水|亿元","存货|亿元","应收|亿元","综合合格率|%"].map(p=>{const n=p.split("|")[0],k=KPI.find(x=>x.name===n),v=k.trend[k.trend.length-1],h=Math.round(v/max*100);return `<div class="bb"><span class="val">${v}${p.split("|")[1]}</span><i style="height:${Math.max(4,h)}%"></i><span class="bx">${n}</span></div>`;}).join("")}</div><p style="color:var(--muted);font-size:12px;margin:6px 0 0">支持按组织/业务/产品/客户/期间筛选并逐层钻取至来源明细（SOW STAR-O-003）。</p></div>
+  <div class="card"><h3>⚠️ 异常提示</h3><div style="display:flex;flex-wrap:wrap;gap:10px"><span class="legend-chip"><span class="dot" style="background:var(--red)"></span>存货、应收高于目标</span><span class="legend-chip"><span class="dot" style="background:var(--orange)"></span>订单蓄水、现金流、费用接近目标</span><span class="legend-chip"><span class="dot" style="background:var(--green)"></span>营业收入、产值、合格率达标</span></div></div>`;
+},
+board(){
+  const rows=[["业务域/车间","任务达成","质量","存货","合同执行","风险","安全"],["精美印务","92%","97.2%","↑ 偏高","正常","1 高","0"],["丽彩包装","88%","96.1%","正常","2 临期","0","0"],["五彩印务","95%","98.0%","正常","正常","1 中","0"],["欣兴嘉美","85%","95.4%","↑ 偏高","1 临期","0","1"]];
+  return `<div class="card"><h3>🚩 指挥层看板 · 业务域/车间/产线</h3><table class="grid"><thead><tr><th>业务域/车间</th><th>任务达成</th><th>质量</th><th>存货</th><th>合同执行</th><th>风险</th><th>安全</th></tr></thead><tbody>${rows.slice(1).map(r=>`<tr><td style="font-weight:600">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td></tr>`).join("")}</tbody></table><p style="color:var(--muted);font-size:12px;margin:12px 0 0">面向业务域、车间和产线/精益单元的分层视图，支持从总览指标逐层钻取（SOW STAR-O-004）。</p></div>`;
+},
+brief(){
+  const key=["营业收入","订单蓄水","产值完成","存货","应收","现金流","制造费用","综合合格率"];
+  return `<div class="card"><h3>📈 月度经营简报 · 经营总览</h3><div class="split"><div><table class="mini"><tr><td>报告期</td><td>2026 年 6 月</td></tr><tr><td>核心结论</td><td>产值、合格率稳中有升；存货与应收高于目标，需重点跟踪</td></tr><tr><td>预警提示</td><td><span class="tag red">2</span> 高风险 &nbsp;<span class="tag orange">3</span> 中风险</td></tr><tr><td>来源系统</td><td>ERP / MES / 质量 / 人事</td></tr></table></div><div><h4 style="margin:0 0 10px;font-size:13px">重点指标达成</h4>${key.map(n=>{const k=KPI.find(x=>x.name===n),s=targetStatus(k);return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:12px"><span style="width:90px;color:var(--muted)">${n}</span><div style="flex:1;background:#eef1f6;border-radius:4px;height:10px"><div style="width:${Math.min(100,k.v/k.target*100)}%;height:10px;border-radius:4px;background:${stColor(s)}"></div></div><span style="width:54px;text-align:right">${Math.round(k.v/k.target*100)}%</span></div>`;}).join("")}</div></div><p style="color:var(--muted);font-size:12px;margin:14px 0 0">首个落地场景为经营发展部月度经营简报（SOW STAR-O-009）。</p></div>`;
+},
+meeting(){
+  const steps=["创建期次","加载数据","责任部门补充","会前检查","会议决策","事项生成","会后跟踪"];
+  return `<div class="card"><h3>🎯 会议分析场景</h3><div class="steps">${steps.map((s,i)=>`<div class="step ${i<2?"done":i===2?"on":""}"><div class="circ">${i+1}</div><div class="name">${s}</div></div>`).join("")}</div><table class="mini" style="margin-top:16px"><tr><td>会议类型</td><td>月度经营会</td></tr><tr><td>期次/数据版本</td><td>2026-06 期 · 快照 v3</td></tr><tr><td>主持部门</td><td>经营发展部</td></tr><tr><td>待补充原因</td><td>存货周转、订单蓄水 2 项</td></tr><tr><td>会后决议</td><td>生成 4 项责任事项（进入问题闭环）</td></tr></table><p style="color:var(--muted);font-size:12px;margin:14px 0 0">会议快照与实时页面区分；原因和措施具备责任人、时间与版本（SOW STAR-O-005）。</p></div>`;
+},
+ind(){
+  const inds=[{code:"STAR-I-001",name:"营业收入",def:"确认收入口径汇总",calc:"=Σ各业务收入",unit:"亿元",cyc:"月",dim:"组织/业务/客户",src:"ERP",ver:"v3"},{code:"STAR-I-002",name:"订单蓄水",def:"在手未交付订单",calc:"=Σ在手订单金额",unit:"亿元",cyc:"月",dim:"组织/业务",src:"ERP",ver:"v2"},{code:"STAR-I-003",name:"产值完成",def:"当期完工产值",calc:"=Σ完工产品产值",unit:"亿元",cyc:"月",dim:"组织/车间/产线",src:"MES",ver:"v3"},{code:"STAR-I-004",name:"综合合格率",def:"一次交检合格率",calc:"=合格数/检验数×100",unit:"%",cyc:"月",dim:"组织/产线",src:"MES",ver:"v2"}];
+  return `<div class="card"><h3>🧭 指标目录与血缘</h3><table class="grid"><thead><tr><th>编码</th><th>指标名称</th><th>业务含义</th><th>计算公式</th><th>单位</th><th>周期</th><th>维度</th><th>来源</th><th>版本</th></tr></thead><tbody>${inds.map(i=>`<tr><td>${i.code}</td><td style="font-weight:600">${i.name}</td><td>${i.def}</td><td style="font-size:12px;color:var(--muted)">${i.calc}</td><td>${i.unit}</td><td>${i.cyc}</td><td>${i.dim}</td><td><span class="tag blue">${i.src}</span></td><td>${i.ver}</td></tr>`).join("")}</tbody></table><p style="color:var(--muted);font-size:12px;margin:12px 0 0">指标名称、定义、公式、周期、维度、目标、来源和责任统一管理，避免同名不同口径；指标变更审批后生效（SOW STAR-F-001~008）。</p></div>`;
+},
+issue(){
+  const flow=["预警/上报","分类分派","原因分析","措施执行","提醒升级","复核关闭"];
+  return `<div class="card"><h3>🔁 问题快发闭环</h3><div class="steps">${flow.map((s,i)=>`<div class="step ${i<1?"done":i===1?"on":""}"><div class="circ">${i+1}</div><div class="name">${s}</div></div>`).join("")}</div><table class="grid" style="margin-top:16px"><thead><tr><th>编号</th><th>来源</th><th>指标</th><th>问题描述</th><th>责任部门</th><th>时限</th><th>状态</th><th></th></tr></thead><tbody>${issues.map(i=>`<tr><td>${i.id}</td><td>${i.from}</td><td>${i.ind}</td><td>${i.title}</td><td>${i.resp}</td><td>${i.deadline}</td><td>${statusTag(i.status)}</td><td><button class="btn sm" data-issue="${i.id}">推进</button></td></tr>`).join("")}</tbody></table><p style="color:var(--muted);font-size:12px;margin:12px 0 0">自动/手动预警、问题上报、责任分派、措施反馈、超期升级、复核关闭与过程追踪（SOW STAR-O-006）。</p></div>`;
+},
+data(){
+  const rules=[["完整性","必填/非空校验，缺失字段标记","本月 6 项异常"],["唯一性","编码/业务键唯一，重复检测","本月 2 项"],["一致性","跨系统口径/取值一致性对比","本月 0 项"],["及时性","更新时间与采集批次校验","本月 4 项"],["合理性","数值区间/比率合理性检查","本月 1 项"]];
+  return `<div class="card"><h3>🛡️ 数据治理 · 质量规则与闭环</h3><table class="grid"><thead><tr><th>质量规则</th><th>规则说明</th><th>本月异常</th></tr></thead><tbody>${rules.map(r=>`<tr><td style="font-weight:600">${r[0]}</td><td style="font-size:12px;color:var(--muted)">${r[1]}</td><td>${r[2]}</td></tr>`).join("")}</tbody></table><p style="color:var(--muted);font-size:12px;margin:12px 0 0">数据进入主题和指标计算前完成校验，异常形成责任清单并保留处理记录；建立数据标准、质量规则、资产目录与责任机制（SOW STAR-O-007）。</p></div>`;
+},
+risk(){
+  const stats={AI:riskPool.filter(r=>r.src==="AI识别").length,人工:riskPool.filter(r=>r.src==="人工报送").length,待审:riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length,整改:riskPool.filter(r=>r.status==="整改中").length};
+  return `<div class="grid-cards"><div class="stat"><div class="lbl">AI识别异常</div><div class="num" style="color:var(--purple)">${stats.AI}</div><div class="sub">自动抓取</div></div><div class="stat"><div class="lbl">人工报送</div><div class="num" style="color:var(--primary)">${stats.人工}</div><div class="sub">部门季度填报</div></div><div class="stat"><div class="lbl">待核实/审核</div><div class="num" style="color:var(--orange)">${stats.待审}</div><div class="sub">去重后待复核</div></div><div class="stat"><div class="lbl">整改中</div><div class="num" style="color:var(--green)">${stats.整改}</div><div class="sub">进入OA风险整改</div></div></div>
+  <div class="card"><h3>🛡️ AI 风险识别池（双源采集）</h3><table class="grid"><thead><tr><th>编号</th><th>来源</th><th>场景</th><th>归属单位</th><th>风险描述</th><th>等级</th><th>状态</th><th>识别依据</th><th></th></tr></thead><tbody>${riskPool.map(r=>`<tr><td>${r.id}</td><td><span class="tag ${r.src==="AI识别"?"purple":"blue"}">${r.src}</span></td><td>${r.scene}</td><td>${r.unit}</td><td>${r.detail}</td><td>${lvTag(r.lv)}</td><td>${statusTag(r.status)}</td><td style="color:var(--muted);font-size:12px">${r.ev}</td><td>${(r.status==="待审核")?`<button class="btn sm primary" data-riskaudit="${r.id}">核实</button> <button class="btn sm" data-riskreject="${r.id}">驳回</button>`:`<button class="btn sm" data-open="${r.id}">查看</button>`}</td></tr>`).join("")}</tbody></table><p style="color:var(--muted);font-size:12px;margin:12px 0 0">保留季度人工报送，同时接入系统异常数据；AI 识别先去重、核实、复核，再进入定级、整改与销号。每条保留来源、批次、规则/模型版本、阈值与人工复核（SOW STAR-O-010）。</p></div>`;
+},
+energy(){
+  const rows=[["能源日报","按日汇总电/水/气用能及同期","待确认"],["用能去向","按公司/组织/车间/产线/设备分析流向","待确认"],["用能成本","结合计量/价格/分摊规则分析","待确认"],["生产电耗","关联生产任务/工时/设备运行","待确认"],["单件能耗","需产品/工序/产量/计量映射明确","待确认"],["能耗预警","按基线/计划/阈值/趋势触发提醒","待确认"]];
+  return `<div class="card"><h3>⚡ 能源分析</h3><table class="grid"><thead><tr><th>功能</th><th>说明</th><th>范围状态</th></tr></thead><tbody>${rows.map(r=>`<tr><td style="font-weight:600">${r[0]}</td><td style="font-size:12px;color:var(--muted)">${r[1]}</td><td><span class="tag gray">${r[2]}</span></td></tr>`).join("")}</tbody></table><p style="color:var(--muted);font-size:12px;margin:12px 0 0">能源分析统一标记为待确认：需先明确采集点、计量层级、组织/设备/产线/产品映射、价格与分摊规则、数据质量和历史范围，再确认首批报表及预警清单（SOW STAR-F-037~043）。</p></div>`;
+},
+};
+
+/* ================== 交互 ================== */
+function subViewTab(s){curDeptSub=s;render();}
 function approve(id,ok){
   const t=todos.find(x=>x.id===id); if(!t)return;
-  const tnow=now();
+  const tn=now();
   if(ok){
-    t.history=t.history||[];
-    t.history.push({t:tnow,w:"王小明",a:`${t.steps[t.step]} · 同意`});
+    t.history=t.history||[];t.history.push({t:tn,w:nameOf(t.dept)+"·王小明",a:`${t.steps[Math.min(t.step,t.steps.length-1)]} · 同意`});
     t.step++;
-    if(t.step>=t.steps.length-1){t.step=t.steps.length-1;t.status="已归档";toast("已通过，进入用印归档阶段");}
-    else if(t.step>=t.steps.length){t.step=t.steps.length-1;t.status="已归档";toast("已通过，流程归档");}
+    if(t.step>=t.steps.length){t.step=t.steps.length-1;t.status="已归档";toast("已通过，流程归档");}
     else {t.status="审批中";toast("已同意，进入「"+t.steps[t.step]+"」");}
   } else {
     t.status="已驳回";toast("已驳回该事项");
   }
-  render(); openDetail(id);
+  render();openDetail(id);
 }
-function submitDraft(id){const t=todos.find(x=>x.id===id);if(!t)return;t.status="审批中";t.step=1;toast("已提交审批");render();openDetail(id);}
-
-/* ---------- 风险审核 ---------- */
 function auditRisk(id,ok){
   const r=riskPool.find(x=>x.id===id); if(!r)return;
-  if(ok){r.status="整改中";toast("已核实，进入 OA 风险整改闭环");}
-  else {r.status="已销号";toast("已驳回，记为误报");}
-  render(); openRiskDetail(id);
+  if(ok){r.status="整改中";toast("已核实，进入 OA 风险整改闭环");}else{r.status="已销号";toast("已驳回，记为误报");}
+  render();openRiskDetail(id);
 }
-
-/* ---------- 问题闭环推进 ---------- */
 const ISSUE_FLOW=["待上报","待核实","已分派","整改中","待复核","已关闭"];
 function advanceIssue(id){
   const i=issues.find(x=>x.id===id); if(!i)return;
   const cur=ISSUE_FLOW.indexOf(i.status);
-  const next=ISSUE_FLOW[Math.min(cur+1,ISSUE_FLOW.length-1)];
-  i.status=next;
-  if(next==="整改中")i.progress="已完成 60%";
-  if(next==="已关闭")i.progress="已完成 100%";
-  toast("问题状态 → "+next);
-  render();
+  i.status=ISSUE_FLOW[Math.min(cur+1,ISSUE_FLOW.length-1)];
+  i.progress=(i.status==="已关闭")?"已完成 100%":i.status==="整改中"?"已完成 60%":i.progress;
+  toast("问题状态 → "+i.status);render();
 }
 
 /* ---------- 详情 ---------- */
 const detailMask=document.getElementById("detailMask");
 function openDetail(id){
-  // 优先匹配待办
   const t=todos.find(x=>x.id===id);
   if(t){
     document.getElementById("detailTitle").textContent=t.flow;
     document.getElementById("detailBody").innerHTML=`
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-        <div><div style="font-weight:700;font-size:16px">${t.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">单号 ${t.id} | 提交：${t.submit} | ${t.dept}</div></div>
-        <div>${statusTag(t.status)}</div>
-      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px"><div><div style="font-weight:700;font-size:16px">${t.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">单号 ${t.id} | 提交：${t.submit} | ${DEPTS.find(d=>d.id===t.dept).name}</div></div><div>${statusTag(t.status)}</div></div>
       <div class="card" style="padding:14px 16px">${stepsHtml(t.steps,t.step,t.status)}</div>
       ${t.ai&&t.ai.length?`<div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🤖 AI 辅助提示</h3>${t.ai.map((a,idx)=>`<div class="ai-item"><span class="lv ${idx===0?"high":"mid"}">${idx===0?"高":"中"}</span><span>${a}</span></div>`).join("")}</div>`:""}
       <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🧾 说明</h3><div>${t.note||"无"}</div></div>
-      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🕒 流转记录</h3><div class="timeline">${(t.history&&t.history.length?t.history.slice().reverse().map(h=>`<div class="tl-item"><div class="tl-head">${h.a}</div><div class="tl-meta">${h.w} · ${h.t}</div></div>`).join(""):`<div class="tl-item"><div class="tl-head">提交申请</div><div class="tl-meta">${t.submit} · ${t.time}</div></div>`)}</div></div>`;
+      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🕒 流转记录</h3><div class="timeline">${(t.history&&t.history.length)?t.history.slice().reverse().map(h=>`<div class="tl-item"><div class="tl-head">${h.a}</div><div class="tl-meta">${h.w} · ${h.t}</div></div>`).join(""):`<div class="tl-item"><div class="tl-head">提交申请</div><div class="tl-meta">${t.submit} · ${t.time}</div></div>`}</div></div>`;
     let foot="";
     if(t.status==="审批中")foot=`<button class="btn primary" onclick="approve('${t.id}',true)">通过</button> <button class="btn" onclick="approve('${t.id}',false)">驳回</button>`;
     else foot=`<button class="btn" onclick="closeDetail()">关闭</button>`;
-    document.getElementById("detailFoot").innerHTML=foot;
-    detailMask.classList.add("show"); return;
+    document.getElementById("detailFoot").innerHTML=foot;detailMask.classList.add("show");return;
   }
-  // 匹配流程
-  const f=OA_FLOWS.find(x=>x.id===id);
+  const f=FLOWS.find(x=>x.id===id);
   if(f){
-    const steps=["发起申请","部门审核","会签/复核","审批归档"];
     document.getElementById("detailTitle").textContent=f.name;
     document.getElementById("detailBody").innerHTML=`
       <div style="font-weight:600;margin-bottom:10px">${f.id} · ${f.cat}</div>
-      <div class="card" style="padding:14px 16px">${stepsHtml(steps,1,"审批中")}</div>
+      <div class="card" style="padding:14px 16px">${stepsHtml(f.steps,0,"")}</div>
       <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">📝 功能描述</h3><div>${f.desc}</div></div>
-      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">👤 关键角色</h3><div>${f.owner}</div></div>`;
-    document.getElementById("detailFoot").innerHTML=`<button class="btn" onclick="closeDetail()">关闭</button>`;
-    detailMask.classList.add("show"); return;
+      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">👤 处理角色</h3><div>${f.owner}</div></div>`;
+    document.getElementById("detailFoot").innerHTML=`<button class="btn" onclick="closeDetail()">关闭</button>`;detailMask.classList.add("show");return;
   }
-  // 匹配风险
   openRiskDetail(id);
 }
 function openRiskDetail(id){
   const r=riskPool.find(x=>x.id===id); if(!r)return;
   document.getElementById("detailTitle").textContent="风险记录 · "+r.id;
   document.getElementById("detailBody").innerHTML=`
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-      <div><div style="font-weight:700;font-size:16px">${r.scene}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${r.unit} | ${r.occur} | ${r.src}</div></div>
-      <div>${lvTag(r.lv)} ${statusTag(r.status)}</div>
-    </div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px"><div><div style="font-weight:700;font-size:16px">${r.scene}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${r.unit} | ${r.occur} | ${r.src}</div></div><div>${lvTag(r.lv)} ${statusTag(r.status)}</div></div>
     <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">📝 风险明细</h3><div>${r.detail}</div></div>
     <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🤖 识别依据</h3><div>${r.ev}</div></div>`;
   let foot=`<button class="btn" onclick="closeDetail()">关闭</button>`;
   if(r.status==="待审核")foot=`<button class="btn primary" onclick="auditRisk('${r.id}',true)">核实并进入整改</button> <button class="btn" onclick="auditRisk('${r.id}',false)">驳回(误报)</button>`;
-  document.getElementById("detailFoot").innerHTML=foot;
-  detailMask.classList.add("show");
+  document.getElementById("detailFoot").innerHTML=foot;detailMask.classList.add("show");
 }
 function closeDetail(){detailMask.classList.remove("show");}
 document.addEventListener("click",e=>{if(e.target.classList.contains("mask"))e.target.classList.remove("show");});
 
-/* ---------- 表单 ---------- */
+/* ---------- 表单（合同AI评审） ---------- */
 const formMask=document.getElementById("formMask");
-let formMode="";
 function openContractForm(){
-  formMode="contract";
   document.getElementById("formTitle").textContent="新建合同评审";
   document.getElementById("formBody").innerHTML=`
     <div class="form-grid">
@@ -669,27 +579,25 @@ function openContractForm(){
       <div class="field"><label>乙方 <b>*</b></label><input id="c_b" value="某某纸业"/></div>
       <div class="field"><label>合同金额(万元) <b>*</b></label><input id="c_amt" type="number" value="1280"/></div>
       <div class="field"><label>付款计划 <b>*</b></label><input id="c_pay" value="12期，首期预付30%"/></div>
-      <div class="field full"><label>AI 将输出风险提示（保存后模拟）</label></div>
+      <div class="field full"><label>提交后 AI 将输出风险提示并进入审计监督部待办</label></div>
     </div>`;
   formMask.classList.add("show");
 }
 function openNew(){openContractForm();}
 function closeForm(){formMask.classList.remove("show");}
 function submitForm(){
-  if(formMode!=="contract"){closeForm();return;}
   const amt=parseFloat(document.getElementById("c_amt").value)||0;
-  const name=document.getElementById("c_name").value.trim();
-  if(!name||!amt){toast("请填写完整必填项");return;}
-  const id="TD-00"+(50+todos.length+1);
-  const t={id,flow:"合同评审及审批",title:`${name} · 金额 ${amt} 万`,dept:"审计监督部",submit:"采购部·李强",time:now(),step:1,steps:["发起申请","业务会签","法务与AI审核","管理层审批","用印归档"],status:"审批中",note:"新发起的合同评审，等待会签。",ai:["AI 将结合历史价、付款与履约条款输出风险提示","建议复核预付款比例与履约保证"]};
+  const name=document.getElementById("c_name").value.trim()||"合同";
+  if(!amt){toast("请填写合同金额");return;}
+  const id="TD-"+(50+todos.length+1);
+  const t={id,flow:"合同评审及审批",title:`${name} · 金额 ${amt} 万`,dept:"audit",owner:"曹怀月",submit:"采购部·李强",time:now(),step:1,steps:["分类评审","AI风险提示","人工审核","审批","关联用印","导出归档"],status:"审批中",note:"新发起的合同评审，等待业务会签。",ai:["AI 将结合历史价、付款与履约条款输出风险提示","建议复核预付款比例与履约保证"]};
   todos.push(t);
-  closeForm();toast("已提交，进入「业务会签」节点");
-  render();openDetail(id);
+  closeForm();toast("已提交，进入「分类评审」节点");render();openDetail(id);
 }
 document.getElementById("quickNew").onclick=openNew;
 
 /* ---------- 初始化 ---------- */
-setNav("portal");
+setNav("work");
 </script>
 </body>
 </html>
