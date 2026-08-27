@@ -19,21 +19,29 @@
   body{font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px;}
   .app{display:flex;height:100vh;overflow:hidden;}
 
-  /* ---------- 左侧菜单 ---------- */
-  .sidenav{width:248px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;}
-  .brand{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line);}
-  .brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#1f5fd6,#7b3ff2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;box-shadow:0 4px 10px rgba(31,95,214,.4);}
-  .brand .t1{font-weight:700;font-size:14px;line-height:1.2;}
-  .brand .t2{font-size:11px;color:var(--muted);}
-  .menu{padding:8px 12px;overflow-y:auto;flex:1;}
-  .menu .grp{font-size:11px;color:var(--muted);padding:14px 8px 6px;letter-spacing:.5px;display:flex;align-items:center;gap:6px;}
+  /* ---------- 左侧菜单（深色多级） ---------- */
+  .sidenav{width:250px;background:#16233c;border-right:1px solid #223;display:flex;flex-direction:column;flex-shrink:0;color:#c7d0e0;}
+  .brand{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid #223952;}
+  .brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#2e7bff,#8455f5);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;box-shadow:0 4px 10px rgba(46,123,255,.4);}
+  .brand .t1{font-weight:700;font-size:14px;line-height:1.2;color:#fff;}
+  .brand .t2{font-size:11px;color:#8593ad;}
+  .menu{padding:8px 10px;overflow-y:auto;flex:1;}
+  .menu .grp{font-size:11px;color:#7f8da8;padding:16px 10px 6px;letter-spacing:.5px;display:flex;align-items:center;gap:6px;}
   .menu .grp .dotapp{width:8px;height:8px;border-radius:3px;display:inline-block;}
-  .menu a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:var(--text);text-decoration:none;cursor:pointer;margin-bottom:2px;transition:.15s;}
-  .menu a .ico{width:20px;text-align:center;opacity:.85;font-size:16px;}
-  .menu a:hover{background:#f4f6fb;}
-  .menu a.active{background:var(--primary-light);color:var(--primary);font-weight:600;}
+  .menu .mi{margin-bottom:2px;}
+  .menu a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0e0;text-decoration:none;cursor:pointer;transition:.15s;font-size:13px;}
+  .menu a .ico{width:20px;text-align:center;opacity:.9;font-size:15px;}
+  .menu a:hover{background:#1e2f4d;color:#fff;}
+  .menu a.active{background:linear-gradient(90deg,#2e7bff,#4f46e5);color:#fff;font-weight:600;box-shadow:0 4px 12px rgba(46,123,255,.28);}
   .menu a.active .ico{opacity:1;}
-  .menu a .badge{background:var(--red);color:#fff;font-size:11px;border-radius:10px;padding:1px 6px;margin-left:auto;font-weight:400;}
+  .menu a .badge{background:#ff5a52;color:#fff;font-size:11px;border-radius:10px;padding:1px 7px;margin-left:auto;font-weight:400;}
+  .menu a .chev{margin-left:auto;opacity:.5;font-size:11px;transition:.15s;}
+  .menu a.open .chev{transform:rotate(90deg);opacity:.9;}
+  .menu .subs{display:none;margin:2px 0 4px;padding-left:14px;}
+  .menu .subs.show{display:block;}
+  .menu .subs a{padding:7px 12px 7px 22px;font-size:12.5px;border-left:1px solid #26395a;border-radius:0;color:#aab6cc;}
+  .menu .subs a:hover{background:#1e2f4d;color:#fff;}
+  .menu .subs a.active{background:#20314f;color:#fff;font-weight:600;border-left:2px solid #2e7bff;}
 
   /* ---------- 主区域 ---------- */
   .main{flex:1;display:flex;flex-direction:column;min-width:0;}
@@ -41,9 +49,48 @@
   .topbar .crumb{color:var(--muted);display:flex;align-items:center;gap:6px;font-size:13px;}
   .topbar .crumb b{color:var(--text);font-weight:600;}
   .topbar .spacer{flex:1;}
+  .topbar .right{display:flex;align-items:center;gap:14px;}
+  .topbar .pill{display:flex;align-items:center;gap:5px;padding:5px 10px;border:1px solid var(--line);border-radius:16px;font-size:12px;color:var(--text);cursor:pointer;position:relative;}
+  .topbar .pill .n{min-width:16px;height:16px;border-radius:8px;background:var(--red);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0 4px;}
+  .topbar .pill.role{background:var(--primary-light);border-color:var(--primary);color:var(--primary);}
   .topbar .user{display:flex;align-items:center;gap:8px;cursor:pointer;}
   .avatar{width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;}
   .content{flex:1;overflow:auto;padding:22px;}
+
+  /* ---------- Hero 横幅 ---------- */
+  .hero{position:relative;border-radius:14px;padding:26px 28px;color:#fff;overflow:hidden;margin-bottom:20px;box-shadow:var(--shadow-lg);}
+  .hero::after{content:"";position:absolute;right:-40px;top:-40px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.10);}
+  .hero::before{content:"";position:absolute;right:10px;bottom:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.06);}
+  .hero .h-h1{font-size:24px;font-weight:700;letter-spacing:.5px;position:relative;z-index:1;}
+  .hero .h-sub{font-size:14px;opacity:.92;margin-top:8px;position:relative;z-index:1;max-width:760px;line-height:1.6;}
+  .hero .h-badge{position:absolute;right:24px;top:22px;z-index:2;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:8px 12px;font-size:12px;max-width:250px;line-height:1.5;}
+  .hero .h-badge b{font-weight:700;}
+
+  /* ---------- 统计行 ---------- */
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+  .statrow .s{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;box-shadow:var(--shadow);}
+  .statrow .s .l{font-size:12px;color:var(--muted);}
+  .statrow .s .v{font-size:30px;font-weight:700;margin-top:6px;}
+  .statrow .s .d{font-size:12px;color:var(--muted);margin-top:4px;}
+
+  /* ---------- 业务域卡片网格 ---------- */
+  .bizgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .bizcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:.16s;position:relative;overflow:hidden;}
+  .bizcard:hover{border-color:var(--primary);box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+  .bizcard .bc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .bizcard .bc-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;}
+  .bizcard .bc-count{font-size:34px;font-weight:800;line-height:1;color:var(--text);}
+  .bizcard .bc-name{font-size:15px;font-weight:700;margin-top:12px;}
+  .bizcard .bc-desc{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.6;min-height:38px;}
+  .bizcard .bc-go{display:inline-flex;align-items:center;gap:5px;color:var(--green);font-size:12.5px;font-weight:600;margin-top:12px;}
+  .bizcard .bc-go:hover{text-decoration:underline;}
+  .bizgrid.c5{grid-template-columns:repeat(5,1fr);}
+  .bizgrid.c2{grid-template-columns:repeat(2,1fr);}
+
+  /* ---------- 维度条 ---------- */
+  .dimrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+  .dimchip{padding:6px 14px;border-radius:16px;background:#fff;border:1px solid var(--line);color:var(--muted);font-size:12px;cursor:pointer;}
+  .dimchip.on{background:var(--primary);color:#fff;border-color:var(--primary);}
 
   /* ---------- 通用组件 ---------- */
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;}
@@ -181,11 +228,16 @@
   </nav>
   <div class="main">
     <div class="topbar">
-      <div class="crumb">泛微 E10 · 项目 OA 系统 <span>›</span> <b id="crumb">工作台</b></div>
+      <div class="crumb">五粮液精美印务 <span>›</span> <b id="crumb">工作台</b></div>
       <div class="spacer"></div>
-      <span class="btn sm" id="quickNew">＋ 新建</span>
-      <div class="user"><div class="avatar">王</div> 王小明</div>
+      <div class="right">
+        <span class="pill">待办 <span class="n" id="topTodo">0</span></span>
+        <span class="pill">消息 <span class="n">4</span></span>
+        <span class="pill role" id="roleSwitch">审计监督部视角 ▾</span>
+        <div class="user"><div class="avatar">陈</div> 陈欣悦</div>
+      </div>
     </div>
+    <button class="btn sm primary" id="quickNew" style="position:fixed;right:26px;bottom:26px;padding:12px 20px;box-shadow:var(--shadow-lg);z-index:20">＋ 发起</button>
     <div class="content" id="content"></div>
   </div>
 </div>
@@ -345,37 +397,64 @@ const statusTag=s=>{
 };
 const lvTag=s=>`<span class="tag ${s==="高"?"red":s==="中"?"orange":"gray"}">${s}风险</span>`;
 
-/* ================== 菜单 ================== */
-const MENU=[
-  {grp:"门户"},
-  {v:"work",ico:"🏠",t:"工作台"},
-  {grp:"业务部门"},
-  {v:"hr",ico:"🧑‍💼",t:"人力资源部",badge:()=>0},
-  {v:"party",ico:"🏛️",t:"党政综合办",badge:()=>0},
-  {v:"audit",ico:"🛡️",t:"审计监督部",badge:()=>todos.filter(t=>t.dept==="audit"&&t.status==="审批中").length},
-  {v:"info",ico:"💻",t:"信息工程部",badge:()=>0},
-  {v:"biz",ico:"📣",t:"经营发展部",badge:()=>0},
-  {grp:"分析平台"},
-  {v:"star",ico:"🚀",t:"观星台",badge:()=>riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length},
-];
+/* ================== 菜单（深色多级可展开） ================== */
+let openGroups={}; // 记录展开的部门
 function buildMenu(){
   const m=document.getElementById("menu");
-  m.innerHTML=MENU.map(item=>{
-    if(item.grp)return `<div class="grp">${item.grp}</div>`;
-    const b=item.badge?item.badge():0;
-    return `<a data-v="${item.v}" class="${item.v===currentView?"active":""}"><span class="ico">${item.ico}</span> ${item.t}${b?`<span class="badge">${b}</span>`:""}</a>`;
-  }).join("");
-  m.querySelectorAll("a").forEach(a=>a.onclick=()=>setNav(a.dataset.v));
+  let html="";
+  // 门户
+  html+=`<div class="grp">门户</div>`;
+  html+=`<div class="mi"><a data-v="work" class="${currentView==="work"?"active":""}"><span class="ico">🏠</span> 工作台</a></div>`;
+  // 业务部门（可展开子模块）
+  html+=`<div class="grp"><span class="dotapp" style="background:#2e7bff"></span>业务部门</div>`;
+  DEPTS.filter(d=>d.id!=="star").forEach(d=>{
+    const open=openGroups[d.id]!==undefined?openGroups[d.id]:(currentView===d.id);
+    const activeTop=currentView===d.id;
+    html+=`<div class="mi"><a data-v="${d.id}" class="${activeTop?"active":""} ${open?"open":""}"><span class="ico">${d.ico}</span> ${d.name}${todoBadge(d.id)?`<span class="badge">${todoBadge(d.id)}</span>`:""}<span class="chev">▸</span></a>
+      <div class="subs ${open?"show":""}">${d.routes.map(r=>`<a data-v="${d.id}" data-sub="${r[0]}" class="${currentView===d.id&&curSub===r[0]?"active":""}">${r[1]}</a>`).join("")}</div></div>`;
+  });
+  // 观星台
+  html+=`<div class="grp"><span class="dotapp" style="background:#8455f5"></span>分析平台</div>`;
+  const star=DEPTS.find(d=>d.id==="star");
+  const open=openGroups["star"]!==undefined?openGroups["star"]:(currentView==="star");
+  html+=`<div class="mi"><a data-v="star" class="${currentView==="star"?"active":""} ${open?"open":""}"><span class="ico">🚀</span> 观星台${riskBadge()?`<span class="badge">${riskBadge()}</span>`:""}<span class="chev">▸</span></a>
+    <div class="subs ${open?"show":""}">${star.routes.map(r=>`<a data-v="star" data-sub="${r[0]}" class="${currentView==="star"&&curDeptSub===r[0]?"active":""}">${r[1]}</a>`).join("")}</div></div>`;
+  m.innerHTML=html;
+  m.querySelectorAll("a").forEach(a=>{
+    a.onclick=()=>{
+      const v=a.dataset.v;
+      if(a.dataset.sub){setNavSub(v,a.dataset.sub);}
+      else{// 顶级：切换或展开
+        if(currentView===v){openGroups[v]=!openGroups[v];buildMenu();}
+        else{openGroups[v]=true;setNav(v);}
+      }
+    };
+  });
+  document.getElementById("topTodo").textContent=todos.filter(t=>t.status==="审批中").length;
 }
-function setNav(v){currentView=v;if(DEPTS.some(d=>d.id===v)){curDept=v;curSub=DEPTS.find(d=>d.id===v).routes[0][0];}buildMenu();crumb.textContent=nameOf(v);render();}
-function nameOf(v){const it=MENU.find(x=>x.v===v);if(it)return it.t;const d=DEPTS.find(x=>x.id===v);return d?d.name:v;}
+function todoBadge(id){return todos.filter(t=>t.dept===id&&t.status==="审批中").length;}
+function riskBadge(){return riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length;}
+function setNavSub(v,sub){currentView=v;if(v==="star"){curDeptSub=sub;}else{curDept=v;curSub=sub;}openGroups[v]=true;buildMenu();crumb.textContent=nameOf(v)+(v==="star"?" · "+subTitle(sub):" · "+subName(v,sub));render();}
+function subName(v,sub){const d=DEPTS.find(x=>x.id===v);const r=d.routes.find(x=>x[0]===sub);return r?r[1]:"";}
+function setNav(v){
+  currentView=v;
+  if(DEPTS.some(d=>d.id===v)){
+    const d=DEPTS.find(x=>x.id===v);
+    if(v==="star"){curDeptSub="";}else{curDept=v;curSub="";}
+  }
+  openGroups[v]=true;
+  buildMenu();
+  crumb.textContent=nameOf(v);
+  render();
+}
+function nameOf(v){if(v==="work")return "工作台";const d=DEPTS.find(x=>x.id===v);return d?d.name:v;}
 function go(v){setNav(v);}
 function render(){content.innerHTML=viewHtml[currentView]()||"<div class='empty'>页面建设中</div>";wire();}
 function wire(){
   document.querySelectorAll("[data-open]").forEach(el=>el.onclick=e=>{e.stopPropagation();openDetail(el.dataset.open);});
   document.querySelectorAll("[data-approve]").forEach(b=>b.onclick=()=>approve(b.dataset.id,true));
   document.querySelectorAll("[data-reject]").forEach(b=>b.onclick=()=>approve(b.dataset.id,false));
-  document.querySelectorAll("[data-tab]").forEach(a=>a.onclick=()=>{curSub=a.dataset.tab;render();});
+  document.querySelectorAll("[data-biz]").forEach(c=>c.onclick=()=>{const v=c.dataset.biz;if(v==="star"){curDeptSub=c.dataset.sub;render();}else if(c.dataset.sub===""){setNav(v);}else{curSub=c.dataset.sub;render();}});
   document.querySelectorAll("[data-issue]").forEach(b=>b.onclick=()=>advanceIssue(b.dataset.issue));
   document.querySelectorAll("[data-riskaudit]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskaudit,true));
   document.querySelectorAll("[data-riskreject]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskreject,false));
@@ -392,40 +471,68 @@ function stepsHtml(steps,cur,status){
     return `<div class="step ${cls}"><div class="circ">${i+1}</div><div class="name">${s}</div>${i===cur&&status==="审批中"?`<div class="who">当前</div>`:""}</div>`;
   }).join("")}</div>`;
 }
-// 部门门户：头部 KPI + 子模块 Tab + 子模块内容
+// 部门门户：Hero 横幅 + 统计行 + 业务域卡片网格（无子选中）/ 业务域详情（有子选中）
 function deptPortal(dept){
   const routes=dept.routes;
-  const flows=FLOWS.filter(f=>f.cat===dept.id && f.sub===curSub);
+  const totalFlow=FLOWS.filter(f=>f.cat===dept.id).length;
+  // 业务域卡片：每个 route 一个
+  const bizCards=routes.map(r=>{
+    const n=FLOWS.filter(f=>f.cat===dept.id&&f.sub===r[0]).length;
+    return `<div class="bizcard" data-biz="${dept.id}" data-sub="${r[0]}">
+      <div class="bc-top"><div class="bc-ico" style="background:${dept.color}">${routeIco(r[0])}</div><div class="bc-count">${n||"-"}</div></div>
+      <div class="bc-name">${r[1]}</div>
+      <div class="bc-desc">${flowSummary(dept.id,r[0])}</div>
+      <div class="bc-go">进入业务工作台 →</div>
+    </div>`;
+  });
+  const hero=deptHero(dept,totalFlow);
+  // 若选中某业务域 → 详情
+  const active=routes.find(r=>r[0]===curSub);
+  if(active){
+    return hero+detailBiz(dept,active);
+  }
+  return `${hero}
+  <div class="statrow">${dept.kpi.map(k=>`<div class="s"><div class="l">${k[0]}</div><div class="v" style="color:${dept.color}">${k[1]}</div><div class="d">${k[2]}</div></div>`).join("")}</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><h3 style="margin:0;font-size:16px">业务域</h3><span style="color:var(--muted);font-size:12px">以业务对象而非 OA 表单堆叠方式组织，覆盖 ${totalFlow} 项功能样例</span></div>
+  <div class="bizgrid">${bizCards.join("")}</div>`;
+}
+function deptHero(dept,totalFlow){
+  return `<div class="hero" style="background:linear-gradient(120deg,${dept.color} 0%,#1d3a63 100%)">
+    <div class="h-h1">${dept.name}</div>
+    <div class="h-sub">${dept.desc}</div>
+    <div class="h-badge"><b>当前为审计监督部视角</b>，可查看 ${totalFlow} 项功能样例。所有数据为 Demo 模拟，刷新后恢复基线。</div>
+  </div>`;
+}
+function routeIco(sub){const map={life:"🤝",kq:"🕐",salary:"💰",train:"📚",archive:"🗂️",doc:"📄",seal:"🔏",meet:"🪑",supervise:"📌",party2:"🚩",contract:"📑",risk:"⚠️",auditfix:"🧾",procure:"🛒",legal:"⚖️",account:"👤",proxy:"🤖",iface:"🔌",data:"📊",ops:"🛠️",md:"💾",publicity:"📣",star_tie:"🛰️",cockpit:"📊",board:"🚩",brief:"📈",meeting:"🎯",ind:"🧭",issue:"🔁",data_gov:"🛡️",risk_gov:"🛡️",energy:"⚡"};return map[sub]||"📦";}
+function flowSummary(cat,sub){const fs=FLOWS.filter(f=>f.cat===cat&&f.sub===sub);if(!fs.length)return "该业务域下暂无流程样例，可根据 SOW 扩展。";return fs.slice(0,2).map(f=>f.name).join("、")+(fs.length>2?" 等":"");}
+function detailBiz(dept,active){
+  const flows=FLOWS.filter(f=>f.cat===dept.id&&f.sub===active[0]);
   const dtodo=todos.filter(t=>t.dept===dept.id&&t.status==="审批中");
   return `
-  <div class="head-banner">
-    <div class="hb-ic" style="background:${dept.color}">${dept.ico}</div>
-    <div><div class="hb-t1">${dept.name}</div><div class="hb-t2">${dept.desc}</div></div>
+  <div class="card" style="margin-top:2px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap"><h3 style="margin:0">${routeIco(active[0])} ${active[1]} · 流程样例</h3><span class="tag blue">${flows.length}</span><button class="btn sm" style="margin-left:auto" onclick="go('${dept.id}')">← 返回业务域</button></div>
+    ${flows.length?`<table class="grid"><thead><tr><th>流程编号</th><th>流程名称</th><th>功能描述</th><th>处理角色</th></tr></thead><tbody>${flows.map(f=>`<tr data-open="${f.id}"><td>${f.id}</td><td style="font-weight:600">${f.name}</td><td style="color:var(--muted);font-size:12px;max-width:430px">${f.desc}</td><td>${f.owner}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">该业务域暂无流程样例</div>`}
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">点击任一行查看完整审批节点与 AI 提示；SOW 流程清单节选，完整以蓝图与验收为准。</p>
   </div>
-  <div class="grid-cards c3">
-    ${dept.kpi.map(k=>`<div class="stat"><div class="lbl">${k[0]}</div><div class="num" style="color:${dept.color}">${k[1]}</div><div class="sub">${k[2]}</div></div>`).join("")}
-  </div>
-  <div class="tabs">${routes.map(r=>`<a class="${r[0]===curSub?"active":""}" data-tab="${r[0]}">${r[1]}</a>`).join("")}</div>
-  <div class="card">
-    <h3>📋 ${routes.find(r=>r[0]===curSub)[1]} · 流程清单 <span class="tag blue">${flows.length}</span></h3>
-    ${flows.length?`<table class="grid"><thead><tr><th>流程编号</th><th>流程名称</th><th>功能描述</th><th>处理角色</th></tr></thead><tbody>${flows.map(f=>`<tr data-open="${f.id}"><td>${f.id}</td><td style="font-weight:600">${f.name}</td><td style="color:var(--muted);font-size:12px;max-width:430px">${f.desc}</td><td>${f.owner}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">该子模块暂无流程</div>`}
-    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">点击任一行查看完整审批节点；SOW 流程清单节选，完整以蓝图与验收为准。</p>
-  </div>
-  ${dtodo.length?`<div class="card"><h3>✅ 本部门待办 <span class="tag orange">${dtodo.length}</span></h3>${dtodo.map(t=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${t.flow}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${t.id} | ${t.title}</div></div><div style="display:flex;gap:8px;align-items:center">${statusTag(t.status)}<button class="btn sm primary" data-approve="${t.id}">通过</button><button class="btn sm" data-reject="${t.id}">驳回</button><button class="btn sm" data-open="${t.id}">详情</button></div></div>`).join("")}</div>`:""}
-  `;
+  ${dtodo.length?`<div class="card"><h3>✅ 本部门待办 <span class="tag orange">${dtodo.length}</span></h3>${dtodo.map(t=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${t.flow}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${t.id} | ${t.title}</div></div><div style="display:flex;gap:8px;align-items:center">${statusTag(t.status)}<button class="btn sm primary" data-approve="${t.id}">通过</button><button class="btn sm" data-reject="${t.id}">驳回</button><button class="btn sm" data-open="${t.id}">详情</button></div></div>`).join("")}</div>`:""}`;
 }
 
 /* ================== 视图 ================== */
 const viewHtml={
 work(){
+  const todoCount=todos.filter(t=>t.status==="审批中").length;
   return `
-  <div class="head-banner"><div class="hb-ic" style="background:linear-gradient(135deg,#1f5fd6,#7b3ff2)">📌</div><div><div class="hb-t1">统一门户 · 工作台</div><div class="hb-t2">面向员工、业务管理人员和管理层提供统一访问、审批、查询、分析和问题处理入口。汇聚 OA 流程协同与观星台经营分析。</div></div></div>
-  <div class="grid-cards">
-    ${[["统一待办",todos.filter(t=>t.status==="审批中").length,"点右侧进入处理","var(--orange)"],["业务流程",FLOWS.length,"SOW 流程清单","var(--primary)"],["风险待处理",riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length,"AI + 人工双源","var(--red)"],["问题闭环",issues.filter(i=>i.status!=="已关闭").length,"未关闭事项","var(--purple)"]].map(s=>`<div class="stat"><div class="lbl">${s[0]}</div><div class="num" style="color:${s[3]}">${s[1]}</div><div class="sub">${s[2]}</div></div>`).join("")}
+  <div class="hero" style="background:linear-gradient(120deg,#2e7bff 0%,#1d3a63 100%)">
+    <div class="h-h1">统一门户 · 工作台</div>
+    <div class="h-sub">面向员工、业务管理人员和管理层提供统一访问、审批、查询、分析和问题处理入口。汇聚 OA 流程协同与观星台经营数据，连接「看数据、找异常、识风险、定责任、跟措施、验结果」。</div>
+    <div class="h-badge"><b>演示 Demo</b>，全部为模拟数据，刷新恢复基线。</div>
   </div>
-  <div class="card"><h3>🧭 七大模板</h3><div style="display:flex;flex-wrap:wrap;gap:10px">${DEPTS.map(d=>`<span class="dept-chip" data-tab="${d.id}"><span class="dot" style="background:${d.color}"></span>${d.name}</span>`).join("")}</div></div>
-  <div class="card"><h3>✅ 统一待办<span class="tag orange">${todos.filter(t=>t.status==="审批中").length}</span><a class="btn sm" style="margin-left:auto" href="javascript:go('audit')">进入处理</a></h3>${todos.length?`<table class="grid"><thead><tr><th>单号</th><th>流程</th><th>事项</th><th>部门</th><th>提交人</th><th>状态</th></tr></thead><tbody>${todos.map(t=>`<tr data-open="${t.id}"><td>${t.id}</td><td>${t.flow}</td><td>${t.title}</td><td>${DEPTS.find(d=>d.id===t.dept).name}</td><td>${t.submit}</td><td>${statusTag(t.status)}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">暂无待办</div>`}</div>
-  <div class="card"><h3>📊 观星台 · 核心指标速览</h3><table class="mini">${KPI.slice(0,6).map(k=>`<tr><td>${k.name}</td><td style="text-align:right"><b style="color:${stColor(targetStatus(k))}">${k.v} ${k.unit}</b> / 目标 ${k.target}</td></tr>`).join("")}</table><p style="color:var(--muted);font-size:12px;margin:10px 0 0">跨系统经营数据汇聚、指标建模、驾驶舱与会议分析。详见「观星台」。</p></div>
+  <div class="statrow">
+    ${[["统一待办",todoCount,"点击左侧部门进入处理","var(--orange)"],["业务流程",FLOWS.length,"依据 SOW 流程清单","var(--primary)"],["风险待处理",riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length,"AI + 人工双源","var(--red)"],["问题闭环",issues.filter(i=>i.status!=="已关闭").length,"未关闭事项","var(--purple)"]].map(s=>`<div class="s"><div class="l">${s[0]}</div><div class="v" style="color:${s[3]}">${s[1]}</div><div class="d">${s[2]}</div></div>`).join("")}
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><h3 style="margin:0;font-size:16px">业务部门</h3><span style="color:var(--muted);font-size:12px">按组织职责划分，点击进入各业务域</span></div>
+  <div class="bizgrid">${DEPTS.map(d=>{const n=FLOWS.filter(f=>f.cat===d.id).length;return `<div class="bizcard" data-biz="${d.id}" data-sub=""><div class="bc-top"><div class="bc-ico" style="background:${d.color}">${d.ico}</div><div class="bc-count">${n}</div></div><div class="bc-name">${d.name}</div><div class="bc-desc">${d.desc.slice(0,40)}…</div><div class="bc-go">进入业务工作台 →</div></div>`;}).join("")}</div>
+  <div class="card"><h3>✅ 统一待办<span class="tag orange">${todoCount}</span></h3>${todos.length?`<table class="grid"><thead><tr><th>单号</th><th>流程</th><th>事项</th><th>部门</th><th>提交人</th><th>状态</th></tr></thead><tbody>${todos.map(t=>`<tr data-open="${t.id}"><td>${t.id}</td><td>${t.flow}</td><td>${t.title}</td><td>${DEPTS.find(d=>d.id===t.dept).name}</td><td>${t.submit}</td><td>${statusTag(t.status)}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">暂无待办</div>`}</div>
   <div class="card"><h3>🔁 问题闭环</h3>${issues.map(i=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${i.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${i.from} | 责任：${i.resp} | 时限：${i.deadline}</div></div><div>${statusTag(i.status)}</div></div>`).join("")}</div>`;
 },
 hr(){return deptPortal(DEPTS.find(x=>x.id==="hr"));},
@@ -438,12 +545,35 @@ star(){return starPortal();},
 function starPortal(){
   const dept=DEPTS.find(x=>x.id==="star");
   const s=curDeptSub;
-  const fc={};
-  return `<div class="head-banner"><div class="hb-ic" style="background:${dept.color}">${dept.ico}</div><div><div class="hb-t1">观星台 · ${subTitle(s)}</div><div class="hb-t2">${dept.desc}</div></div></div>
-  <div class="grid-cards c3">${dept.kpi.map(k=>`<div class="stat"><div class="lbl">${k[0]}</div><div class="num" style="color:${dept.color}">${k[1]}</div><div class="sub">${k[2]}</div></div>`).join("")}</div>
-  <div class="tabs">${dept.routes.map(r=>`<a class="${r[0]===s?"active":""}" data-tab="${r[0]}">${r[1]}</a>`).join("")}</div>
-  ${subView(s)}`;
+  const totalFlow=subViewsCount();
+  const stats=[[0],[1],[2],[3]];
+  const hero=`<div class="hero" style="background:linear-gradient(120deg,#8455f5 0%,#1d3a63 100%)">
+    <div class="h-h1">观星台</div>
+    <div class="h-sub">${dept.desc}</div>
+    <div class="h-badge"><b>当前为审计监督部视角</b>，可查看 ${totalFlow} 项功能样例。所有数据为 Demo 模拟，刷新后恢复基线。</div>
+  </div>`;
+  const statrow=`<div class="statrow">${dept.kpi.map(k=>`<div class="s"><div class="l">${k[0]}</div><div class="v" style="color:${dept.color}">${k[1]}</div><div class="d">${k[2]}</div></div>`).join("")}</div>`;
+  if(s){
+    return `${hero}${statrow}
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap"><h3 style="margin:0;font-size:16px">${subTitle(s)}</h3><button class="btn sm" style="margin-left:auto" onclick="go('star')">← 返回功能域</button></div>
+    ${subView(s)}`;
+  }
+  const cards=dept.routes.map(r=>{
+    const count=sampleCount(r[0]);
+    return `<div class="bizcard" data-biz="star" data-sub="${r[0]}">
+      <div class="bc-top"><div class="bc-ico" style="background:${dept.color}">${routeIco(r[0])}</div><div class="bc-count">${count||"-"}</div></div>
+      <div class="bc-name">${r[1]}</div>
+      <div class="bc-desc">${sampleSummary(r[0])}</div>
+      <div class="bc-go">进入业务工作台 →</div>
+    </div>`;
+  });
+  return `${hero}${statrow}
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><h3 style="margin:0;font-size:16px">功能域</h3><span style="color:var(--muted);font-size:12px">以业务对象而非 OA 表单堆叠方式组织</span></div>
+  <div class="bizgrid c3">${cards.join("")}</div>`;
 }
+function subViewsCount(){return Object.keys(subViews).length;}
+function sampleCount(sub){if(sub==="cockpit")return 8;if(sub==="issue")return issues.length;if(sub==="risk")return riskPool.length;if(sub==="board")return 5;if(sub==="ind")return 4;if(sub==="brief")return 8;if(sub==="data")return 5;if(sub==="meeting")return 3;if(sub==="energy")return 6;return 0;}
+function sampleSummary(sub){const map={cockpit:"生产任务、经营资金、质量、设备、工时及问题等核心指标",board:"面向业务域、车间和产线/精益单元的分层看板与异常视图",brief:"按月度经营简报固化章节、指标、图表、说明和数据期间",meeting:"会议主题、指标图表、异常原因、问题清单和待办执行界面",ind:"指标名称、定义、公式、周期、维度、目标、来源和责任统一管理",issue:"预警/上报、责任分派、措施反馈、超期升级、复核关闭",data:"完整性、唯一性、一致性、及时性、合理性质量规则与闭环",risk:"双源风险采集、去重净化、待审核风险池、整改销号",energy:"能源日报、用能去向、成本、电耗、单件能耗、质量与预警"};return map[sub]||"";}
 function subTitle(sub){const d=DEPTS.find(x=>x.id==="star");const r=d.routes.find(x=>x[0]===sub);return r?r[1]:sub;}
 function subView(s){return subViews[s]?subViews[s]():subViews.cockpit();}
 let curDeptSub="cockpit";
