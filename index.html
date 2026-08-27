@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>泛微 E10 · 费用报销应用 Demo</title>
-<meta name="description" content="泛微 E10 低代码平台「费用报销」应用：在线可点击 Demo。包含表单、台账、工作流审批、报表等交互。纯静态单文件，可直接部署到 GitHub Pages。" />
+<title>五粮液精美印务 · OA与观星台</title>
+<meta name="description" content="泛微 E10 低代码平台 · 五粮液精美印务 AI+印刷包装智能制造项目 OA系统与观星台演示 demo。包含统一门户、各部门流程中心、合同AI评审、待办审批、业务台账、公司驾驶舱、经营简报、会议分析、指标目录、问题闭环与AI风险监测等交互。纯静态单文件，可直接部署到 GitHub Pages。" />
 <style>
   :root{
-    --primary:#2b6de8; --primary-dark:#1d55c4; --primary-light:#eaf1ff;
-    --bg:#f3f5fa; --panel:#fff; --line:#e6e9f0; --text:#26324b; --muted:#8a93a6;
-    --green:#1fb47a; --orange:#f59d2f; --red:#e5533c; --purple:#8a5bd6; --cyan:#1fa2c4;
+    --primary:#1f5fd6; --primary-dark:#174bb0; --primary-light:#e7f0ff;
+    --orange:#f59d2f; --green:#18a879; --red:#e5533c; --purple:#8a5bd6; --cyan:#1fa2c4;
+    --bg:#f2f4fa; --panel:#fff; --line:#e6e9f0; --text:#26324b; --muted:#8a93a6;
     --shadow:0 2px 6px rgba(30,50,90,.08); --shadow-lg:0 12px 32px rgba(30,50,90,.16);
     --radius:10px;
   }
@@ -19,14 +19,15 @@
   .app{display:flex;height:100vh;overflow:hidden;}
 
   /* ---------- 左侧菜单 ---------- */
-  .sidenav{width:232px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;}
-  .brand{display:flex;align-items:center;gap:10px;padding:18px 16px;border-bottom:1px solid var(--line);}
-  .brand .logo{width:34px;height:34px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;box-shadow:0 4px 10px rgba(43,109,232,.4);}
-  .brand .t1{font-weight:700;font-size:15px;line-height:1.2;}
+  .sidenav{width:236px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;flex-shrink:0;}
+  .brand{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line);}
+  .brand .logo{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#1f5fd6,#7b3ff2);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;box-shadow:0 4px 10px rgba(31,95,214,.4);}
+  .brand .t1{font-weight:700;font-size:14px;line-height:1.2;}
   .brand .t2{font-size:11px;color:var(--muted);}
-  .menu{padding:10px 12px;overflow-y:auto;flex:1;}
-  .menu .grp{font-size:11px;color:var(--muted);padding:12px 8px 6px;letter-spacing:.5px;}
-  .menu a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;color:var(--text);text-decoration:none;cursor:pointer;margin-bottom:2px;transition:.15s;}
+  .menu{padding:8px 12px;overflow-y:auto;flex:1;}
+  .menu .grp{font-size:11px;color:var(--muted);padding:12px 8px 6px;letter-spacing:.5px;display:flex;align-items:center;gap:6px;}
+  .menu .grp .dotapp{width:8px;height:8px;border-radius:3px;display:inline-block;}
+  .menu a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:var(--text);text-decoration:none;cursor:pointer;margin-bottom:2px;transition:.15s;}
   .menu a .ico{width:20px;text-align:center;opacity:.85;font-size:16px;}
   .menu a:hover{background:#f4f6fb;}
   .menu a.active{background:var(--primary-light);color:var(--primary);font-weight:600;}
@@ -35,7 +36,7 @@
 
   /* ---------- 主区域 ---------- */
   .main{flex:1;display:flex;flex-direction:column;min-width:0;}
-  .topbar{height:56px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:0 22px;flex-shrink:0;}
+  .topbar{height:56px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 22px;flex-shrink:0;}
   .topbar .crumb{color:var(--muted);display:flex;align-items:center;gap:6px;font-size:13px;}
   .topbar .crumb b{color:var(--text);font-weight:600;}
   .topbar .spacer{flex:1;}
@@ -60,7 +61,6 @@
   .btn:disabled{opacity:.5;cursor:not-allowed;}
   .btn.sm{padding:5px 12px;font-size:12px;border-radius:6px;}
 
-  /* ---------- 表单表格 ---------- */
   table.grid{width:100%;border-collapse:collapse;}
   table.grid th{background:#f7f9fd;text-align:left;padding:10px 12px;font-weight:600;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;}
   table.grid td{padding:11px 12px;border-bottom:1px solid var(--line);font-size:13px;}
@@ -73,6 +73,7 @@
   .tag.gray{background:#eef1f6;color:#6b7488;}
   .tag.purple{background:#efe8fb;color:#6d43c0;}
   .tag.blue{background:var(--primary-light);color:var(--primary);}
+  .tag.cyan{background:#e2f5fa;color:#137a95;}
   .money{font-weight:600;}
 
   /* ---------- 流程步骤 ---------- */
@@ -81,7 +82,7 @@
   .step::before{content:"";position:absolute;top:14px;left:-50%;width:100%;height:2px;background:#e6e9f0;z-index:0;}
   .step:first-child::before{display:none;}
   .step .circ{width:30px;height:30px;border-radius:50%;background:#e6e9f0;color:#98a1b5;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;position:relative;z-index:1;border:2px solid #fff;}
-  .step.on .circ{background:var(--primary);color:#fff;box-shadow:0 0 0 5px rgba(43,109,232,.15);}
+  .step.on .circ{background:var(--primary);color:#fff;box-shadow:0 0 0 5px rgba(31,95,214,.15);}
   .step.done .circ{background:var(--green);color:#fff;}
   .step.done::before{background:var(--green);}
   .step.on::before{background:var(--primary);}
@@ -98,18 +99,21 @@
   .tl-item .tl-meta{font-size:12px;color:var(--muted);margin-top:2px;}
   .tl-item .tl-note{font-size:12px;color:var(--text);margin-top:4px;background:var(--primary-light);padding:6px 10px;border-radius:6px;}
 
-  /* ---------- 小 chart ---------- */
-  .bars{display:flex;align-items:flex-end;gap:22px;height:220px;padding:10px 6px 0;}
+  /* ---------- 图表 ---------- */
+  .bars{display:flex;align-items:flex-end;gap:18px;height:220px;padding:10px 6px 0;}
   .bars .bb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
   .bars .bb .val{font-size:12px;color:var(--muted);margin-bottom:6px;}
-  .bars .bb i{display:block;width:44px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#4d84ef,#2b6de8);margin-bottom:0;}
+  .bars .bb i{display:block;width:40px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#4d84ef,#1f5fd6);margin-bottom:0;}
   .bars .bb .bx{font-size:12px;color:var(--text);margin-top:8px;text-align:center;}
+  .gauge-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px;}
+  .kpi{text-align:center;padding:14px;border-top:3px solid var(--line);border-radius:8px;}
+  .kpi .n{font-size:22px;font-weight:700;}
 
   /* ---------- 模态 ---------- */
   .mask{position:fixed;inset:0;background:rgba(20,30,55,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;}
   .mask.show{display:flex;}
   .modal{background:#fff;border-radius:12px;width:640px;max-width:100%;max-height:92vh;overflow:auto;box-shadow:var(--shadow-lg);}
-  .modal.wide{width:860px;}
+  .modal.wide{width:880px;}
   .modal .m-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2;}
   .modal .m-head h4{margin:0;font-size:16px;}
   .modal .m-body{padding:20px 22px;}
@@ -123,26 +127,32 @@
   .field label{font-size:12px;color:var(--muted);}
   .field label b{color:var(--red);}
   .field input,.field select,.field textarea{border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:13px;font-family:inherit;background:#fff;color:var(--text);outline:none;}
-  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(43,109,232,.12);}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(31,95,214,.12);}
   .field textarea{resize:vertical;min-height:70px;}
 
-  .sub-table{margin-top:6px;}
-  .sub-table table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
-  .sub-table th{background:#f7f9fd;padding:8px 10px;font-size:12px;color:var(--muted);text-align:left;}
-  .sub-table td{padding:6px 10px;border-top:1px solid var(--line);}
-  .sub-table input{border:none;background:transparent;outline:none;width:100%;font-size:13px;font-family:inherit;color:var(--text);}
-  .sub-table input:focus{border-bottom:1px solid var(--primary);}
-  .row-del{color:var(--red);cursor:pointer;font-size:15px;text-align:center;}
+  .ai-box{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#fbfcff;}
+  .ai-box .ai-h{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+  .ai-item{display:flex;gap:8px;padding:7px 10px;border-radius:6px;margin-bottom:6px;font-size:12px;background:#fff;border:1px solid var(--line);}
+  .ai-item .lv{width:60px;text-align:center;border-radius:6px;font-weight:600;flex-shrink:0;align-self:center;}
+  .ai-item .lv.high{background:#fde8e5;color:#c03420;}
+  .ai-item .lv.mid{background:#fef1e0;color:#c47b10;}
+  .ai-item .lv.low{background:#efe8fb;color:#6d43c0;}
 
   .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-20px);background:#26324b;color:#fff;padding:12px 22px;border-radius:8px;font-size:13px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.3s;z-index:99;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   .empty{padding:40px;text-align:center;color:var(--muted);}
 
-  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;}
-  .kpi{text-align:center;padding:14px;border-top:2px solid var(--line);}
-  .kpi .n{font-size:22px;font-weight:700;}
-  @media(max-width:960px){.grid-cards{grid-template-columns:repeat(2,1fr);}.sidenav{width:200px;}}
-  @media(max-width:720px){.sidenav{display:none;}}
+  .dept-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:16px;background:#f4f6fb;color:var(--text);font-size:12px;margin-right:8px;margin-bottom:8px;cursor:pointer;border:1px solid transparent;transition:.15s;}
+  .dept-chip:hover{border-color:var(--primary);color:var(--primary);}
+  .dept-chip.active{background:var(--primary);color:#fff;}
+  .legend-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-right:14px;}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  table.mini{width:100%;border-collapse:collapse;font-size:12px;}
+  table.mini td{padding:6px 6px;border-bottom:1px solid var(--line);}
+  table.mini td:first-child{color:var(--muted);}
+  @media(max-width:960px){.grid-cards{grid-template-columns:repeat(2,1fr);}.gauge-wrap{grid-template-columns:repeat(2,1fr);}.sidenav{width:204px;}}
+  @media(max-width:720px){.sidenav{display:none;}.split{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -150,311 +160,536 @@
   <!-- 侧边菜单 -->
   <nav class="sidenav">
     <div class="brand">
-      <div class="logo">E</div>
-      <div><div class="t1">费用报销</div><div class="t2">泛微 E10 演示应用</div></div>
+      <div class="logo">五</div>
+      <div><div class="t1">五粮液精美印务</div><div class="t2">OA / 观星台 · 演示</div></div>
     </div>
-    <div class="menu" id="menu">
-      <div class="grp">应用</div>
-      <a data-view="dashboard" class="active"><span class="ico">🏠</span> 工作台</a>
-      <a data-view="mylist"><span class="ico">📋</span> 我的申请</a>
-      <a data-view="todo"><span class="ico">✅</span> 待办审批 <span class="badge" id="todoBadge">0</span></a>
-      <a data-view="report"><span class="ico">📊</span> 费用报表</a>
-      <div class="grp">流程</div>
-      <a data-view="flow"><span class="ico">🔄</span> 流程设置</a>
-      <a data-view="settings"><span class="ico">⚙️</span> 应用设置</a>
-    </div>
+    <div class="menu" id="menu"></div>
   </nav>
 
   <!-- 主区域 -->
   <div class="main">
     <div class="topbar">
-      <div class="crumb">泛微 e-cology <span>›</span> <b id="crumb">工作台</b></div>
+      <div class="crumb">泛微 E10 · 项目 OA 系统 <span>›</span> <b id="crumb">统一门户</b></div>
       <div class="spacer"></div>
-      <span class="btn sm" onclick="openNew()">＋ 新建申请</span>
+      <span class="btn sm" id="quickNew">＋ 新建</span>
       <div class="user"><div class="avatar">王</div> 王小明</div>
     </div>
     <div class="content" id="content"></div>
   </div>
 </div>
 
-<!-- 新建/编辑 表单模态 -->
-<div class="mask" id="formMask">
-  <div class="modal">
-    <div class="m-head"><h4 id="formTitle">新建费用报销单</h4><button class="x" onclick="closeForm()">✕</button></div>
-    <div class="m-body">
-      <div class="form-grid">
-        <div class="field"><label>申请人 <b>*</b></label><input id="f_applicant" value="王小明" /></div>
-        <div class="field"><label>所属部门 <b>*</b></label>
-          <select id="f_dept"><option>研发中心</option><option>市场部</option><option>财务部</option><option>行政管理部</option><option>销售一部</option></select>
-        </div>
-        <div class="field"><label>报销类型 <b>*</b></label>
-          <select id="f_type"><option>差旅费</option><option>交通费</option><option>业务招待费</option><option>办公用品</option><option>通讯费</option></select>
-        </div>
-        <div class="field"><label>报销金额 (¥) <b>*</b></label><input id="f_amount" type="number" placeholder="0.00" oninput="calcTotal()" /></div>
-        <div class="field full"><label>费用事由 <b>*</b></label><textarea id="f_reason" placeholder="请填写费用发生的详细事由..."></textarea></div>
-        <div class="field full"><label>费用明细（子表）</label>
-          <div class="sub-table">
-            <table id="subTable">
-              <thead><tr><th style="width:26%">费用日期</th><th style="width:34%">费用项目</th><th>金额(¥)</th><th style="width:28px"></th></tr></thead>
-              <tbody id="subBody"></tbody>
-              <tfoot><tr><td colspan="4"><span class="btn sm" onclick="addSubRow()">＋ 添加一行</span></td></tr></tfoot>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="m-foot"><button class="btn" onclick="closeForm()">取消</button><button class="btn primary" onclick="submitForm()">保存并提交</button></div>
+<!-- 通用详情模态 -->
+<div class="mask" id="detailMask">
+  <div class="modal wide">
+    <div class="m-head"><h4 id="detailTitle">详情</h4><button class="x" onclick="closeDetail()">✕</button></div>
+    <div class="m-body" id="detailBody"></div>
+    <div class="m-foot" id="detailFoot"></div>
   </div>
 </div>
 
-<!-- 详情模态 -->
-<div class="mask" id="detailMask">
+<!-- 新建表单模态 -->
+<div class="mask" id="formMask">
   <div class="modal wide">
-    <div class="m-head"><h4>申请单详情</h4><button class="x" onclick="closeDetail()">✕</button></div>
-    <div class="m-body" id="detailBody"></div>
-    <div class="m-foot" id="detailFoot"></div>
+    <div class="m-head"><h4 id="formTitle">新建</h4><button class="x" onclick="closeForm()">✕</button></div>
+    <div class="m-body" id="formBody"></div>
+    <div class="m-foot"><button class="btn" onclick="closeForm()">取消</button><button class="btn primary" onclick="submitForm()">保存并提交</button></div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* ============ 数据模拟 ============ */
-const FLOW = [
-  {name:"发起申请", who:"申请人"},
-  {name:"部门经理审批", who:"部门经理"},
-  {name:"财务复核", who:"财务部"},
-  {name:"归档完成", who:"自动"},
-];
+/* ============================================================
+  五粮液精美印务 AI+印刷包装智能制造项目 · OA与观星台 演示
+  依据 《五粮液精美印务AI+印刷包装智能制造-OA-SOWv1.7》(2026-08-24)
+  ============================================================ */
 function now(){const d=new Date();const p=n=>String(n).padStart(2,"0");return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;}
-const seedTime = Date.now() - 3600e3*6;
+const money=n=>Number(n||0).toLocaleString("zh-CN",{minimumFractionDigits:0,maximumFractionDigits:0});
+const money2=n=>Number(n||0).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2});
 
-let db = [
-  {id:"BX2026001", applicant:"王小明", dept:"研发中心", type:"差旅费", amount:4680, reason:"上海客户现场交付支持，出差 3 天，含高铁、住宿及市内交通。", items:[{d:"2026-05-12",n:"高铁往返",a:1260},{d:"2026-05-13",n:"住宿",a:980},{d:"2026-05-12",n:"市内交通",a:420}], step:1, status:"审批中", ctime:seedTime, author:"部门经理", note:"行程与附件齐全，同意。", history:[{t:"2026-05-12 09:12",w:"王小明",a:"提交申请"},{t:"2026-05-12 10:03",w:"刘经理",a:"部门经理审批 · 同意"}]},
-  {id:"BX2026002", applicant:"李梅", dept:"市场部", type:"业务招待费", amount:1860, reason:"重点客户拜访商务餐叙。", items:[{d:"2026-05-11",n:"餐饮",a:1860}], step:2, status:"审批中", ctime:seedTime+1, author:"财务部", note:"发票已验真，同意归档。", history:[{t:"2026-05-11 15:40",w:"李梅",a:"提交申请"},{t:"2026-05-12 09:20",w:"赵总",a:"部门经理审批 · 同意"},{t:"2026-05-12 11:02",w:"财务-陈",a:"财务复核 · 同意"}]},
-  {id:"BX2026003", applicant:"张伟", dept:"销售一部", type:"交通费", amount:920, reason:"月度客户回访打车。", items:[{d:"2026-05-09",n:"打车",a:920}], step:3, status:"已归档", ctime:seedTime+2, author:"系统", note:"流程已结束并归档至台账。", history:[{t:"2026-05-09 08:30",w:"张伟",a:"提交申请"},{t:"2026-05-09 10:12",w:"孙经理",a:"部门经理审批 · 同意"},{t:"2026-05-10 09:00",w:"财务-陈",a:"财务复核 · 同意"},{t:"2026-05-10 09:05",w:"系统",a:"自动归档"}]},
-  {id:"BX2026004", applicant:"周婷", dept:"行政管理部", type:"办公用品", amount:2350, reason:"采购打印机硒鼓及墨盒。", items:[{d:"2026-05-08",n:"耗材采购",a:2350}], step:1, status:"已驳回", ctime:seedTime+3, author:"部门经理", note:"缺少下单明细，请补充后重新提交。", history:[{t:"2026-05-08 14:22",w:"周婷",a:"提交申请"},{t:"2026-05-08 15:00",w:"孙经理",a:"部门经理审批 · 退回"}]},
-  {id:"BX2026005", applicant:"王小明", dept:"研发中心", type:"通讯费", amount:300, reason:"本月办公手机话费报销。", items:[{d:"2026-05-06",n:"话费",a:300}], step:0, status:"草稿", ctime:seedTime+4, author:"", note:"", history:[{t:"2026-05-06 09:00",w:"王小明",a:"保存为草稿"}]},
+/* ---------- 数据模型 ---------- */
+// OA 流程清单（示例：摘自 SOW 各部门流程清单）
+const OA_FLOWS=[
+  {id:"OA-L3-070104",cat:"人力资源部",name:"试用期考核及转正流程",desc:"到期前下发考核任务，完成员工总结、部门评价、人事复核及转正/延期/不予转正审批；按类别下发工会会员、企业年金、购物卡等协同任务。",owner:"刘静"},
+  {id:"OA-L3-070111",cat:"人力资源部",name:"员工档案填写、变更及归集流程",desc:"员工按授权填报或提交档案修改申请，人事审核后更新档案；调动、奖惩、绩效等结果按规则归集并保留来源、版本和修改轨迹。",owner:"刘静"},
+  {id:"OA-L3-070201",cat:"人力资源部",name:"请假申请流程",desc:"按假别提交起止时间、时长及证明，系统按公司、假别和天数匹配审批并占用假期余额。",owner:"吴欣"},
+  {id:"OA-L3-080101",cat:"人力资源部",name:"工资条发布及员工确认流程",desc:"按公司和月份导入工资条，校验模板、人员、金额和重复，复核后定向发布并记录确认状态。",owner:"胡瑞东"},
+  {id:"OA-L3-090104",cat:"人力资源部",name:"岗位资格考试、准入及复审流程",desc:"组织岗位资格考试，确认准入结论，自动更新员工档案；到期下发复审/再认证任务并更新有效期。",owner:"曾俊秋"},
+  {id:"OA-L3-020101",cat:"党政综合办",name:"收文办理流程",desc:"覆盖集团OA来文及其他来文接收、登记分类、传阅/承办分派、办理反馈、期限催办、办结和归档。",owner:"梁瑶"},
+  {id:"OA-L3-030110",cat:"党政综合办",name:"督办事项立项流程",desc:"多来源发起督办，通过来源/类型/紧急度标签分类，登记责任部门、责任人、目标、期限及关联对象，形成统一督办台账。",owner:"梁瑶"},
+  {id:"OA-L3-040102",cat:"审计监督部",name:"合同评审及审批流程",desc:"模板/非模板分类评审，AI提供风险提示和修改建议，人工审核及审批；审批后关联用印、导出含编号/水印合同文本。",owner:"曹怀月"},
+  {id:"OA-L3-050101",cat:"审计监督部",name:"季度经营风险上报及评估流程",desc:"各部门按季填报风险，AI辅助风险等级推荐，审计监督部人工复核并形成正式风险台账。",owner:"杨宜和"},
+  {id:"OA-L3-060301",cat:"审计监督部",name:"招采监督管理流程",desc:"内部审批协同、采购文件AI风险提示、项目变更、归档监督、关联采购合同交底与履约管控；主流程由ERP/SRM承接。",owner:"曹怀月"},
+  {id:"OA-L3-010105",cat:"信息工程部",name:"系统接口新增、变更及停用申请流程",desc:"办理接口新增/字段/频率/协议变更或停用，记录责任方、数据范围、联调和上线结果。",owner:"尚椿琳"},
+  {id:"OA-L3-030125",cat:"经营发展部",name:"宣传内容发布审批流程",desc:"提交宣传选题或稿件，完成内容审核、发布渠道与时间确认、发布结果登记及资料归档。",owner:"陈欣悦"},
 ];
-let seq = 6;
-const statusTag = s=>{
-  if(s==="草稿")return '<span class="tag gray">草稿</span>';
-  if(s==="审批中")return '<span class="tag orange">审批中</span>';
-  if(s==="已归档")return '<span class="tag green">已归档</span>';
-  if(s==="已驳回")return '<span class="tag red">已驳回</span>';
-  return s;
-};
-const money = n=>Number(n||0).toLocaleString("zh-CN",{minimumFractionDigits:2,maximumFractionDigits:2});
 
-/* ============ 视图渲染 ============ */
-const content = document.getElementById("content");
-const crumb = document.getElementById("crumb");
-let currentView = "dashboard";
+// 待办审批（统一待办）
+let todos=[
+  {id:"TD-0042",flow:"合同评审及审批",title:"纸张采购合同 · 金额 1,280 万",dept:"审计监督部",submit:"采购部·李强",time:now(),step:1,steps:["发起申请","业务会签","法务与AI审核","管理层审批","用印归档"],status:"审批中",reason:"",note:"审批通过后关联用印并归档合同文本。",ai:["单价较近3期均价偏高约5%，建议复核","含预付款30%，建议约定履约保函","付款计划跨度12期，建议校验资金计划"]},
+  {id:"TD-0043",flow:"季度经营风险上报及评估",title:"Q2 成品存货周转风险 · 建议等级 B",dept:"审计监督部",submit:"经营发展部·陈欣悦",time:now(),step:1,steps:["季度填报","AI风险等级推荐","部门核实","审计复核定级","风险台账"],status:"审批中",reason:"",note:"AI识别存货周转天数较同期+18天，请核实后定级。",ai:["存货周转天数环比+18天","成品库龄超90天占比 22%","逾期应收 1,280 万 (2 笔)"]},
+  {id:"TD-0044",flow:"请假申请流程",title:"王伟 · 年休假 5 天 · 08-12~08-16",dept:"人力资源部",submit:"生产部·王伟",time:now(),step:1,steps:["发起申请","部门经理审批","人事核准","考勤确认"],status:"审批中",reason:"",note:"年休余额充足，假期余额 9.5 天。",ai:[]},
+  {id:"TD-0045",flow:"招聘需求及计划审批流程",title:"研发中心 · 印刷工艺工程师 2 名",dept:"人力资源部",submit:"研发中心·周敏",time:now(),step:1,steps:["部门提出","编制/岗位校验","人事审核","分管领导审批"],status:"审批中",reason:"",note:"校验编制余量 2，符合年度计划。",ai:[]},
+];
 
-function setNav(v){
-  document.querySelectorAll("#menu a").forEach(a=>a.classList.toggle("active",a.dataset.view===v));
-  const names={dashboard:"工作台",mylist:"我的申请",todo:"待办审批",report:"费用报表",flow:"流程设置",settings:"应用设置"};
-  crumb.textContent=names[v]||v;
-  currentView=v;
-  render();
-}
-function myList(){return db.filter(r=>r.applicant==="王小明");}
-function todoList(){return db.filter(r=>r.status==="审批中" && r.step<3);}
+// 观星台：公司驾驶舱指标
+const KPI=[
+  {name:"营业收入",v:8.42,unit:"亿元",target:9.0,src:"ERP",owner:"经营发展部",trend:[5.2,5.6,6.1,6.8,7.5,8.42]},
+  {name:"订单蓄水",v:3.16,unit:"亿元",target:3.5,src:"ERP",owner:"经营发展部",trend:[3.9,3.2,3.0,3.4,2.9,3.16]},
+  {name:"产值完成",v:7.9,unit:"亿元",target:8.5,src:"MES",owner:"生产部门",trend:[4.9,5.2,5.8,6.4,7.1,7.9]},
+  {name:"存货",v:2.84,unit:"亿元",target:2.5,src:"ERP",owner:"经营发展部",trend:[2.1,2.3,2.4,2.6,2.7,2.84]},
+  {name:"应收",v:1.28,unit:"亿元",target:1.0,src:"ERP",owner:"经营发展部",trend:[0.9,1.0,1.1,1.2,1.25,1.28]},
+  {name:"现金流",v:1.92,unit:"亿元",target:2.1,src:"ERP",owner:"财务部",trend:[1.5,1.6,1.7,1.8,1.85,1.92]},
+  {name:"制造费用",v:0.61,unit:"亿元",target:0.55,src:"生产部门",owner:"生产部门",trend:[0.52,0.55,0.57,0.58,0.6,0.61]},
+  {name:"综合合格率",v:97.8,unit:"%",target:98.5,src:"MES",owner:"质量部门",trend:[96.1,96.8,97.2,97.5,97.6,97.8]},
+];
+function targetStatus(k){return k.v>=k.target?"good":(k.v/k.target>=0.9?"warn":"bad");}
+const stColor=s=>s==="good"?"var(--green)":s==="warn"?"var(--orange)":"var(--red)";
 
-function render(){
-  content.innerHTML = viewHtml[currentView]();
-  if(currentView==="todo"){ content.querySelectorAll("[data-approve]").forEach(b=>b.onclick=e=>approve(e.target.dataset.id,true)); content.querySelectorAll("[data-reject]").forEach(b=>b.onclick=e=>approve(e.target.dataset.id,false)); }
-  content.querySelectorAll("[data-open]").forEach(r=>r.onclick=e=>{const id=e.currentTarget.dataset.open;openDetail(id);e.stopPropagation();});
-  var b=document.getElementById("todoBadge"); if(b)b.textContent=todoList().length;
-}
-function myCardTitle(){return currentView==="mylist"?"王小明 · 我的申请":"待办审批";}
+// AI 风险识别池（双源：人工报送 + AI 抓取）
+let riskPool=[
+  {id:"RS-2026-0112",src:"AI识别",scene:"逾期应收",unit:"精美印务",detail:"客户A 应收 680万 逾期 42 天",lv:"高",occur:"2026-07-28",status:"待审核",ev:"逾期天数>30 且金额>500万",ts:now()},
+  {id:"RS-2026-0111",src:"AI识别",scene:"设备超期维保",unit:"精美印务",detail:"2号线模切机 超期维保 15 天",lv:"中",occur:"2026-07-25",status:"待审核",ev:"维保周期>模型阈值",ts:now()},
+  {id:"RS-2026-0110",src:"AI识别",scene:"长期票据/往来",unit:"丽彩包装",detail:"集团往来挂账 300万 超 180 天",lv:"中",occur:"2026-07-22",status:"待核实",ev:"往来账龄>180天",ts:now()},
+  {id:"RS-2026-0109",src:"人工报送",scene:"审批超时",unit:"五彩印务",detail:"采购合同会签超期 6 天",lv:"低",occur:"2026-07-20",status:"整改中",ev:"部门季度报送",ts:now()},
+  {id:"RS-2026-0108",src:"AI识别",scene:"参数偏差",unit:"嘉美包装",detail:"印刷张力参数偏移 3.2%",lv:"低",occur:"2026-07-18",status:"已销号",ev:"偏离标准值>3%",ts:now()},
+];
 
-let viewHtml = {
-  dashboard(){
-    const todo=todoList().length, total=db.length, done=db.filter(r=>r.status==="已归档").length, amt=db.filter(r=>r.status==="已归档").reduce((s,r)=>s+r.amount,0);
-    const recent=db.slice().sort((a,b)=>b.ctime-a.ctime).slice(0,5);
-    return `
-    <div class="grid-cards">
-      <div class="stat"><div class="lbl">待我审批</div><div class="num" style="color:var(--orange)">${todo}</div><div class="sub">点击左侧进入处理</div></div>
-      <div class="stat"><div class="lbl">我的申请</div><div class="num" style="color:var(--primary)">${myList().length}</div><div class="sub">含草稿与流程中</div></div>
-      <div class="stat"><div class="lbl">已归档</div><div class="num" style="color:var(--green)">${done}</div><div class="sub">流程全部完成</div></div>
-      <div class="stat"><div class="lbl">累计报销(归档)</div><div class="num" style="color:var(--purple)">¥${money(amt)}</div><div class="sub">本周期统计</div></div>
-    </div>
-    <div class="card" style="margin-top:16px">
-      <h3>📋 最近申请</h3>
-      <table class="grid"><thead><tr><th>单号</th><th>申请人</th><th>部门</th><th>类型</th><th>金额</th><th>状态</th></tr></thead>
-      <tbody>${recent.map(r=>`<tr data-open="${r.id}"><td>${r.id}</td><td>${r.applicant}</td><td>${r.dept}</td><td>${r.type}</td><td class="money">¥${money(r.amount)}</td><td>${statusTag(r.status)}</td></tr>`).join("")}</tbody></table>
-      ${recent.length?"":`<div class="empty">暂无数据，点击右上角「新建申请」开始。</div>`}
-    </div>
-    <div class="card">
-      <h3>🛠 快速上手</h3>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn primary" onclick="openNew()">＋ 新建费用报销单</button>
-        <button class="btn" onclick="go('todo')">处理待办 (${todo})</button>
-        <button class="btn" onclick="go('report')">查看费用报表</button>
-        <button class="btn" onclick="go('flow')">查看流程配置</button>
-      </div>
-    </div>`;
-  },
-  mylist(){
-    const list=myList();
-    return /*html*/`
-    <div class="card">
-      <h3>📋 王小明 · 我的申请</h3>
-      <div style="margin-bottom:14px"><button class="btn primary" onclick="openNew()">＋ 新建申请</button></div>
-      <table class="grid"><thead><tr><th>单号</th><th>类型</th><th>金额</th><th>申请时间</th><th>当前节点</th><th>状态</th></tr></thead>
-      <tbody>${list.map(r=>`<tr data-open="${r.id}"><td>${r.id}</td><td>${r.type}</td><td class="money">¥${money(r.amount)}</td><td>${r.ctime}</td><td>${FLOW[r.step].name}</td><td>${statusTag(r.status)}</td></tr>`).join("")}
-      </tbody></table>
-      ${list.length?"":`<div class="empty">还没有申请记录。</div>`}
-    </div>`;
-  },
-  todo(){
-    const list=todoList();
-    return `
-    <div class="card">
-      <h3>✅ 待办审批 <span class="tag orange">${list.length}</span></h3>
-      ${list.map(r=>`
-        <div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">
-            <div>
-              <div style="font-weight:600">${r.applicant} · ${r.dept} <span class="money" style="color:var(--primary)">¥${money(r.amount)}</span></div>
-              <div style="color:var(--muted);font-size:12px;margin-top:4px">${r.id} | ${r.type} | ${r.reason}</div>
-            </div>
-            <div style="display:flex;gap:8px">
-              <button class="btn sm primary" data-approve="${r.id}">同意</button>
-              <button class="btn sm" data-reject="${r.id}">驳回</button>
-              <button class="btn sm" onclick="openDetail('${r.id}')">详情</button>
-            </div>
-          </div>
-        </div>`).join("")}
-      ${list.length?"":`<div class="empty">🎉 没有待办的审批事项。</div>`}
-    </div>`;
-  },
-  report(){
-    const rows=db.filter(r=>r.status!=="草稿");
-    const byType={}; rows.forEach(r=>byType[r.type]=(byType[r.type]||0)+r.amount);
-    const types=["差旅费","交通费","业务招待费","办公用品","通讯费"];
-    const max=Math.max(1,...types.map(t=>byType[t]||0));
-    const total=rows.reduce((s,r)=>s+r.amount,0); const avg=rows.length?Math.round(total/rows.length):0;
-    return `
-    <div class="grid-cards">
-      <div class="stat"><div class="lbl">报销总额</div><div class="num" style="color:var(--primary)">¥${money(total)}</div><div class="sub">全部有效单据</div></div>
-      <div class="stat"><div class="lbl">平均每单</div><div class="num" style="color:var(--purple)">¥${money(avg)}</div><div class="sub">按单据数</div></div>
-      <div class="stat"><div class="lbl">单据数</div><div class="num" style="color:var(--green)">${rows.length}</div><div class="sub">不含草稿</div></div>
-      <div class="stat"><div class="lbl">已归档笔数</div><div class="num" style="color:var(--orange)">${rows.filter(r=>r.status==="已归档").length}</div><div class="sub">完成率 ${rows.length?Math.round(rows.filter(r=>r.status==="已归档").length/rows.length*100):0}%</div></div>
-    </div>
-    <div class="card">
-      <h3>📊 按报销类型汇总</h3>
-      <div class="bars">${types.map(t=>{const v=byType[t]||0;const h=Math.round(v/max*100);return `<div class="bb"><span class="val">¥${money(v)}</span><i style="height:${Math.max(4,h)}%"></i><span class="bx">${t}</span></div>`;}).join("")}</div>
-    </div>`;
-  },
-  flow(){
-    return `
-    <div class="card">
-      <h3>🔄 审批流程配置</h3>
-      <div class="steps">${FLOW.map((s,i)=>`<div class="step ${i===0?'done':''}"><div class="circ">${i+1}</div><div class="name">${s.name}</div><div class="who">处理人：${s.who}</div></div>`).join("")}</div>
-      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px">
-        <div><span class="dot" style="background:var(--primary)"></span>发起节点</div>
-        <div><span class="dot" style="background:var(--green)"></span>审批节点（会签：部门经理 + 财务复核）</div>
-        <div><span class="dot" style="background:var(--line)"></span>归档/结束</div>
-      </div>
-      <div style="margin-top:18px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)">
-        本 Demo 演示真实 E10 工作流的「表单发起 → 部门经理审批 → 财务复核 → 自动归档」主干逻辑。可在「待办审批」中实际点击「同意/驳回」观察节点推进与时间线变化。
-      </div>
-    </div>`;
-  },
-  settings(){
-    return `
-    <div class="card">
-      <h3>⚙️ 应用设置</h3>
-      <div class="form-grid" style="margin-top:6px">
-        <div class="field"><label>应用名称</label><input value="费用报销管理" disabled/></div>
-        <div class="field"><label>应用编码</label><input value="e10_expense" disabled/></div>
-        <div class="field"><label>使用范围</label><input value="全体成员（演示）" disabled/></div>
-        <div class="field"><label>表单版本</label><input value="v1.0" disabled/></div>
-        <div class="field full"><label>演示说明</label><textarea disabled rows="4">这是基于泛微 E10 低代码平台搭建的「费用报销」应用在线演示。左侧菜单可在本 Demo 内交互操作，「新建申请」可提交一条全新单据并进入审批流。该页面为纯静态单文件，可直接部署到 GitHub Pages。</textarea></div>
-      </div>
-    </div>`;
-  }
-};
-function go(v){setNav(v);}
+// 问题闭环（观星台问题台账）
+let issues=[
+  {id:"IS-1024",from:"驾驶舱预警",ind:"存货周转",title:"成品库龄超90天占比升至 22%",owner:"经营发展部",resp:"生产部",deadline:"08-20",status:"整改中",measure:"增加促销与出口订单，优化排产降低呆滞",progress:"已完成 60%"},
+  {id:"IS-1023",from:"经营简报",ind:"订单蓄水",title:"订单蓄水低于目标 10%，重点客户流失风险",owner:"经营发展部",resp:"销售部",deadline:"08-25",status:"待核实",measure:"待补充原因与应对措施",progress:"待上报"},
+  {id:"IS-1022",from:"会议决议",ind:"应收",title:"逾期应收 1,280万，需专项清收",owner:"经营发展部",resp:"财务部",deadline:"09-05",status:"已分派",measure:"制定清收台账并每周跟踪",progress:"待反馈"},
+];
 
-/* ============ 表单逻辑 ============ */
-const formMask=document.getElementById("formMask");
-function addSubRow(d="",n="",a=""){const tb=document.getElementById("subBody");const tr=document.createElement("tr");tr.innerHTML=`<td><input type="date" value="${d}"/></td><td><input type="text" value="${n}" placeholder="项目名称"/></td><td><input type="number" value="${a}" placeholder="0.00"/></td><td class="row-del" title="删除">✕</td>`;tr.querySelector(".row-del").onclick=()=>tr.remove();tr.querySelectorAll("input").forEach(i=>i.onchange=calcTotal);tb.appendChild(tr);}
-function openNew(){formMask.classList.add("show");document.getElementById("formTitle").textContent="新建费用报销单";document.getElementById("f_applicant").value="王小明";document.getElementById("f_amount").value="";document.getElementById("f_reason").value="";document.getElementById("f_dept").value="研发中心";document.getElementById("f_type").value="差旅费";document.getElementById("subBody").innerHTML="";addSubRow();}
-function closeForm(){formMask.classList.remove("show");}
-function getSubRows(){return [...document.querySelectorAll("#subBody tr")].map(tr=>{const i=tr.querySelectorAll("input");return {d:i[0].value,n:i[1].value,a:parseFloat(i[2].value)||0};}).filter(r=>r.n||r.a);}
-function calcTotal(){const subs=getSubRows();const manual=parseFloat(document.getElementById("f_amount").value)||0;let sum=subs.reduce((s,r)=>s+r.a,0);if(subs.length)document.getElementById("f_amount").value=sum.toFixed(2);}
+/* ---------- 工具 ---------- */
 function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800);}
-function submitForm(){
-  const applicant=document.getElementById("f_applicant").value.trim();
-  const amount=parseFloat(document.getElementById("f_amount").value)||0;
-  const reason=document.getElementById("f_reason").value.trim();
-  const subs=getSubRows();
-  if(!applicant||!amount||!reason){toast("请填写完整必填项（申请人/金额/事由）");return;}
-  const id="BX2026"+String(seq).padStart(3,"0"); seq++;
-  const rec={id,applicant,dept:document.getElementById("f_dept").value,type:document.getElementById("f_type").value,amount,reason,items:subs.length?subs:[{d:now().slice(0,10),n:"其他",a:amount}],step:1,status:"审批中",ctime:now(),author:"部门经理",note:"",history:[{t:now(),w:applicant,a:"提交申请"}]};
-  db.push(rec);
-  closeForm(); toast("已提交，进入「部门经理审批」节点");
-  setNav(currentView); 
-  openDetail(id);
+const content=document.getElementById("content");
+const crumb=document.getElementById("crumb");
+let currentView="portal";
+let curFlowOffset=0;
+const statusTag=s=>{
+  const map={"审批中":"orange","已归档":"green","已驳回":"red","草稿":"gray","待审核":"orange","待核实":"purple","整改中":"blue","已分派":"cyan","已销号":"green","已关闭":"gray","已处理":"green"};
+  const cls=map[s]||"gray";
+  return `<span class="tag ${cls}">${s}</span>`;
+};
+const lvTag=s=>`<span class="tag ${s==="高"?"red":s==="中"?"orange":"gray"}">${s}风险</span>`;
+
+/* ---------- 菜单 ---------- */
+const MENU=[
+  {grp:"门户"},
+  {v:"portal",ico:"🏠",t:"统一门户"},
+  {grp:"OA 协同办公",c:"#2b6de8"},
+  {v:"oa_todo",ico:"✅",t:"统一待办",badge:()=>todos.filter(t=>t.status==="审批中").length},
+  {v:"oa_flows",ico:"📋",t:"流程中心"},
+  {v:"oa_contract",ico:"📄",t:"合同AI评审"},
+  {v:"oa_ledger",ico:"🗂️",t:"业务台账"},
+  {v:"oa_settings",ico:"⚙️",t:"系统与接口"},
+  {grp:"观星台",c:"#7b3ff2"},
+  {v:"star_cockpit",ico:"📊",t:"公司驾驶舱"},
+  {v:"star_brief",ico:"📈",t:"经营简报"},
+  {v:"star_meeting",ico:"🎯",t:"会议分析"},
+  {v:"star_ind",ico:"🧭",t:"指标目录"},
+  {v:"star_issue",ico:"🔁",t:"问题闭环"},
+  {v:"star_risk",ico:"🛡️",t:"AI风险监测"},
+];
+function buildMenu(){
+  const m=document.getElementById("menu");
+  m.innerHTML=MENU.map(item=>{
+    if(item.grp)return `<div class="grp">${item.c?`<span class="dotapp" style="background:${item.c}"></span>`:""}${item.grp}</div>`;
+    const b=item.badge?item.badge():0;
+    return `<a data-v="${item.v}" class="${item.v===currentView?"active":""}"><span class="ico">${item.ico}</span> ${item.t}${b?`<span class="badge">${b}</span>`:""}</a>`;
+  }).join("");
+  m.querySelectorAll("a").forEach(a=>a.onclick=()=>setNav(a.dataset.v));
 }
+const nameOf=v=>{const it=MENU.find(x=>x.v===v);return it?it.t:v;};
+function setNav(v){currentView=v;buildMenu();crumb.textContent=nameOf(v);render();}
+
+/* ---------- 渲染入口 ---------- */
+function render(){content.innerHTML=viewHtml[currentView]()||"<div class='empty'>页面建设中</div>";wire(currentView);}
+function wire(v){
+  document.querySelectorAll("[data-open]").forEach(el=>el.onclick=e=>{e.stopPropagation();openDetail(el.dataset.open);});
+  if(v==="oa_todo"){document.querySelectorAll("[data-approve]").forEach(b=>b.onclick=()=>approve(b.dataset.id,true));document.querySelectorAll("[data-reject]").forEach(b=>b.onclick=()=>approve(b.dataset.id,false));}
+  if(v==="oa_flows"){document.querySelectorAll("[data-filter]").forEach(c=>c.onclick=()=>{curFlowOffset=c.dataset.filter;render();});}
+  if(v==="star_issue"){document.querySelectorAll("[data-issue]").forEach(b=>b.onclick=()=>advanceIssue(b.dataset.issue));}
+  if(v==="star_risk"){document.querySelectorAll("[data-riskaudit]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskaudit,true));document.querySelectorAll("[data-riskreject]").forEach(b=>b.onclick=()=>auditRisk(b.dataset.riskreject,false));}
+}
+
+/* ---------- 门户 ---------- */
+const viewHtml={
+portal(){
+  const todo=todos.filter(t=>t.status==="审批中");
+  const risk=riskPool.filter(r=>r.status==="待审核"||r.status==="待核实");
+  const issue=issues.filter(i=>i.status!=="已关闭");
+  return `
+  <div class="grid-cards">
+    <div class="stat"><div class="lbl">统一待办</div><div class="num" style="color:var(--orange)">${todo.length}</div><div class="sub">含 OA 审批与外部系统待办</div></div>
+    <div class="stat"><div class="lbl">流程总数</div><div class="num" style="color:var(--primary)">${OA_FLOWS.length}</div><div class="sub">五大部门流程清单</div></div>
+    <div class="stat"><div class="lbl">风险待处理</div><div class="num" style="color:var(--red)">${risk.length}</div><div class="sub">AI 识别 + 人工报送双源</div></div>
+    <div class="stat"><div class="lbl">问题闭环</div><div class="num" style="color:var(--purple)">${issue.length}</div><div class="sub">未关闭问题事项</div></div>
+  </div>
+  <div class="card">
+    <h3>🏢 项目概况</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:13px">
+      <span class="legend-chip"><span class="dot" style="background:var(--primary)"></span>OA：统一门户 / 身份 / 待办 / 流程协同 / 业务台账</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--purple)"></span>观星台：经营驾驶舱 / 简报 / 会议 / 问题闭环 / AI风险</span>
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin:10px 0 0">依据《五粮液精美印务AI+印刷包装智能制造-OA-SOWv1.7》建设，基座为泛微 E10/e-builder 低代码平台；ERP/MES/PLM 承担业务主流程与权威数据，OA 与观星台不重复建设专业系统闭环。</p>
+  </div>
+  <div class="card">
+    <h3>✅ 待办&nbsp;<a class="btn sm" style="margin-left:auto" href="javascript:go('oa_todo')">进入统一待办</a></h3>
+    ${todo.length?`<table class="grid"><thead><tr><th>单号</th><th>流程</th><th>事项</th><th>提交人</th><th>当前节点</th><th>状态</th></tr></thead><tbody>${todo.map(t=>`<tr data-open="${t.id}"><td>${t.id}</td><td>${t.flow}</td><td>${t.title}</td><td>${t.submit}</td><td>${t.steps[t.step]}</td><td>${statusTag(t.status)}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">暂无待办</div>`}
+  </div>
+  <div class="card">
+    <h3>🔁 问题闭环</h3>
+    ${issues.map(i=>`<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)"><div><div style="font-weight:600">${i.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${i.from} | 指标：${i.ind} | 责任：${i.resp} | 时限：${i.deadline}</div></div><div>${statusTag(i.status)}</div></div>`).join("")}
+  </div>`;
+},
+oa_todo(){
+  const list=todos.filter(t=>t.status==="审批中");
+  return `
+  <div class="card">
+    <h3>✅ 统一待办 <span class="tag orange">${list.length}</span></h3>
+    <p style="color:var(--muted);font-size:12px;margin:0 0 14px">汇集 OA 流程与外部系统待办；点击「审批」查看并推进当前节点，模拟部门会签、法务与AI审核、管理层审批等流转。</p>
+    ${list.map(t=>`
+      <div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">
+          <div style="flex:1;min-width:220px">
+            <div style="font-weight:600">${t.flow} · ${t.dept}</div>
+            <div style="color:var(--muted);font-size:12px;margin-top:4px">${t.id} | ${t.title}</div>
+            <div style="color:var(--muted);font-size:12px;margin-top:2px">提交：${t.submit} | 当前节点：<b style="color:var(--primary)">${t.steps[t.step]}</b></div>
+            ${t.ai&&t.ai.length?`<div style="margin-top:8px"><span class="tag purple">AI 提示 ${t.ai.length} 条</span></div>`:""}
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <button class="btn sm primary" data-approve="${t.id}">√ 通过</button>
+            <button class="btn sm" data-reject="${t.id}">× 驳回</button>
+            <button class="btn sm" data-open="${t.id}">详情</button>
+          </div>
+        </div>
+      </div>`).join("")}
+    ${list.length?"":`<div class="empty">🎉 没有待办事项</div>`}
+  </div>`;
+},
+oa_flows(){
+  const cats=["","人力资源部","党政综合办","审计监督部","信息工程部","经营发展部"];
+  const list=curFlowOffset?OA_FLOWS.filter(f=>f.cat===curFlowOffset):OA_FLOWS;
+  return `
+  <div class="card">
+    <h3>📋 OA 流程中心</h3>
+    <div style="margin-bottom:14px;flex-wrap:wrap;display:flex">
+      ${cats.map(c=>c?`<span class="dept-chip ${curFlowOffset===c?"active":""}" data-filter="${c}">${c}</span>`:`<span class="dept-chip ${!curFlowOffset?"active":""}" data-filter="">全部</span>`).join("")}
+    </div>
+    <table class="grid"><thead><tr><th>流程编号</th><th>流程类别</th><th>流程名称</th><th>功能描述</th><th>关键角色</th></tr></thead>
+    <tbody>${list.map(f=>`<tr data-open="${f.id}"><td>${f.id}</td><td><span class="tag blue">${f.cat}</span></td><td style="font-weight:600">${f.name}</td><td style="color:var(--muted);font-size:12px;max-width:420px">${f.desc}</td><td>${f.owner}</td></tr>`).join("")}</tbody></table>
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">本页为 SOW 各部门流程清单节选，点击行可查看流程节点。完整流程以蓝图与验收为准。</p>
+  </div>`;
+},
+oa_contract(){
+  return `
+  <div class="card">
+    <h3>📄 合同评审及审批 · AI 辅助审核</h3>
+    <div class="split" style="margin-top:6px">
+      <div>
+        <h4 style="margin:0 0 12px;font-size:14px">合同信息</h4>
+        <table class="mini">
+          <tr><td>合同名称</td><td>纸张采购合同</td></tr>
+          <tr><td>合同类型</td><td>年度框架 / 非模板</td></tr>
+          <tr><td>甲方 / 乙方</td><td>精美印务 / 某某纸业</td></tr>
+          <tr><td>合同金额</td><td><b style="color:var(--primary)">¥1,280 万</b></td></tr>
+          <tr><td>付款计划</td><td>12 期，首期预付 30%</td></tr>
+          <tr><td>评审阶段</td><td>法务与 AI 审核</td></tr>
+        </table>
+        <div style="margin-top:14px;display:flex;gap:8px">
+          <button class="btn primary" onclick="openContractForm()">＋ 发起新合同评审</button>
+          <button class="btn" data-open="TD-0042">查看本单流程</button>
+        </div>
+      </div>
+      <div class="ai-box">
+        <div class="ai-h">🤖 AI 合同审核风险提示（辅助判断，不替代人工审核）</div>
+        <div class="ai-item"><span class="lv high">高</span><span>单价较近 3 期均价偏高约 <b>5%</b>，建议复核市场价与供应商报价依据。</span></div>
+        <div class="ai-item"><span class="lv high">高</span><span>含 <b>30% 预付款</b>，建议约定履约保函或降低预付比例。</span></div>
+        <div class="ai-item"><span class="lv mid">中</span><span>付款计划跨度 <b>12 期</b>，建议校验资金计划与回款周期匹配。</span></div>
+        <div class="ai-item"><span class="lv low">低</span><span>建议明确质保期与违约责任条款，版本以法务最终版为准。</span></div>
+        <p style="font-size:11px;color:var(--muted);margin:10px 0 0">依据 SOW：AI 仅输出风险提示、修改建议和依据，不替代授权人员正式审核；保留规则/模型版本、识别依据、人工复核和最终意见。</p>
+      </div>
+    </div>
+  </div>
+  <div class="card"><h3>━ 用印 / 签署 / 归档边界</h3>
+    <p style="font-size:13px;color:var(--muted);margin:0">合同评审、用印、签署回传和归档保持同一业务主线；OA 沉淀合同及履约台账，ERP 承担付款闭环并回写结果。</p>
+  </div>`;
+},
+oa_ledger(){
+  const rows=[
+    {type:"合同台账",n:128,total:"¥6.4亿",detail:"本月新增 6 份",st:"正常"},
+    {type:"风险台账",n:37,detail:"高 3 / 中 12 / 低 22",st:"20 项整改中"},
+    {type:"审计整改",n:14,detail:"待销号 5 项",st:"3 项超期"},
+    {type:"督办台账",n:52,detail:"会议纪要派生 18 项",st:"7 项临期"},
+  ];
+  return `
+  <div class="grid-cards">
+    ${rows.map(r=>`<div class="stat"><div class="lbl">${r.type}</div><div class="num" style="color:var(--primary)">${r.n}笔</div><div class="sub">${r.detail}</div></div>`).join("")}
+  </div>
+  <div class="card">
+    <h3>🗂️ 合同 / 风险 / 审计 / 督办 台账</h3>
+    <table class="grid"><thead><tr><th>类型</th><th>累计</th><th>金额/等级</th><th>状态</th></tr></thead>
+    <tbody>${rows.map(r=>`<tr><td>${r.type}</td><td>${r.n} 笔</td><td>${r.total||r.detail}</td><td>${statusTag(r.st)}</td></tr>`).join("")}</tbody></table>
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">流程结果形成结构化业务台账，支持授权查询、统计、穿透和导出；正文、附件、版本、密级及访问下载记录按对象归集。</p>
+  </div>`;
+},
+oa_settings(){
+  const names=["组织架构同步","人员信息同步","统一认证/SSO","统一待办","电子签章","考勤数据接入","ERP业务协同","观星台经营数据采集","OA与观星台问题闭环"];
+  return `
+  <div class="card">
+    <h3>⚙️ 系统与接口清单（SOW §2.3）</h3>
+    <table class="grid"><thead><tr><th>#</th><th>接口</th><th>调用方 → 被调用方</th></tr></thead>
+    <tbody>${["组织架构同步|异构系统 → OA","人员信息同步|异构系统 → OA","统一认证集成|异构系统 → OA","统一待办集成|异构系统 → OA","集团公文协同|集团OA → OA","ERP业务协同|OA/ERP ⇄","考勤数据接入|考勤设备/移动端 → OA","观星台经营数据采集|ERP/MES → 观星台","电子签章集成|OA → 电子签章服务","OA与观星台问题闭环|观星台 ⇄ OA"].map((s,i)=>{const a=s.split("|");return `<tr><td>${i+1}</td><td>${a[0]}</td><td>${a[1]}</td></tr>`;}).join("")}</tbody></table>
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">接口实施前须明确提供方、业务键、字段映射、频率、超时、幂等、重试、对账、数据安全与责任人；未取得规范与联调环境不进入生产验收。</p>
+  </div>`;
+},
+star_cockpit(){
+  const max=Math.max(...KPI.map(k=>k.trend[k.trend.length-1]))*1.15;
+  return `
+  <div class="card">
+    <h3>📊 公司层驾驶舱 · 经营指标总览</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px">
+      <span class="legend-chip"><span class="dot" style="background:var(--green)"></span>达成目标</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--orange)"></span>接近目标(≥90%)</span>
+      <span class="legend-chip"><span class="dot" style="background:var(--red)"></span>偏离目标</span>
+    </div>
+    <div class="gauge-wrap">${KPI.map(k=>{const s=targetStatus(k);const pct=Math.round(k.v/k.target*100);return `<div class="kpi" style="border-top-color:${stColor(s)}"><div class="lbl" style="color:var(--muted);font-size:12px">${k.name}</div><div class="n" style="color:${stColor(s)}">${k.v}<small style="font-size:12px;color:var(--muted)"> ${k.unit}</small></div><div style="font-size:12px;color:var(--muted)">目标 ${k.target} ${k.unit}</div><div style="font-size:11px;margin-top:4px">达成率 <b style="color:${stColor(s)}">${pct}%</b></div></div>`;}).join("")}</div>
+  </div>
+  <div class="card">
+    <h3>📈 核心指标趋势（近 6 期）</h3>
+    <div class="bars">${["营业收入|亿元","订单蓄水|亿元","存货|亿元","应收|亿元","综合合格率|%"].map(p=>{const n=p.split("|")[0];const k=KPI.find(x=>x.name===n);const v=k.trend[k.trend.length-1];const h=Math.round(v/max*100);return `<div class="bb"><span class="val">${v}${p.split("|")[1]}</span><i style="height:${Math.max(4,h)}%"></i><span class="bx">${n}</span></div>`;}).join("")}</div>
+    <p style="color:var(--muted);font-size:12px;margin:6px 0 0">支持按组织、业务、产品、客户、期间等公共维度筛选并逐层钻取至来源明细；数据来源与责任以指标血缘为准。</p>
+  </div>`;
+},
+star_brief(){
+  const key=["营业收入","订单蓄水","产值完成","存货","应收","现金流","制造费用","综合合格率"];
+  return `
+  <div class="card">
+    <h3>📈 月度经营简报 · 经营总览</h3>
+    <div class="split">
+      <div>
+        <table class="mini">
+          <tr><td>报告期</td><td>2026 年 6 月</td></tr>
+          <tr><td>核心结论</td><td>产值、合格率稳中有升；存货与应收高于目标，需重点跟踪</td></tr>
+          <tr><td>预警提示</td><td><span class="tag red">2</span> 高风险 &nbsp;<span class="tag orange">3</span> 中风险</td></tr>
+          <tr><td>来源系统</td><td>ERP / MES / 质量 / 人事</td></tr>
+        </table>
+      </div>
+      <div>
+        <h4 style="margin:0 0 10px;font-size:13px">重点指标达成</h4>
+        ${key.map(n=>{const k=KPI.find(x=>x.name===n);const s=targetStatus(k);return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:12px"><span style="width:90px;color:var(--muted)">${n}</span><div style="flex:1;background:#eef1f6;border-radius:4px;height:10px"><div style="width:${Math.min(100,k.v/k.target*100)}%;height:10px;border-radius:4px;background:${stColor(s)}"></div></div><span style="width:54px;text-align:right">${Math.round(k.v/k.target*100)}%</span></div>`;}).join("")}
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin:14px 0 0">首个落地场景为经营发展部月度经营简报，逐步承接收入、利润、订单、产值、存货、应收、现金流、制造费用、质量、成本、人员等跨系统分析，减少人工取数与重复制图。</p>
+  </div>`;
+},
+star_meeting(){
+  const steps=["创建期次","加载数据","责任部门补充","会前检查","会议决策","事项生成","会后跟踪"];
+  return `
+  <div class="card">
+    <h3>🎯 会议分析场景</h3>
+    <div class="steps">${steps.map((s,i)=>`<div class="step ${i<2?"done":i===2?"on":""}"><div class="circ">${i+1}</div><div class="name">${s}</div></div>`).join("")}</div>
+    <table class="mini" style="margin-top:16px">
+      <tr><td>会议类型</td><td>月度经营会</td></tr>
+      <tr><td>期次 / 数据版本</td><td>2026-06 期 · 快照 v3</td></tr>
+      <tr><td>主持部门</td><td>经营发展部</td></tr>
+      <tr><td>待补充原因</td><td>存货周转、订单蓄水 2 项</td></tr>
+      <tr><td>会后决议</td><td>生成 4 项责任事项（进入问题闭环）</td></tr>
+    </table>
+    <p style="color:var(--muted);font-size:12px;margin:14px 0 0">会议快照与实时页面区分；原因和措施具备责任人、时间与版本。会议材料减少人工制作PPT，数据更新、原因补充和问题跟踪一体化。</p>
+  </div>`;
+},
+star_ind(){
+  const inds=[
+    {code:"STAR-I-001",name:"营业收入",def:"确认收入口径汇总",calc:"=Σ各业务收入",unit:"亿元",cyc:"月",dim:"组织/业务/客户",src:"ERP",ver:"v3"},
+    {code:"STAR-I-002",name:"订单蓄水",def:"在手未交付订单",calc:"=Σ在手订单金额",unit:"亿元",cyc:"月",dim:"组织/业务",src:"ERP",ver:"v2"},
+    {code:"STAR-I-003",name:"产值完成",def:"当期完工产值",calc:"=Σ完工产品产值",unit:"亿元",cyc:"月",dim:"组织/车间/产线",src:"MES",ver:"v3"},
+    {code:"STAR-I-004",name:"综合合格率",def:"一次交检合格率",calc:"=合格数/检验数×100",unit:"%",cyc:"月",dim:"组织/产线",src:"MES",ver:"v2"},
+  ];
+  return `
+  <div class="card">
+    <h3>🧭 指标目录与血缘</h3>
+    <table class="grid"><thead><tr><th>编码</th><th>指标名称</th><th>业务含义</th><th>计算公式</th><th>单位</th><th>周期</th><th>维度</th><th>来源</th><th>版本</th></tr></thead>
+    <tbody>${inds.map(i=>`<tr><td>${i.code}</td><td style="font-weight:600">${i.name}</td><td>${i.def}</td><td style="font-size:12px;color:var(--muted)">${i.calc}</td><td>${i.unit}</td><td>${i.cyc}</td><td>${i.dim}</td><td><span class="tag blue">${i.src}</span></td><td>${i.ver}</td></tr>`).join("")}</tbody></table>
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">指标名称、定义、公式、周期、维度、目标、来源和责任统一管理，避免同名不同口径；每项指标可追溯至来源系统、同步批次、数据时间和质量校验结果。指标变更审批后生效，报表引用同一指标定义。</p>
+  </div>`;
+},
+star_issue(){
+  const flow=["预警/上报","分类分派","原因分析","措施执行","提醒升级","复核关闭"];
+  return `
+  <div class="card">
+    <h3>🔁 问题快发闭环</h3>
+    <div class="steps">${flow.map((s,i)=>`<div class="step ${i<1?"done":i===1?"on":""}"><div class="circ">${i+1}</div><div class="name">${s}</div></div>`).join("")}</div>
+    <table class="grid" style="margin-top:16px"><thead><tr><th>编号</th><th>来源</th><th>指标</th><th>问题描述</th><th>责任部门</th><th>时限</th><th>状态</th><th></th></tr></thead>
+    <tbody>${issues.map(i=>`<tr><td>${i.id}</td><td>${i.from}</td><td>${i.ind}</td><td>${i.title}</td><td>${i.resp}</td><td>${i.deadline}</td><td>${statusTag(i.status)}</td><td><button class="btn sm" data-issue="${i.id}">推进</button></td></tr>`).join("")}</tbody></table>
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">自动/手动预警、问题上报、责任分派、措施反馈、超期升级、复核关闭与过程追踪；联动 OA 流程形成责任、措施、升级、复核与关闭闭环。</p>
+  </div>`;
+},
+star_risk(){
+  const stats={AI:riskPool.filter(r=>r.src==="AI识别").length,人工:riskPool.filter(r=>r.src==="人工报送").length,待审:riskPool.filter(r=>r.status==="待审核"||r.status==="待核实").length,整改:riskPool.filter(r=>r.status==="整改中").length};
+  return `
+  <div class="grid-cards">
+    <div class="stat"><div class="lbl">AI 识别异常</div><div class="num" style="color:var(--purple)">${stats.AI}</div><div class="sub">自动抓取</div></div>
+    <div class="stat"><div class="lbl">人工报送</div><div class="num" style="color:var(--primary)">${stats.人工}</div><div class="sub">部门季度填报</div></div>
+    <div class="stat"><div class="lbl">待核实/审核</div><div class="num" style="color:var(--orange)">${stats.待审}</div><div class="sub">去重后待复核</div></div>
+    <div class="stat"><div class="lbl">整改中</div><div class="num" style="color:var(--green)">${stats.整改}</div><div class="sub">进入OA风险整改</div></div>
+  </div>
+  <div class="card">
+    <h3>🛡️ AI 风险识别池（双源采集）</h3>
+    <table class="grid"><thead><tr><th>编号</th><th>来源</th><th>场景</th><th>归属单位</th><th>风险描述</th><th>等级</th><th>状态</th><th>识别依据</th><th></th></tr></thead>
+    <tbody>${riskPool.map(r=>`<tr><td>${r.id}</td><td><span class="tag ${r.src==="AI识别"?"purple":"blue"}">${r.src}</span></td><td>${r.scene}</td><td>${r.unit}</td><td>${r.detail}</td><td>${lvTag(r.lv)}</td><td>${statusTag(r.status)}</td><td style="color:var(--muted);font-size:12px">${r.ev}</td><td>${(r.status==="待审核")?`<button class="btn sm primary" data-riskaudit="${r.id}">核实</button> <button class="btn sm" data-riskreject="${r.id}">驳回</button>`:`<button class="btn sm" data-open="${r.id}">查看</button>`}</td></tr>`).join("")}</tbody></table>
+    <p style="color:var(--muted);font-size:12px;margin:12px 0 0">保留部门季度人工报送，同时接入经确认的系统异常数据；AI 识别结果先去重、核实和复核，再进入正式定级、整改与销号。每条记录保留来源、批次、规则/模型版本、阈值与人工复核。AI 不直接替代正式风险认定。</p>
+  </div>`;
+},
+};
+
+/* ============================================================
+  交互函数
+  ============================================================ */
+function go(v){setNav(v);}
+function stepsHtml(steps,cur,status,extra){
+  return `<div class="steps">${steps.map((s,i)=>{
+    let cls="";
+    if(status==="已归档")cls="done";
+    else if(status==="已驳回"){if(i<cur)cls="done";else if(i===cur)cls="on";}
+    else if(status==="审批中"){if(i<cur)cls="done";else if(i===cur)cls="on";}
+    else if(status==="草稿"){if(i===0)cls="on";}
+    return `<div class="step ${cls}"><div class="circ">${i+1}</div><div class="name">${s}</div>${i===cur&&status==="审批中"?`<div class="who">当前节点</div>`:""}</div>`;}).join("")}</div>`;
+}
+
+/* ---------- 审批 ---------- */
 function approve(id,ok){
-  const r=db.find(x=>x.id===id); if(!r)return;
-  const t=now(); const who = r.step===1 ? "刘经理" : "财务-陈";
+  const t=todos.find(x=>x.id===id); if(!t)return;
+  const tnow=now();
   if(ok){
-    r.history.push({t,w:who,a:`${FLOW[r.step].name} · 同意`});
-    r.step++;
-    if(r.step>=3){r.status="已归档";r.step=3;r.history.push({t:now(),w:"系统",a:"自动归档"});toast("已同意，流程自动归档");}
-    else { r.status="审批中"; r.step=Math.min(2,r.step); toast("已同意，进入下一节点："+FLOW[r.step].name); }
+    t.history=t.history||[];
+    t.history.push({t:tnow,w:"王小明",a:`${t.steps[t.step]} · 同意`});
+    t.step++;
+    if(t.step>=t.steps.length-1){t.step=t.steps.length-1;t.status="已归档";toast("已通过，进入用印归档阶段");}
+    else if(t.step>=t.steps.length){t.step=t.steps.length-1;t.status="已归档";toast("已通过，流程归档");}
+    else {t.status="审批中";toast("已同意，进入「"+t.steps[t.step]+"」");}
   } else {
-    r.status="已驳回"; r.history.push({t,w:who,a:`${FLOW[r.step].name} · 驳回`}); toast("已驳回该单据");
+    t.status="已驳回";toast("已驳回该事项");
   }
+  render(); openDetail(id);
+}
+function submitDraft(id){const t=todos.find(x=>x.id===id);if(!t)return;t.status="审批中";t.step=1;toast("已提交审批");render();openDetail(id);}
+
+/* ---------- 风险审核 ---------- */
+function auditRisk(id,ok){
+  const r=riskPool.find(x=>x.id===id); if(!r)return;
+  if(ok){r.status="整改中";toast("已核实，进入 OA 风险整改闭环");}
+  else {r.status="已销号";toast("已驳回，记为误报");}
+  render(); openRiskDetail(id);
+}
+
+/* ---------- 问题闭环推进 ---------- */
+const ISSUE_FLOW=["待上报","待核实","已分派","整改中","待复核","已关闭"];
+function advanceIssue(id){
+  const i=issues.find(x=>x.id===id); if(!i)return;
+  const cur=ISSUE_FLOW.indexOf(i.status);
+  const next=ISSUE_FLOW[Math.min(cur+1,ISSUE_FLOW.length-1)];
+  i.status=next;
+  if(next==="整改中")i.progress="已完成 60%";
+  if(next==="已关闭")i.progress="已完成 100%";
+  toast("问题状态 → "+next);
   render();
 }
 
-/* ============ 详情 ============ */
+/* ---------- 详情 ---------- */
 const detailMask=document.getElementById("detailMask");
 function openDetail(id){
-  const r=db.find(x=>x.id===id); if(!r)return;
-  const stepNow=r.status==="已归档"?3:r.status==="已驳回"?-1:r.step;
-  const stepsHtml=`<div class="steps">${FLOW.map((s,i)=>{
-    let cls=""; if(r.status==="已归档"&&i<=3)cls="done"; else if(r.status==="审批中"){if(i<r.step)cls="done";else if(i===r.step)cls="on";} else if(r.status==="已驳回"){if(i<r.step)cls="done"; else if(i===r.step)cls="on";} else if(r.status==="草稿"){if(i===0)cls="on";}
-    return `<div class="step ${cls}"><div class="circ">${i+1}</div><div class="name">${s.name}</div><div class="who">${r.status==="已归档"?(i===3?"自动":"已处理"):"处理人："+s.who}</div></div>`;}).join("")}</div>`;
-  const items= r.items.map(it=>`<tr><td>${it.d}</td><td>${it.n}</td><td>¥${money(it.a)}</td></tr>`).join("")||`<tr><td colspan="3" style="color:var(--muted)">未填写子表</td></tr>`;
-  const tl=r.history.slice().reverse().map(h=>`<div class="tl-item"><div class="tl-head">${h.a}</div><div class="tl-meta">${h.w} · ${h.t}</div>${h.a.includes("驳回")?`<div class="tl-note">${r.note||"请补充信息后重新提交。"}</div>`:""}</div>`).join("");
+  // 优先匹配待办
+  const t=todos.find(x=>x.id===id);
+  if(t){
+    document.getElementById("detailTitle").textContent=t.flow;
+    document.getElementById("detailBody").innerHTML=`
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <div><div style="font-weight:700;font-size:16px">${t.title}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">单号 ${t.id} | 提交：${t.submit} | ${t.dept}</div></div>
+        <div>${statusTag(t.status)}</div>
+      </div>
+      <div class="card" style="padding:14px 16px">${stepsHtml(t.steps,t.step,t.status)}</div>
+      ${t.ai&&t.ai.length?`<div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🤖 AI 辅助提示</h3>${t.ai.map((a,idx)=>`<div class="ai-item"><span class="lv ${idx===0?"high":"mid"}">${idx===0?"高":"中"}</span><span>${a}</span></div>`).join("")}</div>`:""}
+      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🧾 说明</h3><div>${t.note||"无"}</div></div>
+      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🕒 流转记录</h3><div class="timeline">${(t.history&&t.history.length?t.history.slice().reverse().map(h=>`<div class="tl-item"><div class="tl-head">${h.a}</div><div class="tl-meta">${h.w} · ${h.t}</div></div>`).join(""):`<div class="tl-item"><div class="tl-head">提交申请</div><div class="tl-meta">${t.submit} · ${t.time}</div></div>`)}</div></div>`;
+    let foot="";
+    if(t.status==="审批中")foot=`<button class="btn primary" onclick="approve('${t.id}',true)">通过</button> <button class="btn" onclick="approve('${t.id}',false)">驳回</button>`;
+    else foot=`<button class="btn" onclick="closeDetail()">关闭</button>`;
+    document.getElementById("detailFoot").innerHTML=foot;
+    detailMask.classList.add("show"); return;
+  }
+  // 匹配流程
+  const f=OA_FLOWS.find(x=>x.id===id);
+  if(f){
+    const steps=["发起申请","部门审核","会签/复核","审批归档"];
+    document.getElementById("detailTitle").textContent=f.name;
+    document.getElementById("detailBody").innerHTML=`
+      <div style="font-weight:600;margin-bottom:10px">${f.id} · ${f.cat}</div>
+      <div class="card" style="padding:14px 16px">${stepsHtml(steps,1,"审批中")}</div>
+      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">📝 功能描述</h3><div>${f.desc}</div></div>
+      <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">👤 关键角色</h3><div>${f.owner}</div></div>`;
+    document.getElementById("detailFoot").innerHTML=`<button class="btn" onclick="closeDetail()">关闭</button>`;
+    detailMask.classList.add("show"); return;
+  }
+  // 匹配风险
+  openRiskDetail(id);
+}
+function openRiskDetail(id){
+  const r=riskPool.find(x=>x.id===id); if(!r)return;
+  document.getElementById("detailTitle").textContent="风险记录 · "+r.id;
   document.getElementById("detailBody").innerHTML=`
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px">
-      <div><div style="font-weight:700;font-size:17px">${r.id} · ${r.type}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">申请人：${r.applicant} ｜ 部门：${r.dept} ｜ 申请时间：${r.ctime}</div></div>
-      <div style="text-align:right"><div style="font-size:24px;font-weight:700;color:var(--primary)">¥${money(r.amount)}</div>${statusTag(r.status)}</div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+      <div><div style="font-weight:700;font-size:16px">${r.scene}</div><div style="color:var(--muted);font-size:12px;margin-top:4px">${r.unit} | ${r.occur} | ${r.src}</div></div>
+      <div>${lvTag(r.lv)} ${statusTag(r.status)}</div>
     </div>
-    <div class="card" style="padding:16px 18px">${stepsHtml}</div>
-    <div class="card" style="padding:16px 18px">
-      <h3 style="margin-top:0">📄 明细</h3>
-      <table class="grid"><thead><tr><th>费用日期</th><th>费用项目</th><th>金额</th></tr></thead><tbody>${items}</tbody></table>
-    </div>
-    <div class="card" style="padding:16px 18px">
-      <h3 style="margin-top:0">🧾 事由说明</h3><div>${r.reason}</div>
-    </div>
-    <div class="card" style="padding:16px 18px">
-      <h3 style="margin-top:0">🕒 流转记录</h3><div class="timeline">${tl||'<div class="empty">暂无流转记录</div>'}</div>
-    </div>`;
-  let foot="";
-  if(r.status==="草稿") foot=`<button class="btn" onclick="submitDraft('${r.id}')">提交审批</button>`;
-  if(r.status==="审批中") foot=`<button class="btn primary" onclick="approve('${r.id}',true)">同意（模拟审批）</button> <button class="btn" onclick="approve('${r.id}',false)">驳回</button>`;
-  if(r.status==="已驳回"||r.status==="已归档") foot=`<button class="btn" onclick="printDetail('${r.id}')">打印/导出</button>`;
-  if(r.status==="草稿") foot=`<button class="btn" onclick="printDetail('${r.id}')">打印/导出</button>`;
+    <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">📝 风险明细</h3><div>${r.detail}</div></div>
+    <div class="card" style="padding:14px 16px"><h3 style="margin-top:0">🤖 识别依据</h3><div>${r.ev}</div></div>`;
+  let foot=`<button class="btn" onclick="closeDetail()">关闭</button>`;
+  if(r.status==="待审核")foot=`<button class="btn primary" onclick="auditRisk('${r.id}',true)">核实并进入整改</button> <button class="btn" onclick="auditRisk('${r.id}',false)">驳回(误报)</button>`;
   document.getElementById("detailFoot").innerHTML=foot;
   detailMask.classList.add("show");
 }
-function submitDraft(id){const r=db.find(x=>x.id===id);if(!r)return;r.status="审批中";r.step=1;r.history.push({t:now(),w:r.applicant,a:"提交申请"});toast("已提交审批");render();openDetail(id);}
-function printDetail(id){toast("演示环境：该操作会生成 PDF 预览（正式版对接打印模板）。");}
 function closeDetail(){detailMask.classList.remove("show");}
 document.addEventListener("click",e=>{if(e.target.classList.contains("mask"))e.target.classList.remove("show");});
 
-setNav("dashboard");
-addSubRow("2026-05-12","高铁往返","1260");
+/* ---------- 表单 ---------- */
+const formMask=document.getElementById("formMask");
+let formMode="";
+function openContractForm(){
+  formMode="contract";
+  document.getElementById("formTitle").textContent="新建合同评审";
+  document.getElementById("formBody").innerHTML=`
+    <div class="form-grid">
+      <div class="field"><label>合同名称 <b>*</b></label><input id="c_name" value="纸张采购合同"/></div>
+      <div class="field"><label>合同类型 <b>*</b></label><select id="c_type"><option>年度框架 / 非模板</option><option>标准模板</option><option>补充协议</option></select></div>
+      <div class="field"><label>甲方 <b>*</b></label><input id="c_a" value="精美印务"/></div>
+      <div class="field"><label>乙方 <b>*</b></label><input id="c_b" value="某某纸业"/></div>
+      <div class="field"><label>合同金额(万元) <b>*</b></label><input id="c_amt" type="number" value="1280"/></div>
+      <div class="field"><label>付款计划 <b>*</b></label><input id="c_pay" value="12期，首期预付30%"/></div>
+      <div class="field full"><label>AI 将输出风险提示（保存后模拟）</label></div>
+    </div>`;
+  formMask.classList.add("show");
+}
+function openNew(){openContractForm();}
+function closeForm(){formMask.classList.remove("show");}
+function submitForm(){
+  if(formMode!=="contract"){closeForm();return;}
+  const amt=parseFloat(document.getElementById("c_amt").value)||0;
+  const name=document.getElementById("c_name").value.trim();
+  if(!name||!amt){toast("请填写完整必填项");return;}
+  const id="TD-00"+(50+todos.length+1);
+  const t={id,flow:"合同评审及审批",title:`${name} · 金额 ${amt} 万`,dept:"审计监督部",submit:"采购部·李强",time:now(),step:1,steps:["发起申请","业务会签","法务与AI审核","管理层审批","用印归档"],status:"审批中",note:"新发起的合同评审，等待会签。",ai:["AI 将结合历史价、付款与履约条款输出风险提示","建议复核预付款比例与履约保证"]};
+  todos.push(t);
+  closeForm();toast("已提交，进入「业务会签」节点");
+  render();openDetail(id);
+}
+document.getElementById("quickNew").onclick=openNew;
+
+/* ---------- 初始化 ---------- */
+setNav("portal");
 </script>
 </body>
 </html>
